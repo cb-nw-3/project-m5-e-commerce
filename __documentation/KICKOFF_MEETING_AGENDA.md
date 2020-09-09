@@ -3,6 +3,15 @@
 - **Housekeeping**
   - Begin by setting times for meetings over the next week.
     - These meetings, or _stand-ups_ as they are commonly called, should occur at least once a day. We do recommend twice a day, given the tight deadline.
+
+      - Monday _ afternoon/night
+      - Tuesday _ afternoon/night
+      - Wednesday _ afternoon/night
+      - Thursday _ not available
+      - Friday _ not available
+      - Saturday _ possible
+      - Sunday _ possible
+
     - They can last anywhere from 15 minutes to 1 hour. Expect meetings to be longer at the beginning of the project as everyone is still trying to understand what it is they have to do.
 - **Understand**
   - Read the [PROJECT guidelines](PROJECT.md)
