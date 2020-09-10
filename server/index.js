@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const allItems = require('./js/allItems');
 const allCompanies = require('./js/allCompanies');
 const itemsFromInput = require('./js/itemsFromInput');
+const itemsFromBodyPart = require('./js/itemsFromBodyPart');
 
 const PORT = 4000;
 
@@ -30,7 +31,8 @@ express()
 
   // REST endpoints?
   .get('/items', allItems)
-  .get('/items/:lookUpString', itemsFromInput)
+  .get('/items/:stringMatch', itemsFromInput)
+  .get('/items/body/:bodyPart', itemsFromBodyPart)
   .get('/companies', allCompanies)
 
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));
