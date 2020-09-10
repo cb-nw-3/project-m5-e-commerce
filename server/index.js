@@ -8,6 +8,7 @@ const allItems = require('./js/allItems');
 const allCompanies = require('./js/allCompanies');
 const itemsFromInput = require('./js/itemsFromInput');
 const itemsFromBodyPart = require('./js/itemsFromBodyPart');
+const itemsFromCompany = require('./js/itemsFromCompany');
 
 const PORT = 4000;
 
@@ -33,6 +34,7 @@ express()
   .get('/items', allItems)
   .get('/items/:stringMatch', itemsFromInput)
   .get('/items/body/:bodyPart', itemsFromBodyPart)
+  .get('/items/company/:company', itemsFromCompany)
   .get('/companies', allCompanies)
 
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));
