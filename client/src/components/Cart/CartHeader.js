@@ -2,7 +2,7 @@ import react from 'react';
 
 const CartHeader = () => {
   return (<>
-    <div>My Cart</div>
+    <h2>My Cart</h2>
   </>)
 }
 
