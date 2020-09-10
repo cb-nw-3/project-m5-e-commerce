@@ -40,3 +40,24 @@ git merge master
 //push changes from branch to master after pulling master
 git push
 
+1. Create branch
+  git checkout -b branchName
+
+2. set origin/master as upstream
+  git push --set-upstream origin branchName
+
+2.5 if master is ahead in commits
+  git pull
+
+3. add all changes
+  git add .
+
+3.5 add some changes
+  git add <fileName>
+
+4. commit your changes
+  git commit -m "commit message"
+
+5. go on github and open a Pull request
+
+6. ask someone to verify your code and merge the changes on master
