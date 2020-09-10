@@ -4,6 +4,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
+const allItems = require('./js/allItems');
+
 const PORT = 4000;
 
 express()
@@ -25,6 +27,6 @@ express()
   .use('/', express.static(__dirname + '/'))
 
   // REST endpoints?
-  .get('/bacon', (req, res) => res.status(200).json('🥓'))
+  .get('/items', allItems)
 
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));
