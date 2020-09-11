@@ -6,7 +6,7 @@ const items = require("../data/items.json");
 
 router.get("/api/items/:category", (req, res) => {
   // Normally stored on a db
-  const validCategories = ["lifestyle", "fitness", "medical", "entertainment"];
+  const validCategories = ["lifestyle", "fitness", "medical", "entertainment", "industrial", "pets and animals"];
 
   const category = req.params.category;
   // Return 404 Not found if category is invalid
