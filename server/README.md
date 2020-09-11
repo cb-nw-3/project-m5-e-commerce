@@ -27,7 +27,7 @@ You should document your endpoints in this file.
 - This item will return an item object specified by the id parameter
 - If no item matches the id, it will return a 404 not found
 
-```
+```js
 {
     name: string,
     price: string,
