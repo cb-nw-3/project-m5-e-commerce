@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Home from './Home';
-import Header from './Header';
-import Item from './Item';
+import Home from './Home/Index';
+import Header from './Header/Index';
+import Product from './Product/Index';
 
 import {
   BrowserRouter as Router
@@ -11,7 +11,7 @@ import {
 
 //Style
 import styled from "styled-components/macro";
-import GlobalStyles from "./GlobalStyle";
+import GlobalStyles from "./Style/GlobalStyle";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/item/:id">
-            <Item />
+            <Product />
           </Route>
         </Switch>
       </>

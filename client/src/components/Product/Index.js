@@ -2,12 +2,12 @@ import React from 'react';
 import styled from "styled-components/macro";
 
 
-const Item = () => {
+const Product = () => {
     return (
         <>
-            Item
+            Product
         </>
     );
 };
 
-export default Item;
+export default Product;
