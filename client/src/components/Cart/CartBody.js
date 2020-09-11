@@ -1,19 +1,21 @@
-import react from 'react';
+import react from "react";
+import styled from "styled-components";
+
+import CartItemInput from "./CartItemInput";
+import CartItemDescription from "./CartItemDescription";
 
 const CartBody = () => {
   return (
     <>
-      <div>
-        <div>
-          <img></img>
-          <p>item name</p>
-          <p>item price</p>
-        </div>
-        <div>
-          <button>delete item</button>
-          <input>quantity</input>
-        </div>
-      </div>
+      <CartItemContainer>
+        <CartItemDescription />
+        <CartItemInput />
+      </CartItemContainer>
     </>
-  )
-}
+  );
+};
+
+const CartItemContainer = styled.div``;
+const CartItemDescription = styled.div``;
+
+export default CartBody;
