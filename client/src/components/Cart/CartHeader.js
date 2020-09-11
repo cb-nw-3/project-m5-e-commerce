@@ -1,9 +1,14 @@
-import react from 'react';
+import react from "react";
+import styled from "styled-components";
 
 const CartHeader = () => {
-  return (<>
-    <h2>My Cart</h2>
-  </>)
-}
+  return (
+    <>
+      <CartTitle>My Cart</CartTitle>
+    </>
+  );
+};
+
+const CartTitle = styled.h2``;
 
 export default CartHeader;

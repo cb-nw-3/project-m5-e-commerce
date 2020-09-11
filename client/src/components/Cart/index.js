@@ -1,9 +1,9 @@
-import react from 'react';
-import CartHeader from './CartHeader';
+import react from "react";
+import styled from "styled-components";
 
-import CartHeader from './CartHeader';
-import CartBody from './CartBody';
-import CartFooter from './CartFooter';
+import CartHeader from "./CartHeader";
+import CartBody from "./CartBody";
+import CartFooter from "./CartFooter";
 
 const Cart = () => {
   return (
@@ -12,7 +12,7 @@ const Cart = () => {
       <CartBody />
       <CartFooter />
     </>
-  )
-}
+  );
+};
 
-export default CartHeader;
+export default Cart;

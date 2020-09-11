@@ -1,12 +1,16 @@
-import react from 'react';
+import react from "react";
+import styled from "styled-components";
 
 const CartFooter = () => {
   return (
     <>
-      <button>Purchase</button>
-      <p>Price</p>
+      <StyledButton>Purchase</StyledButton>
+      <PriceTotal>$00.00</PriceTotal>
     </>
-  )
-}
+  );
+};
+
+const StyledButton = styled.button``;
+const PriceTotal = styled.p``;
 
 export default CartFooter;
