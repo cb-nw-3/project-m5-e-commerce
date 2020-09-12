@@ -3,10 +3,18 @@
 */
 const router = require("express").Router();
 const items = require("../data/items.json");
+const { addCompanyInfoMapper } = require("../helpers/mapper");
 
 router.get("/api/items/:category", (req, res) => {
   // Normally stored on a db
-  const validCategories = ["lifestyle", "fitness", "medical", "entertainment", "industrial", "pets and animals"];
+  const validCategories = [
+    "lifestyle",
+    "fitness",
+    "medical",
+    "entertainment",
+    "industrial",
+    "pets and animals",
+  ];
 
   const category = req.params.category;
   // Return 404 Not found if category is invalid
@@ -14,9 +22,12 @@ router.get("/api/items/:category", (req, res) => {
     return res.status(404).send("Not found");
 
   // Filter items by category
-  const categorizedItems = items.filter(
+  let categorizedItems = items.filter(
     (item) => item.category.toLowerCase() === category.toLowerCase()
   );
+
+  // Add company information to each item object
+  categorizedItems = addCompanyInfoMapper(false, ...categorizedItems);
 
   return res.status(200).json(categorizedItems);
 });
@@ -26,11 +37,16 @@ router.get("/api/item/:id", (req, res) => {
   const itemId = req.params.id;
 
   // Filter the items by the id
-  const item = items.find((item) => item._id == itemId);
+  let item = items.find((item) => item._id == itemId);
 
   // Check if item is null, if null return 404 else 200
-  if (!item) return res.status(404).send("Not found");
-  else return res.status(200).json(item);
+  if (!item) {
+    return res.status(404).send("Not found");
+  } else {
+    // Add company information to the item
+    item = addCompanyInfoMapper(true, item);
+    return res.status(200).json(item);
+  }
 });
 
 module.exports = router;
