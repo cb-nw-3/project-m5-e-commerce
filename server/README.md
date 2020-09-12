@@ -17,7 +17,12 @@ You should document your endpoints in this file.
     _id: number,
     imgSrc: string,
     numInStock: number,
-    companyId: number,
+    company: {
+      name: string,
+      url: string,
+      country: string,
+      _id: number,
+    },
   },
 ];
 ```
@@ -36,6 +41,11 @@ You should document your endpoints in this file.
     _id: number,
     imgSrc: string,
     numInStock: number,
-    companyId: number
+    company: {
+      name: string,
+      url: string,
+      country: string,
+      _id: number
+    }
 }
 ```
