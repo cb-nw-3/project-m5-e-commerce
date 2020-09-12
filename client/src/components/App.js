@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from "react";
 
 import Cart from "./Cart/index";
+import styled from 'styled-components';
 
 // This is a temporary template of the page
 
-  useEffect(() => {
-    fetch("/bacon")
-      .then((res) => res.json())
-      .then((data) => setBacon(data));
-  }, []);
 
 function App() {
+  // hook, but we have to change to reducer
+  // // const [bacon, setBacon] = useState(null);
+  // // useEffect(() => {
+  // //   fetch('/bacon')
+  // //     .then(res => res.json())
+  // //     .then(data => setBacon(data));
+  // // }, []);
+
   return(
   <>
     <Header/>
     <Body>
       <Campaign />
       <Shopping />
-      <ShoppingBag />
+      <Cart />
     </Body>
   </>
   )
@@ -61,14 +65,14 @@ const Shopping = styled.div`
   width: 33%;
 `
 
-const ShoppingBag = styled.div`
-  display: flex;
-  flex-direction: column;
+// const ShoppingBag = styled.div`
+//   display: flex;
+//   flex-direction: column;
 
-  /* Temporary styles */
-  border: solid 2pt yellow;
-  min-height: 50vh;
-  width: 33%;
-`
+//   /* Temporary styles */
+//   border: solid 2pt yellow;
+//   min-height: 50vh;
+//   width: 33%;
+// `
 
 export default App;

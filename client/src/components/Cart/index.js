@@ -17,7 +17,7 @@ const Cart = () => {
 
 const CartContainer = styled.div`
   background-color: beige;
-  width: 25%;
+  width: 33%;
   float: right;
   height: 100vh;
   display: flex;
