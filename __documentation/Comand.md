@@ -50,7 +50,7 @@ git remote show origin
    git push --set-upstream origin branchName
 
 2.5 if master is ahead in commits
-git pull
+git pull origin master
 
 3. add all changes
    git add .
