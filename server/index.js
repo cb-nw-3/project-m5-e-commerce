@@ -34,7 +34,7 @@ express()
   .get('/items', allItems)
   .get('/items/:stringMatch', itemsFromInput)
   .get('/items/body/:bodyPart', itemsFromBodyPart)
-  .get('/items/company/:company', itemsFromCompany)
+  .get('/companies/:company', itemsFromCompany)
   .get('/companies', allCompanies)
 
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));
