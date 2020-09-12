@@ -12,6 +12,7 @@
   - Do we have questions for the stakeholders? _If so, book some time with a TC/PM, or your instructor._
 - **Brainstorming**
   - Take a look at the data
+  - new data
     - What do we have to show?
     - How ca nwe make the most of the provided data?
   - Ideas for store functionality
