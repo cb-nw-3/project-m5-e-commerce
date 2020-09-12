@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+
+import Cart from "./Cart/index";
 
 // This is a temporary template of the page
 
-  // Test function for the endpoints (will be erased at some point...)
-  // const [bacon, setBacon] = useState(null);
-  // useEffect(() => {
-  //   fetch('/bacon')
-  //     .then(res => res.json())
-  //     .then(data => setBacon(data));
-  // }, []);
-  // return <div>{bacon ? bacon : `...where's my stuff?...`}</div>;
+  useEffect(() => {
+    fetch("/bacon")
+      .then((res) => res.json())
+      .then((data) => setBacon(data));
+  }, []);
 
 function App() {
   return(
