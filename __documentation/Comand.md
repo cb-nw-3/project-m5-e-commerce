@@ -8,7 +8,7 @@ git checkout alexLchanges
 git checkout alexGLchanges
 
 //grab changes from master
-git pull 
+git pull
 
 //create branch
 git checkout -b nathaliechanges
@@ -19,7 +19,7 @@ git checkout -b alexGLchanges
 //check status of branches and master
 git status
 
-//add all changes 
+//add all changes
 git add.
 
 //commit changes with a comment
@@ -40,23 +40,26 @@ git merge master
 //push changes from branch to master after pulling master
 git push
 
+//
+git remote show origin
+
 1. Create branch
-  git checkout -b branchName
+   git checkout -b branchName
 
 2. set origin/master as upstream
-  git push --set-upstream origin branchName
+   git push --set-upstream origin branchName
 
 2.5 if master is ahead in commits
-  git pull
+git pull
 
 3. add all changes
-  git add .
+   git add .
 
 3.5 add some changes
-  git add <fileName>
+git add <fileName>
 
 4. commit your changes
-  git commit -m "commit message"
+   git commit -m "commit message"
 
 5. go on github and open a Pull request
 
