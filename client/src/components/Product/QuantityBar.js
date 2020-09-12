@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement } from '../../Actions';
 import Buttons from '../Buttons';
+import { THEME } from '../Style/Theme';
 
 
 const QuantityBar = () => {
@@ -10,11 +11,11 @@ const QuantityBar = () => {
     const dispatch = useDispatch();
     return (
         <Wrapper>
-            <Buttons type="decrem" onClick={() => dispatch(decrement())}>
+            <Buttons type="decrement" onClick={() => dispatch(decrement())}>
                 -
             </Buttons>
-            { counter}
-            <Buttons type="increm" onClick={() => dispatch(increment())} size="small" variant="contained">
+            <Span>{counter} </Span>
+            <Buttons type="increment" onClick={() => dispatch(increment())}>
                 +
             </Buttons>
         </Wrapper >
@@ -24,6 +25,14 @@ const QuantityBar = () => {
 const Wrapper = styled.div`
     display: flex;
     align-items: center;
+`
+
+const Span = styled.span`
+    text-align: center;
+    width: 50px;
+    padding: 0 20px;
+    background: ${THEME.white};
+    font-size: 18px;
 `
 
 export default QuantityBar;
