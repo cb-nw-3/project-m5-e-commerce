@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 function App() {
-  const [bacon, setBacon] = useState(null);
+  const [items, setItems] = useState(null);
 
   useEffect(() => {
-    fetch('/bacon')
-      .then(res => res.json())
-      .then(data => setBacon(data));
+    fetch("/items")
+      .then((response) => response.json())
+      .then((data) =>
+        data.forEach((item) => {
+          console.log(item.name);
+        })
+      )
+      .then((data) => setItems(data));
   }, []);
 
-  return <div>{bacon ? bacon : `...where's my stuff?...`}</div>;
+  return <div>hello</div>;
 }
 
 export default App;
