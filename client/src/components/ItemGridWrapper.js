@@ -18,6 +18,14 @@ const ItemGridWrapper = () => {
         <div key={item._id}>
           <ItemWrapper>
             <Title> {item.name}</Title>
+            <ImageWrapper>
+              <img
+                src={`${item.imageSrc}`}
+                alt={`${item.name}`}
+                width="150"
+                height="150"
+              />
+            </ImageWrapper>
             <div>{item.description}</div>
             <div>{item.price}</div>
             <Button>Learn More</Button>
