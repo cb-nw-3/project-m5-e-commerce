@@ -14,7 +14,7 @@ const ItemGridWrapper = () => {
   return (
     <Wrapper>
       {items.map((item) => (
-        <li key={item._id}>{item.name}</li>
+        <div key={item._id}>{item.name}</div>
       ))}
     </Wrapper>
   );
