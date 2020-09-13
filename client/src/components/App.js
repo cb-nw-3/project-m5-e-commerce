@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Router, Route } from "react-router-dom";
+import { Switch, BrowserRouter, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ItemPage from "./Cart/";
 import Cart from "./Cart/index";
@@ -15,11 +15,11 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <BrowserRouter>
       <div>
         <Switch>
           <Route exact path="/">
-            <Cart setBacon={bacon ? bacon : `...where's my stuff?...`} />
+            <Cart bacon={bacon ? bacon : []} />
           </Route>
           <Route exact path="/shop/:itemId">
             <ItemPage />
@@ -30,7 +30,7 @@ function App() {
           </Route>
         </Switch>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
