@@ -4,8 +4,8 @@ import styled from "styled-components";
 const CartItemInput = () => {
   return (
     <>
-      <CartItemDelete>delete item</CartItemDelete>
-      <CartItemQuantity>quantity</CartItemQuantity>
+      <CartItemDelete></CartItemDelete>
+      <CartItemQuantity></CartItemQuantity>
     </>
   );
 };
