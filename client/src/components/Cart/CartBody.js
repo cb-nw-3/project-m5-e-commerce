@@ -6,15 +6,13 @@ import CartItemDescription from "./CartItemDescription";
 
 const CartBody = () => {
   return (
-    <>
-      <CartItemContainer>
-        <CartItemDescription />
-        <CartItemInput />
-      </CartItemContainer>
-    </>
+    <CartItemContainer>
+      <CartItemDescription />
+      <CartItemInput />
+    </CartItemContainer>
   );
 };
 
-export default CartBody;
-
 const CartItemContainer = styled.div``;
+
+export default CartBody;

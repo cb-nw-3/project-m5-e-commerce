@@ -5,8 +5,8 @@ const CartItemDescription = () => {
   return (
     <>
       <CartItemImage></CartItemImage>
-      <CartItemName>item name</CartItemName>
-      <CartItemPrice>item price</CartItemPrice>
+      <CartItemName>item name from cart reducer</CartItemName>
+      <CartItemPrice>item price from cart reducer</CartItemPrice>
     </>
   );
 };

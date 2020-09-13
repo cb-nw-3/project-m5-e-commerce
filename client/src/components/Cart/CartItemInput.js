@@ -10,6 +10,7 @@ const CartItemInput = () => {
   );
 };
 
+const CartItemInputContainer = styled.div``;
 const CartItemDelete = styled.button``;
 const CartItemQuantity = styled.input``;
 

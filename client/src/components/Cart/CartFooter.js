@@ -3,13 +3,14 @@ import styled from "styled-components";
 
 const CartFooter = () => {
   return (
-    <>
+    <CartFooterContainer>
       <StyledButton>Purchase</StyledButton>
       <PriceTotal>$00.00</PriceTotal>
-    </>
+    </CartFooterContainer>
   );
 };
 
+const CartFooterContainer = styled.div``;
 const StyledButton = styled.button``;
 const PriceTotal = styled.p``;
 

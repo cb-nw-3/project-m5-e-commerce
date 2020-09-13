@@ -5,9 +5,7 @@ import ItemPage from "./Cart/";
 import Cart from "./Cart/index";
 import ErrorPage from "./Cart/ErrorPage";
 
-function App() {
-  const [bacon, setBacon] = useState(null);
-
+const App = () => {
   useEffect(() => {
     fetch("/items")
       .then((res) => res.json())
@@ -32,6 +30,15 @@ function App() {
       </div>
     </BrowserRouter>
   );
-}
+};
+
+const Body = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  /* Temporary styles */
+  border: solid 2pt black;
+  min-height: 50vh;
+`;
 
 export default App;
