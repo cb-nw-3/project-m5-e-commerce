@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
     * {
-        font-family: 'Raleway', sans-serif;
+        font-family: 'Poppins', 'Raleway', sans-serif;
         box-sizing: border-box;
     }
 
