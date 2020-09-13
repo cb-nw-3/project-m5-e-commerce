@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import styled from "styled-components";
 
 import CartItemInput from "./CartItemInput";
@@ -15,7 +15,6 @@ const CartBody = () => {
   );
 };
 
-const CartItemContainer = styled.div``;
-const CartItemDescription = styled.div``;
-
 export default CartBody;
+
+const CartItemContainer = styled.div``;
