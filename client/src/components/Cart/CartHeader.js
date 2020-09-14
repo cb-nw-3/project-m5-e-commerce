@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const CartHeader = () => {
@@ -10,6 +10,6 @@ const CartHeader = () => {
 };
 
 const CartTitle = styled.h2``;
-const CartTitleContainer = styled.div``
+const CartTitleContainer = styled.div``;
 
 export default CartHeader;

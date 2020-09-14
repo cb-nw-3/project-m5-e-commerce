@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const CartItemInput = () => {
   return (
-    <CartItemInputContainer>
-      <CartItemDelete>delete item</CartItemDelete>
-      <CartItemQuantity type={"number"} placeholder={"qty from reducer"} />
-    </CartItemInputContainer>
+    <>
+      <CartItemDelete></CartItemDelete>
+      <CartItemQuantity></CartItemQuantity>
+    </>
   );
 };
 

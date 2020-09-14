@@ -6,12 +6,15 @@ export const getCartItemArray = (state) => Object.values(state);
 //so we can update cart
 //getStoreItemArray gets put into cart
 // keep selector functions _colocated_ with the reducers.
+//USE REDUCERS TO CHANGE THE STATE
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "ADD_ITEM": {
       return {
         ...state,
         [action.item.id]: {
+          //state contains a bunch of items by id so item.id
+          //adding above by id to whatever item already there thus ...action.item
           ...action.item,
           quantity: 1,
         },
@@ -20,8 +23,19 @@ export default function reducer(state = initialState, action) {
     case "REMOVE_ITEM": {
       // New object we CAN mutate
       const stateCopy = { ...state };
+      //this itemId is just ONE OBJECT
       delete stateCopy[action.itemId];
       return stateCopy;
+    }
+    case "UPDATE_QUANTITIES": {
+      const stateCopy = { ...state };
+      // New object we CAN mutate
+      stateCopy.quantity = action.newQuantities;
+      //update state copy
+      return stateCopy;
+    }
+    case "EMPTY_CART": {
+      return {};
     }
     default:
       return state;
