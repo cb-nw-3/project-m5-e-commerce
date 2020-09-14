@@ -4,7 +4,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
-
 const PORT = 4000;
 
 express()
@@ -28,5 +27,6 @@ express()
 
   // REST endpoints?
   .use(require("./routes/items"))
+  .use(require("./routes/transaction"))
 
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));
