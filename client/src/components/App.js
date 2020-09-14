@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Switch, BrowserRouter, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import ItemPage from "./Cart/";
 import Cart from "./Cart/index";
 import ErrorPage from "./Cart/ErrorPage";
+import HomePage from "./HomePage/index";
 
 const App = () => {
-  useEffect(() => {
-    fetch("/items")
-      .then((res) => res.json())
-      .then((data) => setBacon(data));
-  }, []);
-
   return (
     <BrowserRouter>
       <div>
         <Switch>
           <Route exact path="/">
-            <Cart bacon={bacon ? bacon : []} />
+            <HomePage />
           </Route>
           <Route exact path="/shop/:itemId">
             <ItemPage />
