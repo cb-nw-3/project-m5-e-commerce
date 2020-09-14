@@ -1,14 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
-import Item from "./Item";
+import Product from "./Product";
 
 const Shopping = () => {
   return (
     <Wrapper>
-      <Item/>
-      <Item/>
-      <Item/>
+      <Product></Product>
     </Wrapper>
   );
 };
