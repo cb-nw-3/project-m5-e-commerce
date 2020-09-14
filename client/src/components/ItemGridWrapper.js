@@ -19,6 +19,10 @@ const ItemGridWrapper = () => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
 
+  //change page
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <Wrapper>
       {currentItems.map((item) => (
@@ -39,7 +43,11 @@ const ItemGridWrapper = () => {
           </ItemWrapper>
         </div>
       ))}
-      <Pagination itemsPerPage={itemsPerPage} totalItems={items.length} />
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        totalItems={items.length}
+        paginate={paginate}
+      />
     </Wrapper>
   );
 };
