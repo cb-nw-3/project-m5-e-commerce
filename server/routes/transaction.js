@@ -25,7 +25,6 @@ function updateStoreHandler(req, res) {
 
   if (cart.length === 0) return res.status(404).send("Cart is empty");
 
-  res.send(cart);
   let updatedArray = [];
   cart.forEach((item) => {
     //retrieve items from items.json
@@ -42,7 +41,7 @@ function updateStoreHandler(req, res) {
     updatedArray.push(itemToUpdate);
   });
   console.log("returning", updatedArray);
-  return updatedArray;
+  return res.status(200).send(updatedArray);
 }
 
 module.exports = router;
