@@ -1,7 +1,3 @@
-# Backend
-
-You should document your endpoints in this file.
-
 # http://localhost:4000/api/items/:category
 
 - This endpoint will return an array of items based on the specified category
@@ -17,7 +13,12 @@ You should document your endpoints in this file.
     _id: number,
     imgSrc: string,
     numInStock: number,
-    companyId: number,
+    company: {
+      name: string,
+      url: string,
+      country: string,
+      _id: number,
+    },
   },
 ];
 ```
@@ -36,6 +37,73 @@ You should document your endpoints in this file.
     _id: number,
     imgSrc: string,
     numInStock: number,
-    companyId: number
+    company: {
+      name: string,
+      url: string,
+      country: string,
+      _id: number
+    }
 }
+```
+
+# http://localhost:4000/api/search?keyword={#value}
+
+- This endpoint will search the name of the items using the keyword query parameter
+- The keyword query parameter is mandatory, if it is not provided, the server will respond with 400 Bad Request
+- returns an array of item object
+
+```js
+[
+  {
+    name: string,
+    price: string,
+    body_location: string,
+    category: string,
+    _id: number,
+    imgSrc: string,
+    numInStock: number,
+    company: {
+      name: string,
+      url: string,
+      country: string,
+      _id: number,
+    },
+  },
+];
+```
+
+# http://localhost:4000/api/filter
+
+- This endpoint filters the items based on multiple fields provided as query paramters
+- Valid query parameters:
+  - 'name': Will filter the items by the name property
+  - 'location': Will filter the items by the body_location property
+  - 'company': Will filter the items by the company name
+  - 'category': Will filter the items by the category
+  - 'price': Must be a number. Will filter the items based on the price.
+  - 'limit': Must be provided if price parameter is provided. Can only have 'min' or 'max' as a value.
+    This will determine if the price search is greater than or less than
+- All query parameters is optional except for 'limit' when 'price' is provided.
+- Will return an array of items object or 400 bad request for invalid price value or invalid limit value
+- Sample request:
+  http://localhost:4000/api/filter?name=tracker&location=wrist&company=sony&category=lifestyle&price=100&limit=min
+
+```js
+[
+  {
+    name: string,
+    price: string,
+    body_location: string,
+    category: string,
+    _id: number,
+    imgSrc: string,
+    numInStock: number,
+    company: {
+      name: string,
+      url: string,
+      country: string,
+      _id: number,
+    },
+  },
+];
 ```
