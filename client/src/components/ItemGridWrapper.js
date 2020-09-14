@@ -2,9 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import Button from "./Button";
+import Pagination from "./Pagination";
 
 const ItemGridWrapper = () => {
   const [items, setItems] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(25);
 
   useEffect(() => {
     fetch("/items")
@@ -12,9 +15,13 @@ const ItemGridWrapper = () => {
       .then((data) => setItems(data));
   }, []);
 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+
   return (
     <Wrapper>
-      {items.map((item) => (
+      {currentItems.map((item) => (
         <div key={item._id}>
           <ItemWrapper>
             <Title> {item.name}</Title>
@@ -27,11 +34,12 @@ const ItemGridWrapper = () => {
               />
             </ImageWrapper>
             <div>{item.description}</div>
-            <div>{item.price}</div>
+            <PriceWrapper>{item.price}</PriceWrapper>
             <Button>Learn More</Button>
           </ItemWrapper>
         </div>
       ))}
+      <Pagination itemsPerPage={itemsPerPage} totalItems={items.length} />
     </Wrapper>
   );
 };
@@ -76,6 +84,10 @@ const Title = styled.h2`
   margin-top: 8px;
   font-size: 22px;
   font-weight: 600;
+`;
+
+const PriceWrapper = styled.div`
+  font-weight: bold;
 `;
 
 export default ItemGridWrapper;

@@ -3,7 +3,11 @@ import styled from "styled-components";
 import ItemGridWrapper from "./ItemGridWrapper";
 
 function App() {
-  return <ItemGridWrapper />;
+  return (
+    <div>
+      <ItemGridWrapper />
+    </div>
+  );
 }
 
 export default App;
