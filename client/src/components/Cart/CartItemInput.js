@@ -1,16 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const CartItemInput = () => {
   return (
-    <CartItemInputContainer>
-      <CartItemDelete>delete item</CartItemDelete>
-      <CartItemQuantity type={"number"} placeholder={"qty from reducer"} />
-    </CartItemInputContainer>
+    <>
+      <CartItemDelete>Delete</CartItemDelete>
+      <CartItemQuantity type={'number'} placeholder={'item qty'}></CartItemQuantity>
+    </>
   );
 };
 
-const CartItemInputContainer = styled.div``;
 const CartItemDelete = styled.button``;
 const CartItemQuantity = styled.input``;
 

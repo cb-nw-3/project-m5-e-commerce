@@ -1,33 +1,31 @@
 import React, { useState, useEffect } from "react";
-
-import Cart from "./Cart/index";
-import Header from "./Header";
+import { Switch, BrowserRouter, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Shopping from "./Shopping";
-import Featured from "./Featured";
+import ItemPage from "./Cart/";
+import ErrorPage from "./ErrorPage/index";
+import HomePage from "./HomePage/index";
 
-// This is a temporary template of the page
-
-function App() {
-  // hook, but we have to change to reducer
-  // // const [bacon, setBacon] = useState(null);
-  // // useEffect(() => {
-  // //   fetch('/bacon')
-  // //     .then(res => res.json())
-  // //     .then(data => setBacon(data));
-  // // }, []);
-
+const App = () => {
   return (
-    <>
-      <Header />
-      <Body>
-        <Featured />
-        <Shopping>{/* <Product /> */}</Shopping>
-        <Cart />
-      </Body>
-    </>
+    <BrowserRouter>
+      <div>
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route exact path="/shop/:itemId">
+            <ItemPage />
+            <Link to="/shop/abc123">View item details</Link>;
+          </Route>
+          <Route>
+            <ErrorPage />
+          </Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
-}
+};
 
 const Body = styled.div`
   display: flex;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import CampaignImg from "./CampaignImg";
 import TextBox from "./Textbox";
 
-const Shopping = () => {
+const Featured = () => {
   return (
     <Wrapper>
       <CampaignImg />
@@ -24,4 +24,4 @@ const Wrapper = styled.div`
   width: 33%;
 `;
 
-export default Shopping;
+export default Featured;
