@@ -7,7 +7,7 @@ import Pagination from "./Pagination";
 const ItemGridWrapper = () => {
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(25);
+  const [itemsPerPage, setItemsPerPage] = useState(20);
 
   useEffect(() => {
     fetch("/items")
@@ -24,31 +24,33 @@ const ItemGridWrapper = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <Wrapper>
-      {currentItems.map((item) => (
-        <div key={item._id}>
-          <ItemWrapper>
-            <Title> {item.name}</Title>
-            <ImageWrapper>
-              <img
-                src={`${item.imageSrc}`}
-                alt={`${item.name}`}
-                width="150"
-                height="150"
-              />
-            </ImageWrapper>
-            <div>{item.description}</div>
-            <PriceWrapper>{item.price}</PriceWrapper>
-            <Button>Learn More</Button>
-          </ItemWrapper>
-        </div>
-      ))}
+    <div>
+      <Wrapper>
+        {currentItems.map((item) => (
+          <div key={item._id}>
+            <ItemWrapper>
+              <Title> {item.name}</Title>
+              <ImageWrapper>
+                <img
+                  src={`${item.imageSrc}`}
+                  alt={`${item.name}`}
+                  width="150"
+                  height="150"
+                />
+              </ImageWrapper>
+              <div>{item.description}</div>
+              <PriceWrapper>{item.price}</PriceWrapper>
+              <Button>Learn More</Button>
+            </ItemWrapper>
+          </div>
+        ))}
+      </Wrapper>
       <Pagination
         itemsPerPage={itemsPerPage}
         totalItems={items.length}
         paginate={paginate}
       />
-    </Wrapper>
+    </div>
   );
 };
 

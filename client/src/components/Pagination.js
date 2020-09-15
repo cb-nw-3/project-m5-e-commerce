@@ -31,7 +31,7 @@ const PaginationWrapper = styled.ul`
   width: 100vw;
   font-family: "Titillium Web", sans-serif;
   font-size: 24px;
-  text-align: center;
+  text-align: left;
 `;
 
 export default Pagination;
