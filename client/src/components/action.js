@@ -6,15 +6,14 @@ export const addItem = (item) => ({
   item,
 });
 
-export const removeItem = (itemId) => ({
+export const removeItem = (item) => ({
   type: "REMOVE_ITEM",
-  itemId,
+  item,
 });
 
-export const updateQuantity = (itemId, newQuantities) => ({
+export const updateQuantity = (item) => ({
   type: "UPDATE_QUANTITIES",
-  itemId,
-  newQuantities,
+  item,
 });
 
 export const emptyCart = () => ({

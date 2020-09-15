@@ -9,6 +9,7 @@ const allCompanies = require('./js/allCompanies');
 const itemsFromInput = require('./js/itemsFromInput');
 const itemsFromBodyPart = require('./js/itemsFromBodyPart');
 const itemsFromCompany = require('./js/itemsFromCompany');
+const updateItems = require('./js/updateItems');
 
 const PORT = 4000;
 
@@ -36,5 +37,6 @@ express()
   .get('/items/body/:bodyPart', itemsFromBodyPart)
   .get('/companies/:company', itemsFromCompany)
   .get('/companies', allCompanies)
+  .post('/cartItems', updateItems)
 
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));

@@ -4,13 +4,12 @@ import styled from "styled-components";
 const CartItemInput = () => {
   return (
     <>
-      <CartItemDelete></CartItemDelete>
-      <CartItemQuantity></CartItemQuantity>
+      <CartItemDelete>Delete</CartItemDelete>
+      <CartItemQuantity type={'number'} placeholder={'item qty'}></CartItemQuantity>
     </>
   );
 };
 
-const CartItemInputContainer = styled.div``;
 const CartItemDelete = styled.button``;
 const CartItemQuantity = styled.input``;
 
