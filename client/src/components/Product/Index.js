@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 import { useParams } from "react-router-dom";
 import PaymentModal from '../Product/PaymentModal';
 import Image from './Image';
+import BreadCrumbs from './BreadCrumbs';
 
 import QuantityBar from './QuantityBar';
 
@@ -30,8 +31,15 @@ const Product = () => {
     if (loading) {
         return loading
     }
+
+    let category = item.category.toUpperCase();
+
+    console.log(category);
     return (
         <>
+            <BreadCrumbs>
+                {category}
+            </BreadCrumbs>
             <Image itemSrc={item.imageSrc} />
             <QuantityBar />
             <PaymentModal />
