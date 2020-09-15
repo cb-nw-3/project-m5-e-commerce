@@ -1,18 +1,25 @@
 import React, { Component, useEffect, useState } from "react";
 import styled from "styled-components";
 
-import Item from "./Item";
+import Product from "./Product";
 
 const Shopping = () => {
-  const [data, setData] = useState();
-  useEffect(() => {
+  const [items, setItems] = React.useState([]);
+  // const fetchProducts = () => {
+  // };
+  React.useEffect(() => {
+    // fetchProducts();
     fetch("/items")
-      .then((response) => response.json())
-      .then((data) => setData(data));
-  }, []);
-
+      .then((res) => res.json())
+      .then((data) => {
+        setItems(data);
+      });
+  }, [setItems]);
+  console.log(items);
   return (
-    <Wrapper>{data ? data.map((item) => <Item {...item} />) : null}</Wrapper>
+    <Wrapper>
+      {items && items.map((item) => <Product key={item._id} item={item} />)}
+    </Wrapper>
   );
 };
 
