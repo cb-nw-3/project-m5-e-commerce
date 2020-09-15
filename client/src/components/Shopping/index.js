@@ -1,15 +1,18 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import styled from "styled-components";
 
 import Item from "./Item";
 
 const Shopping = () => {
+  const [data, setData] = useState();
+  useEffect(() => {
+    fetch("/items")
+      .then((response) => response.json())
+      .then((data) => setData(data));
+  }, []);
+
   return (
-    <Wrapper>
-      <Item/>
-      <Item/>
-      <Item/>
-    </Wrapper>
+    <Wrapper>{data ? data.map((item) => <Item {...item} />) : null}</Wrapper>
   );
 };
 

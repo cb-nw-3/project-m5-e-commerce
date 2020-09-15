@@ -3,7 +3,6 @@ import { Switch, BrowserRouter, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ItemPage from "./Cart/";
-import Cart from "./Cart/index";
 import ErrorPage from "./ErrorPage/index";
 import HomePage from "./HomePage/index";
 
