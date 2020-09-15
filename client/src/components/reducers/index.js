@@ -26,7 +26,7 @@ export default function reducer(state = initialState, action) {
       // New object we CAN mutate
       const stateCopy = { ...state };
       //this item.id is just ONE OBJECT
-      delete stateCopy[action.item.id];
+      delete stateCopy[action.item._id];
       return {
         ...stateCopy,
       };
@@ -34,8 +34,8 @@ export default function reducer(state = initialState, action) {
     case "UPDATE_QUANTITIES": {
       return {
         ...state,
-        [action.item.id]: {
-          ...state[action.item.id],
+        [action.item._id]: {
+          ...state[action.item._id],
           quantity: action.item.quantity,
         },
       };

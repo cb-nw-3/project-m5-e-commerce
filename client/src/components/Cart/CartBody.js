@@ -18,7 +18,7 @@ const CartBody = () => {
         return (
           <>
             <CartItemDescription name={cartItem.name} price={cartItem.price} />
-            <CartItemInput />
+            <CartItemInput quantity={cartItem.quantity} _id={cartItem._id} />
           </>
         );
       })}
