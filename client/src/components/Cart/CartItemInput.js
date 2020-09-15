@@ -2,14 +2,20 @@ import React from "react";
 import styled from "styled-components";
 
 import { useDispatch } from "react-redux";
-import { updateQuantity } from "../action";
+import { updateQuantity, removeItem } from "../action";
 
 const CartItemInput = ({ quantity, _id }) => {
   const dispatch = useDispatch();
 
   return (
     <>
-      <CartItemDelete>Delete</CartItemDelete>
+      <CartItemDelete
+        onClick={() => {
+          dispatch(removeItem({ _id }));
+        }}
+      >
+        Delete
+      </CartItemDelete>
       <CartItemQuantity
         type={"number"}
         placeholder={"item qty"}
