@@ -16,23 +16,29 @@ export default function reducer(state = initialState, action) {
           //state contains a bunch of items by id so item.id
           //adding above by id to whatever item already there thus ...action.item
           ...action.item,
-          quantity: 1,
+          quantity: state[action.item.id]
+            ? state[action.item.id].quantity + 1
+            : 1,
         },
       };
     }
     case "REMOVE_ITEM": {
       // New object we CAN mutate
       const stateCopy = { ...state };
-      //this itemId is just ONE OBJECT
-      delete stateCopy[action.itemId];
-      return stateCopy;
+      //this item.id is just ONE OBJECT
+      delete stateCopy[action.item.id];
+      return {
+        ...stateCopy,
+      };
     }
     case "UPDATE_QUANTITIES": {
-      const stateCopy = { ...state };
-      // New object we CAN mutate
-      stateCopy.quantity = action.newQuantities;
-      //update state copy
-      return stateCopy;
+      return {
+        ...state,
+        [action.item.id]: {
+          ...state[action.item.id],
+          quantity: action.item.quantity,
+        },
+      };
     }
     case "EMPTY_CART": {
       return {};

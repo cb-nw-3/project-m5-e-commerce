@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ItemPage from "./Cart/";
 import Cart from "./Cart/index";
-import ErrorPage from "./Cart/ErrorPage";
+import ErrorPage from "./ErrorPage/index";
 import HomePage from "./HomePage/index";
 
 const App = () => {

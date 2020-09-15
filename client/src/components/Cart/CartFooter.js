@@ -23,7 +23,7 @@ const CartFooter = () => {
 
   return (
     <CartFooterContainer>
-      <form onSubmit={handleCartPurchase(event)}><StyledButton>Purchase</StyledButton></form>
+      <form><StyledButton>Purchase</StyledButton></form>
       <PriceTotal>$00.00</PriceTotal>
     </CartFooterContainer>
   );
