@@ -1,11 +1,34 @@
 import React from "react";
 import styled from "styled-components";
 
-const CartItemInput = () => {
+import { useDispatch } from "react-redux";
+import { updateQuantity, removeItem } from "../action";
+
+const CartItemInput = ({ quantity, _id }) => {
+  const dispatch = useDispatch();
+
   return (
     <>
-      <CartItemDelete>Delete</CartItemDelete>
-      <CartItemQuantity type={'number'} placeholder={'item qty'}></CartItemQuantity>
+      <CartItemDelete
+        onClick={() => {
+          dispatch(removeItem({ _id }));
+        }}
+      >
+        Delete
+      </CartItemDelete>
+      <CartItemQuantity
+        type={"number"}
+        placeholder={"item qty"}
+        value={quantity}
+        onChange={(e) => {
+          if (parseInt(e.target.value) <= 0) {
+            dispatch(removeItem({ _id }));
+          } else {
+            let newQuantity = parseInt(e.target.value);
+            dispatch(updateQuantity({ _id, newQuantity }));
+          }
+        }}
+      ></CartItemQuantity>
     </>
   );
 };
