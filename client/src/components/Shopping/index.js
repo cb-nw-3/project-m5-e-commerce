@@ -15,10 +15,12 @@ const Shopping = () => {
         setItems(data);
       });
   }, [setItems]);
-  console.log(items);
+
   return (
     <Wrapper>
-      {items && items.map((item) => <Product key={item._id} item={item} />)}
+      {items && items.map((item) => {
+      console.log(item)
+      return <Product key={item._id} {...item} />})}
     </Wrapper>
   );
 };
