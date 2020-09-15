@@ -3,22 +3,22 @@ import { useHistory, Link } from "react-router-dom";
 
 import styled from "styled-components";
 
-const Product = ({ product }) => {
+const Product = ({ item }) => {
   let history = useHistory();
   function handleClick(ev) {
     ev.preventDefault();
     history.push(`/Shopping/`);
   }
-  return product ? (
+  return item ? (
     <Wrapper>
       <div>
         <div>
-          <Link to="/shopping">
-            <img src={product.imageSrc} alt="productImage" />
-          </Link>
+          <a href="/shopping">
+            <img src={item.imageSrc} alt="productImage" />
+          </a>
           <div>
-            <Link to="/shopping">{product.name}</Link>
-            <h6>$ {product.price}</h6>
+            <a href="/shopping">{item.name}</a>
+            <h6>$ {item.price}</h6>
             <Button>Add to cart</Button>
 
             {/* need to implement addItem function on the button  */}

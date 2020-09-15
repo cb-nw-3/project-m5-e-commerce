@@ -4,9 +4,21 @@ import styled from "styled-components";
 import Product from "./Product";
 
 const Shopping = () => {
+  const [items, setItems] = React.useState([]);
+  // const fetchProducts = () => {
+  // };
+  React.useEffect(() => {
+    // fetchProducts();
+    fetch("/items")
+      .then((res) => res.json())
+      .then((data) => {
+        setItems(data);
+      });
+  }, [setItems]);
+  console.log(items);
   return (
     <Wrapper>
-      <Product></Product>
+      {items && items.map((item) => <Product key={item._id} item={item} />)}
     </Wrapper>
   );
 };
