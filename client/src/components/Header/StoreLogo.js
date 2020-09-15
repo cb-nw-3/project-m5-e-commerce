@@ -1,17 +1,23 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-const StoreLogo = () => {
+const StoreLogo = ({ imgSrc }) => {
   return (
-    // This is temporary filler
     <>
-    <Logo>This Will Be Out Logo!</Logo>
+      <Container>
+        <Image src={imgSrc} />
+      </Container>
     </>
   );
 };
 
-const Logo = styled.h1`
-  margin: 0 20pt;
-`
+const Image = styled.img`
+  padding-bottom: 30px;
+  width: 220px;
+`;
+const Container = styled.div`
+  /* position: relative;
+  text-align: right; */
+`;
 
 export default StoreLogo;
