@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const CartItemDescription = () => {
+const CartItemDescription = ({ name, price }) => {
   return (
     <>
       <CartItemImage></CartItemImage>
-      <CartItemName>item name from cart reducer</CartItemName>
-      <CartItemPrice>item price from cart reducer</CartItemPrice>
+      <CartItemName>{name}</CartItemName>
+      <CartItemPrice>{price}</CartItemPrice>
     </>
   );
 };

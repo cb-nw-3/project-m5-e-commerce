@@ -12,12 +12,12 @@ export default function reducer(state = initialState, action) {
     case "ADD_ITEM": {
       return {
         ...state,
-        [action.item.id]: {
+        [action.item._id]: {
           //state contains a bunch of items by id so item.id
           //adding above by id to whatever item already there thus ...action.item
           ...action.item,
-          quantity: state[action.item.id]
-            ? state[action.item.id].quantity + 1
+          quantity: state[action.item._id]
+            ? state[action.item._id].quantity + 1
             : 1,
         },
       };
