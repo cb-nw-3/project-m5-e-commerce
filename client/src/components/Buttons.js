@@ -4,17 +4,17 @@ import styled from 'styled-components/macro';
 import { THEME } from '../components/Style/Theme'
 
 const Buttons = ({ type, children, onClick }) => {
-    let ButtonsElem;
-    if (type === 'decrement') {
-        ButtonsElem = RadiusLeft;
-    } else if (type === 'increment') {
-        ButtonsElem = RadiusRight;
-    }
+    // let ButtonsElem;
+    // if (type === 'decrement') {
+    //     ButtonsElem = RadiusLeft;
+    // } else if (type === 'increment') {
+    //     ButtonsElem = RadiusRight;
+    // }
 
     return (
-        <ButtonsElem onClick={onClick} >
+        <Button onClick={onClick} >
             {children}
-        </ButtonsElem >
+        </Button >
     )
 };
 
@@ -27,6 +27,7 @@ const Button = styled.button`
     background-color: ${THEME.primary};
     font-size: 20px;
     color: ${THEME.black};
+    border-radius: 50%;
 
     &:hover{
         box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
@@ -43,12 +44,12 @@ const Button = styled.button`
     }
 `
 
-const RadiusLeft = styled(Button)`
-    border-radius: 40px 0 0px 40px;
-`
+// const RadiusLeft = styled(Button)`
+//     border-radius: 40px 0 0px 40px;
+// `
 
-const RadiusRight = styled(Button)`
-    border-radius: 0 40px 40px 0;
-`
+// const RadiusRight = styled(Button)`
+//     border-radius: 0 40px 40px 0;
+// `
 
 export default Buttons;

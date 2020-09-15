@@ -34,17 +34,48 @@ const Product = () => {
 
     let category = item.category.toUpperCase();
 
+    const toTitleCase = (phrase) => {
+        return phrase
+            .toLowerCase()
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    };
+    let name = item.name;
+    let nameCapitalized = toTitleCase(name);
+
     console.log(category);
     return (
-        <>
-            <BreadCrumbs>
-                {category}
-            </BreadCrumbs>
+        <Wrapper>
             <Image itemSrc={item.imageSrc} />
-            <QuantityBar />
-            <PaymentModal />
-        </>
+            <ItemDetails>
+                <BreadCrumbs>
+                    {category}
+                </BreadCrumbs>
+                <Paragraph>
+                    {nameCapitalized}
+                </Paragraph>
+                {item.price}
+                <QuantityBar />
+                <PaymentModal />
+            </ItemDetails>
+        </Wrapper>
     );
 };
 
+const Wrapper = styled.div`
+    display: flex;
+    margin: 40px;
+`
+
+const Paragraph = styled.p`
+
+`
+
+const ItemDetails = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 20px; 
+`
 export default Product;

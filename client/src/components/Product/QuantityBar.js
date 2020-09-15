@@ -11,6 +11,9 @@ const QuantityBar = () => {
     const dispatch = useDispatch();
     return (
         <Wrapper>
+            <Text>
+                Quantity:
+            </Text>
             <Buttons type="decrement" onClick={() => dispatch(decrement())}>
                 -
             </Buttons>
@@ -25,6 +28,10 @@ const QuantityBar = () => {
 const Wrapper = styled.div`
     display: flex;
     align-items: center;
+`
+
+const Text = styled.span`
+    margin-right: 10px;
 `
 
 const Span = styled.span`

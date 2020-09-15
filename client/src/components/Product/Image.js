@@ -12,10 +12,12 @@ export const Image = ({ itemSrc }) => {
 
 const Wrapper = styled.div`
     text-align: center;
+    width: 50%;
 `
 
 const ItemImage = styled.img`
     min-width: 200px;
+    width: 50%;
     height: auto;
 `
 
