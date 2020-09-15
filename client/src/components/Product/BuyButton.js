@@ -20,7 +20,8 @@ const Button = styled.button`
     text-transform: uppercase;
     color: ${THEME.black};
     background-color: ${THEME.secondary};
-    border-radius: 5px;
+    border-radius: 25px;
+    padding: 10px 30px;
     transition: background-color 500ms ease-in-out;
     font-weight: 600;
 
