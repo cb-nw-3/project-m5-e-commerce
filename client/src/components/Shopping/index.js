@@ -18,9 +18,11 @@ const Shopping = () => {
 
   return (
     <Wrapper>
-      {items && items.map((item) => {
-      // we pass the item with {...item} so we can access his properties more easily in product
-      return <Product key={item._id} {...item} />})}
+      {items &&
+        items.map((item) => {
+          // we pass the item with {...item} so we can access his properties more easily in product
+          return <Product key={item._id} {...item} />;
+        })}
     </Wrapper>
   );
 };

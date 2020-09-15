@@ -21,8 +21,12 @@ const CartItemInput = ({ quantity, _id }) => {
         placeholder={"item qty"}
         value={quantity}
         onChange={(e) => {
-          let newQuantity = parseInt(e.target.value);
-          dispatch(updateQuantity({ _id, newQuantity }));
+          if (parseInt(e.target.value) <= 0) {
+            dispatch(removeItem({ _id }));
+          } else {
+            let newQuantity = parseInt(e.target.value);
+            dispatch(updateQuantity({ _id, newQuantity }));
+          }
         }}
       ></CartItemQuantity>
     </>
