@@ -28,13 +28,10 @@ const Shopping = () => {
 };
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  /* Temporary styles */
-  border: solid 2pt green;
-  min-height: 50vh;
-  width: 33%;
+  width: 41%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 1rem;
 `;
 
 export default Shopping;
