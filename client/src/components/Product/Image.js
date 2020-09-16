@@ -13,6 +13,8 @@ export const Image = ({ itemSrc }) => {
 const Wrapper = styled.div`
     text-align: center;
     width: 50%;
+    padding: 40px 0;
+    border: 5px double ${THEME.primary};
 `
 
 const ItemImage = styled.img`

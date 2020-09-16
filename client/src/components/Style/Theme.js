@@ -4,5 +4,5 @@ export const THEME = {
     primary: '#B2B2B2',
     secondary: '#FBB03B',
     tertiary: '#636060',
-    mobile: '600px',
+    mobile: '699px',
 }

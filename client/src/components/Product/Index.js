@@ -6,6 +6,10 @@ import Image from './Image';
 import BreadCrumbs from './BreadCrumbs';
 
 import QuantityBar from './QuantityBar';
+import Tag from './Tag';
+import Company from './Company';
+import Sku from './Sku';
+
 
 const Product = () => {
     const { id } = useParams();
@@ -44,7 +48,6 @@ const Product = () => {
     let name = item.name;
     let nameCapitalized = toTitleCase(name);
 
-    console.log(category);
     return (
         <Wrapper>
             <Image itemSrc={item.imageSrc} />
@@ -52,10 +55,23 @@ const Product = () => {
                 <BreadCrumbs>
                     {category}
                 </BreadCrumbs>
-                <Paragraph>
-                    {nameCapitalized}
-                </Paragraph>
-                {item.price}
+                <Tag >
+                    {item.numInStock ? 'IN STOCK' : 'OUT OF STOCK'}
+                </Tag>
+                <div>
+                    <Paragraph>
+                        {nameCapitalized}
+                    </Paragraph>
+                    <Paragraph>
+                        {item.price}
+                    </Paragraph>
+                    <Company src={item.company.url}>
+                        {item.company.name}
+                    </Company>
+                    <Sku>
+                        SKU: {item._id}
+                    </Sku>
+                </div>
                 <QuantityBar />
                 <PaymentModal />
             </ItemDetails>
@@ -69,13 +85,13 @@ const Wrapper = styled.div`
 `
 
 const Paragraph = styled.p`
-
+    font-size: 20px;
 `
 
 const ItemDetails = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-left: 20px; 
+    padding-left: 30px; 
 `
 export default Product;
