@@ -6,15 +6,21 @@ import { THEME } from '../Style/Theme';
 const BreadCrumbs = ({ children }) => {
     return (
         <Wrapper>
+            <Breadcrumb>
+                <Span>
+                    <Anchor href="/">
+                        <HomeIcon />
+                    </Anchor>
+                </Span>
+                /
+                <Span>
+                    ALL PRODUCTS
+                </Span>
+                /
+            </Breadcrumb>
             <Span>
-                <Anchor href="/">
-                    <HomeIcon />
-                </Anchor>
-                /
-                ALL PRODUCTS
-                /
+                {children}
             </Span>
-            {children}
         </Wrapper>
     )
 }
@@ -30,6 +36,13 @@ const Anchor = styled.a`
 `
 
 const Span = styled.span`
+    padding: 0 10px;
+    &:first-child{
+        padding: 0 10px 0 0;
+    }
+`
+
+const Breadcrumb = styled.div`
     color: ${THEME.primary};
     display: flex;
     align-items: center;
