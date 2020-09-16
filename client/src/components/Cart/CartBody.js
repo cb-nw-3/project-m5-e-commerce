@@ -11,7 +11,6 @@ import { useSelector } from "react-redux";
 const CartBody = () => {
   const dispatch = useDispatch();
   const state = useSelector(getCartItemArray);
-
   return (
     <CartItemContainer>
       {state.map((cartItem) => {
