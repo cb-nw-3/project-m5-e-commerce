@@ -29,12 +29,16 @@ const CartFooter = () => {
       : "00.00";
 
   console.log("footer", state);
+
+  const cartItemNewState = useSelector(getCartItemArray);
+  const [total, setTotal] = React.useState(0);
+  
   const handleCartPurchase = (event) => {
     event.preventDefault();
     fetch("/cartItems", {
       method: "POST",
       body: JSON.stringify({
-        // Cart object
+        cartItemNewState,
       }),
       headers: {
         Accept: "application/json",
@@ -42,7 +46,10 @@ const CartFooter = () => {
       },
     })
       .then((res) => res.json())
-      .then((data) => {})
+      .then((totalobject) => {
+        setTotal(totalobject.status);
+      })
+
       .catch((err) => console.log(err));
   };
 
