@@ -1,68 +1,71 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { FaTwitterSquare } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
+import { THEME } from '../Style/Theme';
 
 const socialIconDim = { height: "25px", width: "25px" };
 
 const Footer = () => {
   return (
-    <>
-      <FooterContainer>
-        <ShopQCard>
-          <BioContainer>
-            <Bio>
-              Lorem ipsum dolor sit amet, vel an decore denique assentior, mei
-              no inimicus adversarium. Vel duis reprimique in. Mei option
-              consectetuer in, exerci recusabo oportere vim eu. Ea vivendo
-              adipiscing efficiantur qui. Has cu posse harum impedit.
+    <FooterContainer>
+      <ShopQCard>
+        <BioContainer>
+          <Bio>
+            Lorem ipsum dolor sit amet, vel an decore denique assentior, mei
+            no inimicus adversarium. Vel duis reprimique in. Mei option
+            consectetuer in, exerci recusabo oportere vim eu. Ea vivendo
+            adipiscing efficiantur qui. Has cu posse harum impedit.
             </Bio>
-          </BioContainer>
-          <SocialBar>
-            <StyledTwitter />
-            <StyledFacebook />
-            <StyledLinkedin />
-            <StyledYoutube />
-            <StyledInstagram />
-          </SocialBar>
-        </ShopQCard>
-        <TabCard>
-          <TabColumn>
-            <TabHeader>SHOPPING ONLINE</TabHeader>
-            <TabLink>Order Status</TabLink>
-            <TabLink>Shipping and Delivery</TabLink>
-            <TabLink>Return Policy</TabLink>
-            <TabLink>Payment Options</TabLink>
-            <TabLink>Contact Us</TabLink>
-          </TabColumn>
-          <TabColumn>
-            <TabHeader>INFORMATION</TabHeader>
-            <TabLink>Gift Cards</TabLink>
-            <TabLink>Find a Store</TabLink>
-            <TabLink>Newsletter</TabLink>
-            <TabLink>Become a Member</TabLink>
-            <TabLink>Site Feedback</TabLink>
-          </TabColumn>
-          <TabColumn>
-            <TabHeader>CONTACT</TabHeader>
-            <TabLink>info@ecx.com</TabLink>
-            <TabLink>Call us: 1 (800) 324 - 2349</TabLink>
-          </TabColumn>
-        </TabCard>
-      </FooterContainer>
-    </>
+        </BioContainer>
+        <SocialBar>
+          <StyledTwitter />
+          <StyledFacebook />
+          <StyledLinkedin />
+          <StyledYoutube />
+          <StyledInstagram />
+        </SocialBar>
+      </ShopQCard>
+      <TabCard>
+        <TabColumn>
+          <TabHeader>SHOPPING ONLINE</TabHeader>
+          <TabLink>Order Status</TabLink>
+          <TabLink>Shipping and Delivery</TabLink>
+          <TabLink>Return Policy</TabLink>
+          <TabLink>Payment Options</TabLink>
+          <TabLink>Contact Us</TabLink>
+        </TabColumn>
+        <TabColumn>
+          <TabHeader>INFORMATION</TabHeader>
+          <TabLink>Gift Cards</TabLink>
+          <TabLink>Find a Store</TabLink>
+          <TabLink>Newsletter</TabLink>
+          <TabLink>Become a Member</TabLink>
+          <TabLink>Site Feedback</TabLink>
+        </TabColumn>
+        <TabColumn>
+          <TabHeader>CONTACT</TabHeader>
+          <TabLink>info@ecx.com</TabLink>
+          <TabLink>Call us: 1 (800) 324 - 2349</TabLink>
+        </TabColumn>
+      </TabCard>
+    </FooterContainer>
   );
 };
 
 export default Footer;
 
 const FooterContainer = styled.div`
-  display: flex;
-  align-items: center;
+  display: block;
   padding: 30px;
+
+  @media (min-width:${THEME.mobile}){
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const ShopQCard = styled.div`

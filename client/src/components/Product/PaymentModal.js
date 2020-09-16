@@ -5,6 +5,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring';
 import { BuyButton } from '../Buttons';
+import { THEME } from '../Style/Theme';
 import styled from 'styled-components/macro';
 
 const useStyles = makeStyles((theme) => ({
@@ -65,7 +66,7 @@ export default function PaymentModal() {
     };
 
     return (
-        <div>
+        <Wrapper>
             <BuyButton type="button" onClick={handleOpen} />
             <Modal
                 aria-labelledby="spring-modal-title"
@@ -91,9 +92,17 @@ export default function PaymentModal() {
                     </div>
                 </Fade>
             </Modal>
-        </div>
+        </Wrapper>
     );
 }
+
+const Wrapper = styled.div`
+    @media (max-width:${THEME.mobile}){
+        display: flex;
+        justify-content: center;
+        margin: 15px 0 10px 0;
+    }
+`
 
 const Container = styled.div`
     width: 100%;
