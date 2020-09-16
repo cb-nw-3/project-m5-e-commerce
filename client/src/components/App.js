@@ -5,6 +5,7 @@ import styled from "styled-components";
 import ItemPage from "./Cart/";
 import ErrorPage from "./ErrorPage/index";
 import HomePage from "./HomePage/index";
+import GlobalStyles from "./GlobalStyles";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           </Route>
         </Switch>
       </div>
+      <GlobalStyles />
     </BrowserRouter>
   );
 };

@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const NavBar = () => {
@@ -8,7 +9,7 @@ const NavBar = () => {
       <NavBarItem>link1</NavBarItem>
       <NavBarItem>link2</NavBarItem>
       <NavBarItem>link3</NavBarItem>
-      <NavBarItem>link4</NavBarItem>
+      <NavBarItem>About Us</NavBarItem>
     </Wrapper>
   );
 };
@@ -19,7 +20,7 @@ const Wrapper = styled.div`
 
 `
 
-const NavBarItem = styled.p`
+const NavBarItem = styled(Link)`
   margin: 0 20pt;
 `
 
