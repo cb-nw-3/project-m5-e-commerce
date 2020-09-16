@@ -9,7 +9,6 @@ function App() {
     <div>
       <Header />
       <ItemGridWrapper />
-      <Footer />
     </div>
   );
 }

@@ -28,10 +28,16 @@ const Pages = styled.li`
 `;
 
 const PaginationWrapper = styled.ul`
+  &:after {
+    content: ">";
+  }
+  &:before {
+    content: "<";
+  }
   width: 100vw;
   font-family: "Titillium Web", sans-serif;
   font-size: 24px;
-  text-align: left;
+  text-align: center;
 `;
 
 export default Pagination;
