@@ -12,9 +12,10 @@ const Shopping = () => {
     fetch("/items")
       .then((res) => res.json())
       .then((data) => {
+        // items = data
         setItems(data);
       });
-  }, [setItems]);
+  }, [items]);
 
   return (
     <Wrapper>
