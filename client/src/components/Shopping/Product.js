@@ -17,6 +17,9 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
   return name ? (
     <Wrapper>
       <div>
+        <a href={`/shop/${_id}`}>
+          <img src={imageSrc} alt="productImage" />
+        </a>
         <div>
           <a href={`/shop/${_id}`}>
             <img src={imageSrc} alt="productImage" />
@@ -29,6 +32,7 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
               onClick={() => {
                 dispatch(addItem({ _id, name, price }));
               }}
+              // disabled={numInStock > 0 ? false : true}
             >
               Add to cart
             </Button>
@@ -43,4 +47,5 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
 
 const Wrapper = styled.div``;
 const Button = styled.button``;
+
 export default Product;
