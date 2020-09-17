@@ -1,5 +1,8 @@
 const companies = require("../data/companies.json");
 
+// single: determines if the function returns a single item or an array of items
+// items: item array to map the company info
+// Returns an item object or an array of item object
 const addCompanyInfoMapper = (single, ...items) => {
   // Attach company info to each item
   const itemWithCompanyInfo = items.map((item) => {

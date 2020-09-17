@@ -1,6 +1,7 @@
-# http://localhost:4000/api/items/:category
+# GET http://localhost:4000/api/items/:category?skip={optional}
 
 - This endpoint will return an array of items based on the specified category
+- Query parameter skip is optional. When specified, it skips the number of items based on skip value. Must be a number.
 - If no item exists for the specified category (invalid category), it will return an empty array
 
 ```js
@@ -23,7 +24,7 @@
 ];
 ```
 
-# http://localhost:4000/api/item/:id
+# GET http://localhost:4000/api/item/:id
 
 - This item will return an item object specified by the id parameter
 - If no item matches the id, it will return a 404 not found
@@ -46,9 +47,10 @@
 }
 ```
 
-# http://localhost:4000/api/search?keyword={#value}
+# GET http://localhost:4000/api/search?keyword={#value}&skip={optional}
 
 - This endpoint will search the name of the items using the keyword query parameter
+- Query parameter skip is optional. When specified, it skips the number of items based on skip value. Must be a number.
 - The keyword query parameter is mandatory, if it is not provided, the server will respond with 400 Bad Request
 - returns an array of item object
 
@@ -72,7 +74,7 @@
 ];
 ```
 
-# http://localhost:4000/api/filter
+# GET http://localhost:4000/api/filter
 
 - This endpoint filters the items based on multiple fields provided as query paramters
 - Valid query parameters:
@@ -83,10 +85,11 @@
   - 'price': Must be a number. Will filter the items based on the price.
   - 'limit': Must be provided if price parameter is provided. Can only have 'min' or 'max' as a value.
     This will determine if the price search is greater than or less than
+  - 'skip': When specified, it skips the number of items based on skip value. Must be a number.
 - All query parameters is optional except for 'limit' when 'price' is provided.
 - Will return an array of items object or 400 bad request for invalid price value or invalid limit value
 - Sample request:
-  http://localhost:4000/api/filter?name=tracker&location=wrist&company=sony&category=lifestyle&price=100&limit=min
+  http://localhost:4000/api/filter?name=tracker&location=wrist&company=sony&category=lifestyle&price=100&limit=min&skip=16
 
 ```js
 [
