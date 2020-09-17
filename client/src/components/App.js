@@ -1,13 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import Home from './Home/Index';
-import Header from './Header/Index';
-import Product from './Product/Index';
+import Home from "./Home/Index";
+import Header from "./Header/Index";
+import Product from "./Product/Index";
+import FourOhFour from "./FourOhFour";
+import Footer from "./Footer/footer";
 
-import {
-  BrowserRouter as Router
-  , Switch, Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 //Style
 import styled from "styled-components/macro";
@@ -19,6 +18,9 @@ function App() {
       <>
         <Header />
         <Switch>
+          <Route exact path="/test">
+            <FourOhFour />
+          </Route>
           <Route exact path="/">
             <Home />
           </Route>
@@ -26,10 +28,11 @@ function App() {
             <Product />
           </Route>
         </Switch>
+        <Footer />
       </>
       <GlobalStyles />
-    </Router >
-  )
+    </Router>
+  );
 }
 
 export default App;
