@@ -4,7 +4,7 @@
 const router = require("express").Router();
 const items = require("../data/items.json");
 const { addCompanyInfoMapper } = require("../helpers/mapper");
-const { filterItems } = require("../helpers/utils");
+const { filterItems, applySkipAndTake } = require("../helpers/utils");
 
 router.get("/api/items/:category", (req, res) => {
   // Normally stored on a db
@@ -30,6 +30,9 @@ router.get("/api/items/:category", (req, res) => {
   // Add company information to each item object
   categorizedItems = addCompanyInfoMapper(false, ...categorizedItems);
 
+  // Apply skip and take (One way paging)
+  categorizedItems = applySkipAndTake(categorizedItems, req.query.skip, 16);
+
   return res.status(200).json(categorizedItems);
 });
 
@@ -54,7 +57,7 @@ router.get("/api/search", (req, res) => {
   // Get keyword parameter
   const keyWord = req.query.keyword;
 
-  if (!keyword) return res.status(400).send("Invalid keyword value");
+  if (!keyWord) return res.status(400).send("Invalid keyword value");
 
   // Filter items by the search keyword
   let matches = items.filter((item) =>
@@ -63,6 +66,9 @@ router.get("/api/search", (req, res) => {
 
   // Attach company info to each item
   matches = addCompanyInfoMapper(false, ...matches);
+
+  // Apply skip and take (One way paging)
+  matches = applySkipAndTake(matches, req.query.skip, 16);
 
   // Should not return 404 if not match is found
   // instead, client should check if the returned array is empty
@@ -79,6 +85,10 @@ router.get("/api/filter", (req, res) => {
   try {
     // filter the array using the query parameters
     tempItems = filterItems(req.query, tempItems);
+
+    // Apply skip and take (One way paging)
+    tempItems = applySkipAndTake(tempItems, req.query.skip, 16);
+
     return res.status(200).json(tempItems);
   } catch (error) {
     return res.status(409).send(error);
