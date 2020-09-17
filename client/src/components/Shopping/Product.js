@@ -7,7 +7,7 @@ import LoadingIcon from "../LoadingIcon/index";
 
 import { addItem } from "../action";
 // item property
-const Product = ({ imageSrc, name, price, _id }) => {
+const Product = ({ imageSrc, name, price, _id, numInStock }) => {
   const dispatch = useDispatch();
   let history = useHistory();
   function handleClick(ev) {
@@ -28,6 +28,7 @@ const Product = ({ imageSrc, name, price, _id }) => {
               onClick={() => {
                 dispatch(addItem({ _id, name, price }));
               }}
+              disabled={numInStock > 0 ? false : true}
             >
               Add to cart
             </Button>
@@ -42,4 +43,5 @@ const Product = ({ imageSrc, name, price, _id }) => {
 
 const Wrapper = styled.div``;
 const Button = styled.button``;
+
 export default Product;
