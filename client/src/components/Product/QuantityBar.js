@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components/macro";
 import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement } from '../../Actions';
-import Buttons from '../Buttons';
+import { Buttons } from '../Buttons';
 import { THEME } from '../Style/Theme';
 
 
@@ -11,11 +11,14 @@ const QuantityBar = () => {
     const dispatch = useDispatch();
     return (
         <Wrapper>
-            <Buttons type="decrement" onClick={() => dispatch(decrement())}>
+            <Text>
+                Quantity:
+            </Text>
+            <Buttons onClick={() => dispatch(decrement())}>
                 -
             </Buttons>
             <Span>{counter} </Span>
-            <Buttons type="increment" onClick={() => dispatch(increment())}>
+            <Buttons onClick={() => dispatch(increment())}>
                 +
             </Buttons>
         </Wrapper >
@@ -25,12 +28,21 @@ const QuantityBar = () => {
 const Wrapper = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center;
+
+    @media (min-width:${THEME.mobile}){
+        justify-content: initial;
+    }
+`
+
+const Text = styled.span`
+    margin-right: 10px;
+    font-size: 14px;
 `
 
 const Span = styled.span`
     text-align: center;
     width: 50px;
-    padding: 0 20px;
     background: ${THEME.white};
     font-size: 18px;
 `
