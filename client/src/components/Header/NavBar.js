@@ -6,10 +6,10 @@ const NavBar = () => {
   return (
     // This is temporary filler
     <Wrapper>
-      <NavBarItem>link1</NavBarItem>
-      <NavBarItem>link2</NavBarItem>
-      <NavBarItem>link3</NavBarItem>
-      <NavBarItem>About Us</NavBarItem>
+      <NavBarItem to={'/'}>link1</NavBarItem>
+      <NavBarItem to={'/'}>link2</NavBarItem>
+      <NavBarItem to={'/'}>link3</NavBarItem>
+      <NavBarItem to={'/'}>About Us</NavBarItem>
     </Wrapper>
   );
 };
