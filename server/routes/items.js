@@ -76,10 +76,13 @@ router.get("/api/filter", (req, res) => {
   // Add company info to each item
   tempItems = addCompanyInfoMapper(false, ...tempItems);
 
-  // filter the array using the query parameters
-  tempItems = filterItems(req.query, tempItems);
-
-  return res.status(200).json(tempItems);
+  try {
+    // filter the array using the query parameters
+    tempItems = filterItems(req.query, tempItems);
+    return res.status(200).json(tempItems);
+  } catch (error) {
+    return res.status(409).send(error);
+  }
 });
 
 module.exports = router;

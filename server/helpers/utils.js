@@ -23,10 +23,16 @@ const filterItems = (filterObj, items) => {
           filterObj["limit"].toLowerCase() === "max";
 
         if (validLimit) {
+          const priceToCompare = parseFloat(filterObj[prop]);
+
+          // Make sure price is minimum 0
+          if (priceToCompare < 0 || isNaN(priceToCompare))
+            throw "Invalid price value";
+
           filteredItems = filteredItems.filter((item) =>
             comparePrice(
               item.price,
-              filterObj[prop],
+              priceToCompare,
               filterObj["limit"].toLowerCase()
             )
           );
@@ -64,19 +70,11 @@ const filterItems = (filterObj, items) => {
 };
 
 const comparePrice = (itemPrice, priceToCompare, limit) => {
-  try {
-    // Convert item price and price to compare to numbers
-    const itemPriceParsed = parseFloat(itemPrice.replace("$", ""));
-    const priceToCompareParsed = parseFloat(priceToCompare);
+  // Convert item price and price to compare to numbers
+  const itemPriceParsed = parseFloat(itemPrice.replace("$", ""));
 
-    // Make sure price is minimum 0
-    if (priceToCompareParsed < 0) throw "Invalid price value";
-
-    if (limit === "min") return itemPriceParsed >= priceToCompareParsed;
-    else if (limit === "max") return itemPriceParsed <= priceToCompareParsed;
-  } catch {
-    throw "Invalid price value";
-  }
+  if (limit === "min") return itemPriceParsed >= priceToCompare;
+  else if (limit === "max") return itemPriceParsed <= priceToCompare;
 };
 
 module.exports = {
