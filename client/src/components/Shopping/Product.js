@@ -7,7 +7,7 @@ import LoadingIcon from "../LoadingIcon/index";
 
 import { addItem } from "../action";
 // item property
-const Product = ({ imageSrc, name, price, _id }) => {
+const Product = ({ imageSrc, name, price, _id, numInStock }) => {
   const dispatch = useDispatch();
   let history = useHistory();
   function handleClick(ev) {
@@ -23,7 +23,7 @@ const Product = ({ imageSrc, name, price, _id }) => {
           </a>
           <div>
             <a href={`/shop/${_id}`}>{name}</a>
-            <a> {item.numInStock} </a>
+            <a> {numInStock} </a>
             <h6>{price}</h6>
             <Button
               onClick={() => {
