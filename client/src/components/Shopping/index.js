@@ -31,7 +31,7 @@ const Shopping = () => {
 };
 
 const Wrapper = styled.div`
-  width: 41%;
+  width: 34%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 1rem;
