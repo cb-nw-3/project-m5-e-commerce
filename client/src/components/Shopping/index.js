@@ -15,22 +15,23 @@ const Shopping = () => {
         setItems(data);
       });
   }, [setItems]);
-  console.log(items);
+
   return (
     <Wrapper>
-      {items && items.map((item) => <Product key={item._id} item={item} />)}
+      {items &&
+        items.map((item) => {
+          // we pass the item with {...item} so we can access his properties more easily in product
+          return <Product key={item._id} {...item} />;
+        })}
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  /* Temporary styles */
-  border: solid 2pt green;
-  min-height: 50vh;
-  width: 33%;
+  width: 34%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 1rem;
 `;
 
 export default Shopping;
