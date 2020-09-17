@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Switch, BrowserRouter, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import ItemPage from "./Cart/";
+import ProductDetails from "./Shopping/ProductDetails";
 import ErrorPage from "./ErrorPage/index";
 import HomePage from "./HomePage/index";
 
@@ -15,8 +15,7 @@ const App = () => {
             <HomePage />
           </Route>
           <Route exact path="/shop/:itemId">
-            <ItemPage />
-            <Link to="/shop/abc123">View item details</Link>;
+            <ProductDetails />
           </Route>
           <Route>
             <ErrorPage />

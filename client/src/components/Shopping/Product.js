@@ -18,6 +18,7 @@ const Product = ({ item }) => {
           </a>
           <div>
             <a href="/shopping">{item.name}</a>
+            <a> {item.numInStock} </a>
             <h6>$ {item.price}</h6>
             <Button>Add to cart</Button>
 
