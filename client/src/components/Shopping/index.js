@@ -22,7 +22,6 @@ const Shopping = () => {
     <Wrapper>
       {items.length > 0 ?
         items.map((item) => {
-          console.log(item)
           // we pass the item with {...item} so we can access his properties more easily in product
           return <Product key={item._id} {...item} />;
         }) : <LoadingIcon />}
