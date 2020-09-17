@@ -10,3 +10,5 @@ You should document your endpoints in this file.
 
 /items/:lookUpString - all items with a specific string
 
+/item/:_id' - single item by item _id
+
