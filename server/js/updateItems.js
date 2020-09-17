@@ -2,7 +2,7 @@ const items = require("../data/items.json");
 
 const updateItems = (req, res) => {
   const cartData = req.body;
-  const cartItemsAdded = cartData.cartItemNewState;
+  const cartItemsAdded = cartData.state;
   let total = 0;
   cartItemsAdded.forEach((item) => {
     const priceString = item.price.substring(1);

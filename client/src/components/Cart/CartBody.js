@@ -11,14 +11,13 @@ import { useSelector } from "react-redux";
 const CartBody = () => {
   const dispatch = useDispatch();
   const state = useSelector(getCartItemArray);
-
   return (
     <CartItemContainer>
       {state.map((cartItem) => {
         return (
           <>
-            <CartItemDescription name={cartItem.name} price={cartItem.price} />
-            <CartItemInput quantity={cartItem.quantity} _id={cartItem._id} />
+            <CartItemDescription key={cartItem._id} name={cartItem.name} price={cartItem.price} />
+            <CartItemInput key={cartItem._id + 0.1} quantity={cartItem.quantity} _id={cartItem._id} />
           </>
         );
       })}

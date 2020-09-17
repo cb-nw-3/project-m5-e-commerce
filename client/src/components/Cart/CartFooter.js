@@ -1,17 +1,38 @@
 import React from "react";
 import styled from "styled-components";
+
 import { getCartItemArray } from "../reducers/index";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 const CartFooter = () => {
-  const cartItemNewState = useSelector(getCartItemArray);
-  const [total, setTotal] = React.useState(0);
+  const dispatch = useDispatch();
+  const state = useSelector(getCartItemArray);
+  // let amountOfItems =
+  //   state.length !== 0
+  //     ? state.reduce((amount, item) => {
+  //         return amount + item.quantity;
+  //       }, 0)
+  //     : 0;
+  let priceOfItems =
+    state.length !== 0
+      ? state.reduce((price, item) => {
+          return price + parseFloat(item.price.slice(1)) * item.quantity;
+        }, 0)
+      : 0;
+  let truePriceOfItems =
+    priceOfItems !== 0
+      ? priceOfItems.toFixed(2).toString().slice(0, -3) +
+        "." +
+        priceOfItems.toFixed(2).toString().slice(-2)
+      : "00.00";
+
   const handleCartPurchase = (event) => {
     event.preventDefault();
     fetch("/cartItems", {
       method: "POST",
       body: JSON.stringify({
-        cartItemNewState,
+        state,
       }),
       headers: {
         Accept: "application/json",
@@ -19,19 +40,15 @@ const CartFooter = () => {
       },
     })
       .then((res) => res.json())
-      .then((totalobject) => {
-        setTotal(totalobject.status);
-      })
-
       .catch((err) => console.log(err));
   };
 
   return (
     <CartFooterContainer>
       <form>
-        <StyledButton onClick={handleCartPurchase}>Purchase</StyledButton>
+        <StyledButton onClick={handleCartPurchase} >Purchase</StyledButton>
       </form>
-      <PriceTotal>${total}</PriceTotal>
+      <PriceTotal>${truePriceOfItems}</PriceTotal>
     </CartFooterContainer>
   );
 };
