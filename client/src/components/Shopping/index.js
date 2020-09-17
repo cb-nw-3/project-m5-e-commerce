@@ -1,6 +1,7 @@
 import React, { Component, useEffect, useState } from "react";
 import styled from "styled-components";
 
+import LoadingIcon from '../LoadingIcon/index'
 import Product from "./Product";
 
 const Shopping = () => {
@@ -15,15 +16,16 @@ const Shopping = () => {
         // items = data
         setItems(data);
       });
-  }, [items]);
+  }, []);
 
   return (
     <Wrapper>
-      {items &&
+      {items.length > 0 ?
         items.map((item) => {
+          console.log(item)
           // we pass the item with {...item} so we can access his properties more easily in product
           return <Product key={item._id} {...item} />;
-        })}
+        }) : <LoadingIcon />}
     </Wrapper>
   );
 };
