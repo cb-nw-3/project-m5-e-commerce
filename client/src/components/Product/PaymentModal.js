@@ -5,6 +5,7 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import { useSpring, animated } from "react-spring";
 import BuyButton from "./BuyButton";
+import { THEME } from "../Style/Theme";
 import styled from "styled-components/macro";
 
 const useStyles = makeStyles((theme) => ({
