@@ -3,6 +3,7 @@ import React from 'react';
 import Home from './Home/Index';
 import Header from './Header/Index';
 import Product from './Product/Index';
+import Footer from './Footer/footer';
 
 import {
   BrowserRouter as Router
@@ -26,6 +27,7 @@ function App() {
             <Product />
           </Route>
         </Switch>
+        <Footer />
       </>
       <GlobalStyles />
     </Router >

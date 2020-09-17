@@ -3,9 +3,10 @@ import HomeIcon from '@material-ui/icons/Home';
 import styled from 'styled-components/macro';
 import { THEME } from '../Style/Theme';
 
-const BreadCrumbs = ({ children }) => {
+const BreadCrumbs = ({ device, children }) => {
+
     return (
-        <Wrapper>
+        <Wrapper dev={device}>
             <Breadcrumb>
                 <Span>
                     <Anchor href="/">
@@ -26,6 +27,7 @@ const BreadCrumbs = ({ children }) => {
 }
 
 const Wrapper = styled.div`
+    ${({ dev }) => dev === 'desktop' ? `@media (max-width:${THEME.mobile}){ display: none;}` : `@media (min-width:${THEME.mobile}){ display: none;}`};
     display: flex;
     align-items: center;
 `
@@ -38,8 +40,8 @@ const Anchor = styled.a`
 const Span = styled.span`
     padding: 0 10px;
     &:first-child{
-        padding: 0 10px 0 0;
-    }
+    padding: 0 10px 0 0;
+}
 `
 
 const Breadcrumb = styled.div`
