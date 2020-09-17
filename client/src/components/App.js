@@ -4,6 +4,7 @@ import Home from "./Home/Index";
 import Header from "./Header/Index";
 import Product from "./Product/Index";
 import FourOhFour from "./FourOhFour";
+import Footer from "./Footer/footer";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -27,6 +28,7 @@ function App() {
             <Product />
           </Route>
         </Switch>
+        <Footer />
       </>
       <GlobalStyles />
     </Router>

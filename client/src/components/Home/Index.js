@@ -17,7 +17,6 @@ const Home = () => {
     <>
       Home
       <CategoryBar categories={categories} />
-      <Footer />
     </>
   );
 };

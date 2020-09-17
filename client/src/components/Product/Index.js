@@ -4,8 +4,12 @@ import { useParams } from "react-router-dom";
 import PaymentModal from '../Product/PaymentModal';
 import Image from './Image';
 import BreadCrumbs from './BreadCrumbs';
-
+import { THEME } from '../Style/Theme';
 import QuantityBar from './QuantityBar';
+import Tag from './Tag';
+import Company from './Company';
+import Sku from './Sku';
+
 
 const Product = () => {
     const { id } = useParams();
@@ -44,18 +48,33 @@ const Product = () => {
     let name = item.name;
     let nameCapitalized = toTitleCase(name);
 
-    console.log(category);
     return (
         <Wrapper>
+            <BreadCrumbs device="mobile">
+                {category}
+            </BreadCrumbs>
             <Image itemSrc={item.imageSrc} />
             <ItemDetails>
-                <BreadCrumbs>
+                <BreadCrumbs device="desktop">
                     {category}
                 </BreadCrumbs>
-                <Paragraph>
-                    {nameCapitalized}
-                </Paragraph>
-                {item.price}
+                <Tag >
+                    {item.numInStock ? 'IN STOCK' : 'OUT OF STOCK'}
+                </Tag>
+                <div>
+                    <Paragraph>
+                        {nameCapitalized}
+                    </Paragraph>
+                    <Paragraph>
+                        {item.price}
+                    </Paragraph>
+                    <Company src={item.company.url}>
+                        {item.company.name}
+                    </Company>
+                    <Sku>
+                        SKU: {item._id}
+                    </Sku>
+                </div>
                 <QuantityBar />
                 <PaymentModal />
             </ItemDetails>
@@ -64,18 +83,31 @@ const Product = () => {
 };
 
 const Wrapper = styled.div`
-    display: flex;
-    margin: 40px;
+    display: block;
+
+    @media (min-width:${THEME.mobile}){
+        display: flex;
+        margin: 40px;
+    }
 `
 
 const Paragraph = styled.p`
+    font-size: 20px;
 
+    @media (max-width:${THEME.mobile}){
+        margin-top: 10px;
+    }
 `
 
 const ItemDetails = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-left: 20px; 
+    padding-left: 30px; 
+
+    @media (max-width: ${THEME.mobile}){
+        margin-top: 10px;
+        padding: 0 20px; 
+    }
 `
 export default Product;
