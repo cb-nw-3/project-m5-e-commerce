@@ -44,6 +44,7 @@ const CartFooter = () => {
     fetch("/upDateStock", {
       method: "POST",
       body: JSON.stringify({
+        //we are sending this body over to backend upDateStock
         purchasedStock: state,
       }),
       headers: {
