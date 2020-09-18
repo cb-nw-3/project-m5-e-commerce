@@ -41,12 +41,29 @@ const CartFooter = () => {
     })
       .then((res) => res.json())
       .catch((err) => console.log(err));
+    fetch("/upDateStock", {
+      method: "POST",
+      body: JSON.stringify({
+        //we are sending this body over to backend upDateStock
+        purchasedStock: state,
+      }),
+      headers: {
+        //tells server what language
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <CartFooterContainer>
       <form>
-        <StyledButton onClick={handleCartPurchase} >Purchase</StyledButton>
+        <StyledButton onClick={handleCartPurchase}>Purchase</StyledButton>
       </form>
       <PriceTotal>${truePriceOfItems}</PriceTotal>
     </CartFooterContainer>
