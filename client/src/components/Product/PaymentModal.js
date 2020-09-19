@@ -7,6 +7,8 @@ import { useSpring, animated } from 'react-spring';
 import { BuyButton } from '../Buttons';
 import { THEME } from '../Style/Theme';
 import styled from 'styled-components/macro';
+import { beginPurchaseProcess } from '../../Actions';
+import { useSelector, useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -54,6 +56,11 @@ Fade.propTypes = {
 };
 
 export default function PaymentModal() {
+    const purchase = useSelector(state => state.purchase);
+    const dispatch = useDispatch();
+
+    console.log('Purchase', purchase);
+
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -67,7 +74,10 @@ export default function PaymentModal() {
 
     return (
         <Wrapper>
-            <BuyButton type="button" onClick={handleOpen} />
+            <BuyButton type="button" onClick={
+                handleOpen,
+                () => dispatch(beginPurchaseProcess())
+            } />
             <Modal
                 aria-labelledby="spring-modal-title"
                 aria-describedby="spring-modal-description"

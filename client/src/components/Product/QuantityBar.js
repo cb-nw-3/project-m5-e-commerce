@@ -7,8 +7,9 @@ import { THEME } from '../Style/Theme';
 
 
 const QuantityBar = () => {
-    const counter = useSelector(state => state.counter.numberOfItems);
+    const purchase = useSelector(state => state.purchase.quantity);
     const dispatch = useDispatch();
+    console.log("Quantity", purchase)
     return (
         <Wrapper>
             <Text>
@@ -17,7 +18,7 @@ const QuantityBar = () => {
             <Buttons onClick={() => dispatch(decrement())}>
                 -
             </Buttons>
-            <Span>{counter} </Span>
+            <Span>1</Span>
             <Buttons onClick={() => dispatch(increment())}>
                 +
             </Buttons>

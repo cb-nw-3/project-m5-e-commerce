@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components/macro";
 import { useParams } from "react-router-dom";
 import PaymentModal from '../Product/PaymentModal';
+import { BuyButton } from '../Buttons';
 import Image from './Image';
 import BreadCrumbs from './BreadCrumbs';
 import { THEME } from '../Style/Theme';
@@ -9,6 +10,8 @@ import QuantityBar from './QuantityBar';
 import Tag from './Tag';
 import Company from './Company';
 import Sku from './Sku';
+import { beginPurchaseProcess } from '../../Actions';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 const Product = () => {
@@ -16,6 +19,11 @@ const Product = () => {
 
     const [item, setItem] = React.useState();
     const [loading, setLoading] = React.useState(true);
+
+    const purchase = useSelector(state => state.purchase);
+    const dispatch = useDispatch();
+
+    const [open, setOpen] = React.useState(false);
 
 
     const fetchProduct = async () => {
@@ -76,7 +84,9 @@ const Product = () => {
                     </Sku>
                 </div>
                 <QuantityBar />
-                <PaymentModal />
+                <BuyButton type="button" onClick={
+                    () => dispatch(beginPurchaseProcess(item._id, item.price))
+                } />
             </ItemDetails>
         </Wrapper>
     );
