@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import Button from "./Button";
 import Pagination from "./Pagination";
+import Cart from "./Cart";
+import { useDispatch } from "react-redux";
+import { addItem } from "../actions/actions";
 
 const ItemGridWrapper = () => {
   const [items, setItems] = useState([]);
@@ -18,6 +21,7 @@ const ItemGridWrapper = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+  const dispatch = useDispatch();
 
   //change page
 
@@ -40,7 +44,13 @@ const ItemGridWrapper = () => {
               </ImageWrapper>
               <div>{item.description}</div>
               <PriceWrapper>{item.price}</PriceWrapper>
-              <Button>Learn More</Button>
+              <Button
+                onClick={(item) =>
+                  dispatch(addItem({ name: item.name, price: item.price }))
+                }
+              >
+                Learn More
+              </Button>
             </ItemWrapper>
           </div>
         ))}
@@ -92,12 +102,18 @@ const Title = styled.h2`
   margin: 0;
   margin-bottom: 16px;
   margin-top: 8px;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 600;
 `;
 
 const PriceWrapper = styled.div`
   font-weight: bold;
+`;
+
+const CartWrapper = styled.div`
+  grid-area: sidebar;
+  border-left: 3px #ff406e;
+  padding-left: 8px;
 `;
 
 export default ItemGridWrapper;
