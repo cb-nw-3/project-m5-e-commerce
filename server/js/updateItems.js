@@ -1,6 +1,6 @@
 const items = require("../data/items.json");
 
-const updateItems = (req, res) => {
+const calculateCartTotal = (req, res) => {
   const cartData = req.body;
   const cartItemsAdded = cartData.state;
   let total = 0;
@@ -15,4 +15,4 @@ const updateItems = (req, res) => {
   res.status(200).send({ status: total });
 };
 
-module.exports = updateItems;
+module.exports = calculateCartTotal;
