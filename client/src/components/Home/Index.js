@@ -15,9 +15,7 @@ const categories = [
 const Home = () => {
   return (
     <>
-      Home
       <CategoryBar categories={categories} />
-      <Footer />
     </>
   );
 };

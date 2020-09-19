@@ -1,13 +1,19 @@
 export const increment = () => {
-    return {
-        type: 'INCREMENT'
-    };
+  return {
+    type: "INCREMENT",
+  };
 };
 
 export const decrement = () => {
-    return {
-        type: 'DECREMENT'
-    };
+  return {
+    type: "DECREMENT",
+  };
+};
+
+export const toggleModal = () => {
+  return {
+    type: "TOGGLE",
+  };
 };
 
 export const beginPurchaseProcess = (item) => {
