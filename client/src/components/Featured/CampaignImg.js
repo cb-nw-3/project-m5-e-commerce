@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-const CampaignImg = ({ imgSrc, position, text }) => {
+const CampaignImg = ({ imgSrc, position, children }) => {
   let imageText = <div></div>;
   if (position === "bottom") {
-    imageText = <Bottom>{text}</Bottom>;
+    imageText = <Bottom>{children}</Bottom>;
   } else if (position === "top") {
-    imageText = <Top>{text}</Top>;
+    imageText = <Top>{children}</Top>;
   }
   return (
-    // This is temporary filler
     <Container>
       <Image src={imgSrc} />
       {imageText}
@@ -21,17 +20,18 @@ export default CampaignImg;
 
 const Image = styled.img`
   width: 100%;
+  display: block;
 `;
 
 const Bottom = styled.div`
   position: absolute;
-  bottom: 20px;
+  bottom: 40px;
   right: 10px;
 `;
 
 const Top = styled.div`
   position: absolute;
-  top: 20px;
+  top: 10px;
   right: 10px;
 `;
 
