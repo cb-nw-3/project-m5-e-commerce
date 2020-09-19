@@ -25,7 +25,6 @@ const Product = () => {
 
     const [open, setOpen] = React.useState(false);
 
-
     const fetchProduct = async () => {
         try {
             const response = await fetch(`/api/item/${id}`);
@@ -56,37 +55,40 @@ const Product = () => {
     let name = item.name;
     let nameCapitalized = toTitleCase(name);
 
+    let price = item.price;
+    let image = item.imageSrc;
+    let numInStock = item.numInStock;
+
+    const addToCart = (quantity) => dispatch(beginPurchaseProcess({ id, price, image, nameCapitalized }, quantity));
+
     return (
         <Wrapper>
             <BreadCrumbs device="mobile">
                 {category}
             </BreadCrumbs>
-            <Image itemSrc={item.imageSrc} />
+            <Image itemSrc={image} />
             <ItemDetails>
                 <BreadCrumbs device="desktop">
                     {category}
                 </BreadCrumbs>
                 <Tag >
-                    {item.numInStock ? 'IN STOCK' : 'OUT OF STOCK'}
+                    {numInStock ? 'IN STOCK' : 'OUT OF STOCK'}
                 </Tag>
                 <div>
                     <Paragraph>
                         {nameCapitalized}
                     </Paragraph>
                     <Paragraph>
-                        {item.price}
+                        {price}
                     </Paragraph>
                     <Company src={item.company.url}>
                         {item.company.name}
                     </Company>
                     <Sku>
-                        SKU: {item._id}
+                        SKU: {id}
                     </Sku>
                 </div>
-                <QuantityBar />
-                <BuyButton type="button" onClick={
-                    () => dispatch(beginPurchaseProcess(item._id, item.price))
-                } />
+                <QuantityBar id={id} addToCart={addToCart} />
             </ItemDetails>
         </Wrapper>
     );
@@ -97,7 +99,8 @@ const Wrapper = styled.div`
 
     @media (min-width:${THEME.mobile}){
         display: flex;
-        margin: 40px;
+        margin: 0 40px 40px 40px;
+
     }
 `
 

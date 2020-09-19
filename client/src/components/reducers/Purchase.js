@@ -5,26 +5,30 @@ const purchaseReducer = (state = initialState, action) => {
         case 'BEGIN-PURCHASE-PROCESS': {
             return {
                 ...state,
-                selectedItemId: action.id,
-                price: action.price,
-                numInStock: action.numInStock,
-                quantity: 1
+                [action.item.id]: {
+                    ...action.item,
+                    quantity: action.quantity,
+                },
             }
         }
         case 'INCREMENT': {
-            const { id, newQuantity } = action;
             return {
                 ...state,
-                quantity: state.newQuantity + 1
+                [action.id]: {
+                    ...state[action.id],
+                    quantity: state[action.id].quantity + 1,
+                },
             }
         }
 
         case 'DECREMENT': {
-            if (state.quantity > 1)
-                return {
-                    ...state,
-                    quantity: state.quantity - 1
-                }
+            return {
+                ...state,
+                [action.id]: {
+                    ...state[action.id],
+                    quantity: state[action.id].quantity - 1,
+                },
+            }
         }
 
         case 'REMOVE_ITEM': {

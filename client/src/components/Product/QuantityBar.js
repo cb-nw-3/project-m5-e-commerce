@@ -4,25 +4,31 @@ import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement } from '../../Actions';
 import { Buttons } from '../Buttons';
 import { THEME } from '../Style/Theme';
+import { BuyButton } from '../Buttons';
 
 
-const QuantityBar = () => {
-    const purchase = useSelector(state => state.purchase.quantity);
-    const dispatch = useDispatch();
-    console.log("Quantity", purchase)
+const QuantityBar = ({ id, addToCart }) => {
+    const cartQuantity = useSelector(state => state.purchase[id] ? state.purchase[id].quantity : 1);
+    const [quantity, setQuantity] = React.useState(cartQuantity);
+
     return (
-        <Wrapper>
-            <Text>
-                Quantity:
+        <>
+            <Wrapper>
+                <Text>
+                    Quantity:
             </Text>
-            <Buttons onClick={() => dispatch(decrement())}>
-                -
+                <Buttons onClick={() => setQuantity(quantity - 1 || 1)}>
+                    -
             </Buttons>
-            <Span>1</Span>
-            <Buttons onClick={() => dispatch(increment())}>
-                +
+                <Span>{quantity}</Span>
+                <Buttons onClick={() => setQuantity(Math.min(quantity + 1))}>
+                    +
             </Buttons>
-        </Wrapper >
+            </Wrapper >
+            <BuyButton type="button" onClick={() =>
+                addToCart(quantity)
+            } />
+        </>
     );
 };
 
