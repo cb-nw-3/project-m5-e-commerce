@@ -9,8 +9,12 @@ const PaymentModal = () => {
   const dispatch = useDispatch();
 
   return (
-    <ModalWrapper onClick={() => dispatch(toggleModal())}>
-      <Modal>
+    <ModalWrapper onClick={(event) => dispatch(toggleModal())}>
+      <Modal
+        onClick={(event) => {
+          event.stopPropagation();
+        }}
+      >
         <ModalHeader>
           <IconBtn
             onClick={(event) => {
@@ -62,6 +66,7 @@ const Modal = styled.div`
   padding: 16px;
   background-color: #fff;
   border-radius: 4px;
+  cursor: default;
 `;
 
 export default PaymentModal;

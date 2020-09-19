@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import Footer from "../Footer/footer";
 import CategoryBar from "../CategoryBar";
+import ItemList from "./ItemList";
 
 const categories = [
   "lifestyle",
@@ -16,6 +17,7 @@ const Home = () => {
   return (
     <>
       <CategoryBar categories={categories} />
+      <ItemList />
     </>
   );
 };
