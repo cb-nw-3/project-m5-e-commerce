@@ -2,16 +2,19 @@
 import React, { useState } from "react";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PaymentModal from "../Payment/PaymentModal";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleModal } from "../../Actions";
 
 // Styles
 import styled from "styled-components";
 
 const CartIcon = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const isOpen = useSelector((state) => state.modal.isOpen);
+  const dispatch = useDispatch();
 
   return (
     <Wrapper>
-      <CartBtn onClick={() => setIsOpen(!isOpen)}>
+      <CartBtn onClick={() => dispatch(toggleModal())}>
         <ShoppingCartIcon />
       </CartBtn>
       {isOpen ? <PaymentModal /> : null}

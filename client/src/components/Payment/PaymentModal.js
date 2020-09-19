@@ -1,19 +1,42 @@
 import React from "react";
 import styled from "styled-components";
 import CloseIcon from "@material-ui/icons/Close";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleModal } from "../../Actions";
 
 const PaymentModal = () => {
+  const isOpen = useSelector((state) => state.modal.isOpen);
+  const dispatch = useDispatch();
+
   return (
-    <ModalWrapper>
+    <ModalWrapper onClick={() => dispatch(toggleModal())}>
       <Modal>
         <ModalHeader>
-          <CloseIcon />
+          <IconBtn
+            onClick={(event) => {
+              event.stopPropagation();
+              dispatch(toggleModal());
+            }}
+          >
+            <CloseIcon />
+          </IconBtn>
         </ModalHeader>
         MODAL CONTENT GOES HERE
       </Modal>
     </ModalWrapper>
   );
 };
+
+const IconBtn = styled.a`
+  border: none;
+  background-color: transparent;
+  text-decoraqtion: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+`;
 
 const ModalHeader = styled.div`
   width: 100%;
@@ -28,7 +51,7 @@ const ModalWrapper = styled.button`
   width: 100%;
   height: 100%;
   border: 1px solid #aaa;
-  background-color: rgba(170, 170, 170, 0.5);
+  background-color: rgba(50, 50, 50, 0.5);
   cursor: pointer;
 `;
 
