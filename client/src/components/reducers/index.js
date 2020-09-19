@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 
-import counterReducer from "./Counter";
+import purchaseReducer from "./Purchase";
 import modalTogglerReducer from "./ToggleModal";
 
 const allReducers = combineReducers({
-  counter: counterReducer,
-  modal: modalTogglerReducer,
+    purchase: purchaseReducer,
+    modal: modalTogglerReducer,
 });
 
 export default allReducers;

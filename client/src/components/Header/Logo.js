@@ -5,13 +5,14 @@ import React from "react";
 import styled from "styled-components";
 
 const Logo = () => {
-  return <Wrapper>ecX</Wrapper>;
+  return <Wrapper href="/">ecX</Wrapper>;
 };
 
-const Wrapper = styled.section`
+const Wrapper = styled.a`
   color: BLACK;
   font-size: 3rem;
   padding: 30px;
+  text-decoration: none;
 `;
 
 export default Logo;
