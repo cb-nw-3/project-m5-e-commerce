@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import { useSpring, animated } from 'react-spring';
-import { BuyButton } from '../Buttons';
-import { THEME } from '../Style/Theme';
-import styled from 'styled-components/macro';
-import { beginPurchaseProcess } from '../../Actions';
-import { useSelector, useDispatch } from 'react-redux';
-=======
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
@@ -20,82 +7,67 @@ import { useSpring, animated } from "react-spring";
 import { BuyButton } from "../Buttons";
 import { THEME } from "../Style/Theme";
 import styled from "styled-components/macro";
->>>>>>> parent/master
 
 const useStyles = makeStyles((theme) => ({
-  modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
+    modal: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    paper: {
+        backgroundColor: theme.palette.background.paper,
+        border: "2px solid #000",
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    },
 }));
 
 const Fade = React.forwardRef(function Fade(props, ref) {
-  const { in: open, children, onEnter, onExited, ...other } = props;
-  const style = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: open ? 1 : 0 },
-    onStart: () => {
-      if (open && onEnter) {
-        onEnter();
-      }
-    },
-    onRest: () => {
-      if (!open && onExited) {
-        onExited();
-      }
-    },
-  });
+    const { in: open, children, onEnter, onExited, ...other } = props;
+    const style = useSpring({
+        from: { opacity: 0 },
+        to: { opacity: open ? 1 : 0 },
+        onStart: () => {
+            if (open && onEnter) {
+                onEnter();
+            }
+        },
+        onRest: () => {
+            if (!open && onExited) {
+                onExited();
+            }
+        },
+    });
 
-  return (
-    <animated.div ref={ref} style={style} {...other}>
-      {children}
-    </animated.div>
-  );
+    return (
+        <animated.div ref={ref} style={style} {...other}>
+            {children}
+        </animated.div>
+    );
 });
 
 Fade.propTypes = {
-  children: PropTypes.element,
-  in: PropTypes.bool.isRequired,
-  onEnter: PropTypes.func,
-  onExited: PropTypes.func,
+    children: PropTypes.element,
+    in: PropTypes.bool.isRequired,
+    onEnter: PropTypes.func,
+    onExited: PropTypes.func,
 };
 
 export default function PaymentModal() {
-<<<<<<< HEAD
-    const purchase = useSelector(state => state.purchase);
-    const dispatch = useDispatch();
-
-    console.log('Purchase', purchase);
-
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-=======
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
->>>>>>> parent/master
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+    const handleOpen = () => {
+        setOpen(true);
+    };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+    const handleClose = () => {
+        setOpen(false);
+    };
 
-<<<<<<< HEAD
     return (
-        <Wrapper>
-            <BuyButton type="button" onClick={
-                handleOpen,
-                () => dispatch(beginPurchaseProcess())
-            } />
+        <div>
+            <BuyButton type="button" onClick={handleOpen} />
             <Modal
                 aria-labelledby="spring-modal-title"
                 aria-describedby="spring-modal-description"
@@ -111,46 +83,15 @@ export default function PaymentModal() {
                 <Fade in={open}>
                     <div className={classes.paper}>
                         <Container>
-                            <CloseButton onClick={handleClose}>
-                                X
-                            </CloseButton>
+                            <CloseButton onClick={handleClose}>X</CloseButton>
                         </Container>
                         <h2 id="spring-modal-title">Shopping Cart</h2>
                         <p id="spring-modal-description">react-spring animates me.</p>
                     </div>
                 </Fade>
             </Modal>
-        </Wrapper>
+        </div>
     );
-=======
-  return (
-    <div>
-      <BuyButton type="button" onClick={handleOpen} />
-      <Modal
-        aria-labelledby="spring-modal-title"
-        aria-describedby="spring-modal-description"
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open}>
-          <div className={classes.paper}>
-            <Container>
-              <CloseButton onClick={handleClose}>X</CloseButton>
-            </Container>
-            <h2 id="spring-modal-title">Shopping Cart</h2>
-            <p id="spring-modal-description">react-spring animates me.</p>
-          </div>
-        </Fade>
-      </Modal>
-    </div>
-  );
->>>>>>> parent/master
 }
 
 const Wrapper = styled.div`
