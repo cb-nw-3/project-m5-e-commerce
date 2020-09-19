@@ -24,23 +24,6 @@ const CartFooter = () => {
 
   const handleCartPurchase = (event) => {
     event.preventDefault();
-    fetch("/cartItems", {
-      method: "POST",
-      body: JSON.stringify({
-        state,
-      }),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((answer) => {
-        if (answer.status === "success") {
-          dispatch(emptyCart());
-        }
-      })
-      .catch((err) => console.log(err));
     fetch("/upDateStock", {
       method: "POST",
       body: JSON.stringify({
@@ -55,7 +38,9 @@ const CartFooter = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        if (res.status === "success") {
+          dispatch(emptyCart());
+        }
       })
       .catch((err) => console.log(err));
   };

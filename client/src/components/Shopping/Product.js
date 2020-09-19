@@ -26,7 +26,7 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
       </div>
       <Button
         onClick={() => {
-          dispatch(addItem({ _id, name, price }));
+          dispatch(addItem({ _id, name, price, numInStock }));
         }}
         disabled={numInStock > 0 ? false : true}
       >
