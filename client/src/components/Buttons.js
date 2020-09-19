@@ -5,8 +5,8 @@ import { THEME } from '../components/Style/Theme';
 import { useSelector } from "react-redux";
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 
-export const Buttons = ({ children, onClick }) => {
-    const isAddedToCart = useSelector((state) => state.purchase.isAddedToCart);
+export const Buttons = ({ children, onClick, id }) => {
+    const isAddedToCart = useSelector((state) => state.purchase[id] ? state.purchase[id].isAddedToCart : false);
     return (
         <Button onClick={onClick} disabled={isAddedToCart}>
             {children}
@@ -50,8 +50,8 @@ const Button = styled.button`
     }
 `
 
-export const BuyButton = ({ onClick }, id) => {
-    const isAddedToCart = useSelector((state) => state.purchase.isAddedToCart);
+export const BuyButton = ({ onClick, id }) => {
+    const isAddedToCart = useSelector((state) => state.purchase[id] ? state.purchase[id].isAddedToCart : false);
 
     return (
         <ButtonPurchase onClick={onClick} disabled={isAddedToCart}>

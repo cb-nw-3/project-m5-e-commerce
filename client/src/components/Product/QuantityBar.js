@@ -17,11 +17,11 @@ const QuantityBar = ({ id, addToCart }) => {
                 <Text>
                     Quantity:
             </Text>
-                <Buttons onClick={() => setQuantity(quantity - 1 || 1)}>
+                <Buttons id={id} onClick={() => setQuantity(quantity - 1 || 1)}>
                     -
             </Buttons>
                 <Span>{quantity}</Span>
-                <Buttons onClick={() => setQuantity(Math.min(quantity + 1))}>
+                <Buttons id={id} onClick={() => setQuantity(Math.min(quantity + 1))}>
                     +
             </Buttons>
             </Wrapper >
