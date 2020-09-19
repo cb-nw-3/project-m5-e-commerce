@@ -18,11 +18,12 @@ export const toggleModal = () => {
     };
 };
 
-export const beginPurchaseProcess = (item, quantity) => {
+export const beginPurchaseProcess = (item, quantity, numInStock) => {
     return {
         type: 'BEGIN-PURCHASE-PROCESS',
         item,
         quantity,
+        numInStock,
     };
 };
 

@@ -1,13 +1,17 @@
-const initialState = {};
+const initialState = {
+    isAddedToCart: false,
+};
 
 const purchaseReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'BEGIN-PURCHASE-PROCESS': {
             return {
                 ...state,
+                isAddedToCart: true,
                 [action.item.id]: {
                     ...action.item,
                     quantity: action.quantity,
+                    numInStock: action.numInStock,
                 },
             }
         }

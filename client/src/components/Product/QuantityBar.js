@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from "styled-components/macro";
-import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from '../../Actions';
+import { useSelector } from "react-redux";
 import { Buttons } from '../Buttons';
 import { THEME } from '../Style/Theme';
 import { BuyButton } from '../Buttons';
@@ -9,6 +8,7 @@ import { BuyButton } from '../Buttons';
 
 const QuantityBar = ({ id, addToCart }) => {
     const cartQuantity = useSelector(state => state.purchase[id] ? state.purchase[id].quantity : 1);
+    const itemInStock = useSelector(state => state.purchase[id] ? state.purchase[id].numInStock : 1);
     const [quantity, setQuantity] = React.useState(cartQuantity);
 
     return (
@@ -26,9 +26,8 @@ const QuantityBar = ({ id, addToCart }) => {
             </Buttons>
             </Wrapper >
             <div>
-                <BuyButton type="button" onClick={() =>
-                    addToCart(quantity)
-                } />
+                <BuyButton id={id} type="button" onClick={() => addToCart(quantity)}>
+                </BuyButton>
             </div>
         </>
     );
