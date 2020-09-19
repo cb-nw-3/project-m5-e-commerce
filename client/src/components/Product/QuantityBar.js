@@ -25,9 +25,11 @@ const QuantityBar = ({ id, addToCart }) => {
                     +
             </Buttons>
             </Wrapper >
-            <BuyButton type="button" onClick={() =>
-                addToCart(quantity)
-            } />
+            <div>
+                <BuyButton type="button" onClick={() =>
+                    addToCart(quantity)
+                } />
+            </div>
         </>
     );
 };
