@@ -5,16 +5,16 @@ import styled from "styled-components";
 const NavBar = () => {
   return (
     // This is temporary filler
-    <Wrapper>
+    <Navbar>
       <NavBarItem to={'/'}>link1</NavBarItem>
       <NavBarItem to={'/'}>link2</NavBarItem>
       <NavBarItem to={'/'}>link3</NavBarItem>
       <NavBarItem to={'/'}>About Us</NavBarItem>
-    </Wrapper>
+    </Navbar>
   );
 };
 
-const Wrapper = styled.div`
+const Navbar = styled.div`
   display: flex;
   flex-direction: row;
 
