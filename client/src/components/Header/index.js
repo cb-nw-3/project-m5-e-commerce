@@ -5,11 +5,11 @@ import StoreLogo from "./StoreLogo";
 import NavBar from "./NavBar";
 import SearchInputs from './SearchInputs';
 
-const logo = require("../assets/logo.jpg");
+const logo2 = require("../assets/logo2.jpg");
 const Header = () => {
   return (
     <Wrapper>
-      <StoreLogo imgSrc={logo} />
+      <StoreLogo imgSrc={logo2} />
       <NavBar />
       <SearchInputs />
     </Wrapper>

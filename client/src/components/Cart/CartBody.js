@@ -17,7 +17,7 @@ const CartBody = () => {
         return (
           <>
             <CartItemDescription key={cartItem._id} name={cartItem.name} price={cartItem.price} />
-            <CartItemInput key={cartItem._id + 0.1} quantity={cartItem.quantity} _id={cartItem._id} />
+            <CartItemInput key={cartItem._id + 0.1} {...cartItem} />
           </>
         );
       })}

@@ -4,7 +4,8 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { updateQuantity, removeItem } from "../action";
 
-const CartItemInput = ({ quantity, _id }) => {
+const CartItemInput = ({ quantity, _id, numInStock }) => {
+  console.log(numInStock)
   const dispatch = useDispatch();
 
   return (
@@ -20,6 +21,8 @@ const CartItemInput = ({ quantity, _id }) => {
         type={"number"}
         placeholder={"item qty"}
         value={quantity}
+        min={0}
+        max={numInStock}
         onChange={(e) => {
           if (parseInt(e.target.value) <= 0) {
             dispatch(removeItem({ _id }));

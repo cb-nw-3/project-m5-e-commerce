@@ -17,28 +17,21 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
   return name ? (
     <Wrapper>
       <div>
-        <a href={`/shop/${_id}`}>
-          <img src={imageSrc} alt="productImage" />
-        </a>
-        <div>
-          <a href={`/shop/${_id}`}>
-            <img src={imageSrc} alt="productImage" />
-          </a>
-          <div>
-            <a href={`/shop/${_id}`}>{name}</a>
-            <a> {numInStock} </a>
-            <h6>{price}</h6>
-            <Button
-              onClick={() => {
-                dispatch(addItem({ _id, name, price }));
-              }}
-              // disabled={numInStock > 0 ? false : true}
-            >
-              Add to cart
-            </Button>
-          </div>
-        </div>
+        <SingleItemLink to={`/shop/${_id}`}>
+          <ItemImage src={imageSrc} alt="productImage" />
+          <ItemName>{name}</ItemName>
+          <ItemPrice>{price}</ItemPrice>
+          <ItemInStock>{numInStock} available</ItemInStock>
+        </SingleItemLink>
       </div>
+      <Button
+        onClick={() => {
+          dispatch(addItem({ _id, name, price, numInStock }));
+        }}
+        disabled={numInStock > 0 ? false : true}
+      >
+        Add to cart
+      </Button>
     </Wrapper>
   ) : (
     <LoadingIcon />
@@ -47,5 +40,10 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
 
 const Wrapper = styled.div``;
 const Button = styled.button``;
+const ItemPrice = styled.p``;
+const ItemInStock = styled.p``;
+const SingleItemLink = styled(Link)``;
+const ItemName = styled.p``;
+const ItemImage = styled.img``;
 
 export default Product;
