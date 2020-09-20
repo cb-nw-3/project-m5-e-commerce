@@ -18,6 +18,14 @@ export const toggleModal = () => {
     };
 };
 
+
+export const getFirstPage = (items) => {
+  return {
+    type: "GETFIRSTPAGE",
+    items: items
+  };
+};
+
 export const beginPurchaseProcess = (item, quantity, numInStock) => {
     return {
         type: 'BEGIN-PURCHASE-PROCESS',
@@ -35,3 +43,4 @@ export const removeItem = (id) => ({
 export const clearCart = () => ({
     type: 'CLEAR_CART',
 });
+
