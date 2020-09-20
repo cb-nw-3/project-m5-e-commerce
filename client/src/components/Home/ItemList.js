@@ -1,41 +1,31 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import Item from "./Item";
+import { useSelector } from "react-redux";
 
 const ItemList = () => {
+  const itemsList = useSelector((state) => state.itemList.items);
+
   return (
-    <ListWrapper>
-      <Row>
-        <Col>
-          <Item />
-        </Col>
-        <Col>
-          <Item />
-        </Col>
-        <Col>
-          <Item />
-        </Col>
-        <Col>
-          <Item />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Item />
-        </Col>
-        <Col>
-          <Item />
-        </Col>
-        <Col>
-          <Item />
-        </Col>
-        <Col>
-          <Item />
-        </Col>
-      </Row>
-    </ListWrapper>
+    <Wrapper>
+      <ListWrapper>
+        {itemsList &&
+          (itemsList.map((items, index) => {
+            return (<Row key={index}>
+                  {items.map(item => <Item key={item._id} item={item}/>)}
+            </Row>)
+          }))}
+      </ListWrapper>
+      <ListFooter>
+        <a>View more...</a>
+      </ListFooter>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  padding: 30px;
+`;
 
 const ListWrapper = styled.div`
   display: flex;
@@ -51,10 +41,10 @@ const Row = styled.div`
   }
 `;
 
-const Col = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: center;
+const ListFooter = styled.div`
+  width: 100%;
+  text-align: right;
+  padding-right: 30px;
 `;
 
 export default ItemList;

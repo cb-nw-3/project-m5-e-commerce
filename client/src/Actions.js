@@ -15,3 +15,10 @@ export const toggleModal = () => {
     type: "TOGGLE",
   };
 };
+
+export const getFirstPage = (items) => {
+  return {
+    type: "GETFIRSTPAGE",
+    items: items
+  };
+};
