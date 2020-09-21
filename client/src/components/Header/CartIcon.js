@@ -1,16 +1,26 @@
 // Libraries
-import React from "react";
+import React, { useState } from "react";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import PaymentModal from "../Payment/PaymentModal";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleModal } from "../../Actions";
 
 // Styles
 import styled from "styled-components";
 import { THEME } from "../Style/Theme";
 
 const CartIcon = () => {
+  const isOpen = useSelector((state) => state.modal.isOpen);
+  const dispatch = useDispatch();
+
   return (
     <Wrapper>
       <ShoppingCartIcon />
       <ShoppingCartIconCount>12</ShoppingCartIconCount>
+      <CartBtn onClick={() => dispatch(toggleModal())}>
+        <ShoppingCartIcon />
+      </CartBtn>
+      {isOpen ? <PaymentModal /> : null}
     </Wrapper>
   );
 };
@@ -28,6 +38,20 @@ const ShoppingCartIconCount = styled.span`
   text-align: center;
   margin-top: -10px;
   margin-left: -10px;
+`;
+
+const CartBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    transform: scale(1.2);
+  }
 `;
 
 const Wrapper = styled.section`

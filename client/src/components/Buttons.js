@@ -1,12 +1,14 @@
 
 import React from 'react';
 import styled from 'styled-components/macro';
-import { THEME } from '../components/Style/Theme'
+import { THEME } from '../components/Style/Theme';
+import { useSelector } from "react-redux";
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 
-export const Buttons = ({ children, onClick }) => {
+export const Buttons = ({ children, onClick, id }) => {
+    const isAddedToCart = useSelector((state) => state.purchase[id] ? state.purchase[id].isAddedToCart : false);
     return (
-        <Button onClick={onClick} >
+        <Button onClick={onClick} disabled={isAddedToCart}>
             {children}
         </Button >
     )
@@ -36,12 +38,24 @@ const Button = styled.button`
     &:focus{
         outline: none;
     }
+
+    &:disabled {
+        background: ${THEME.tertiary};
+        color: white;
+
+        &:hover{
+            box-shadow: none;
+            cursor: auto;
+        }
+    }
 `
 
-export const BuyButton = ({ onClick }) => {
+export const BuyButton = ({ onClick, id }) => {
+    const isAddedToCart = useSelector((state) => state.purchase[id] ? state.purchase[id].isAddedToCart : false);
+
     return (
-        <ButtonPurchase onClick={onClick}>
-            <ShoppingCart /> Add to Cart
+        <ButtonPurchase onClick={onClick} disabled={isAddedToCart}>
+            <ShoppingCart /> {isAddedToCart ? 'Added to Cart' : 'Add to Cart'}
         </ButtonPurchase>
     );
 }
@@ -73,5 +87,15 @@ const ButtonPurchase = styled.button`
 
     &:focus{
         outline: none;
+    }
+
+    &:disabled {
+        background: ${THEME.tertiary};
+        color: white;
+
+        &:hover{
+            box-shadow: none;
+            cursor: auto;
+        }
     }
 `

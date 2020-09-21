@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { getFirstPage } from "../Actions";
+import { listToMatrix } from "../Helper/matrixConverter";
 
 const CategoryBar = ({ categories }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetchItems("lifestyle");
+  }, []);
+
+  const fetchItems = async (category) => {
+
+    const data = await fetch(
+      "http://localhost:4000/api/items/" + category
+    );
+
+    if (data.ok) {
+      const items = await data.json();
+      const matrix = listToMatrix(items);
+      dispatch(getFirstPage(matrix));
+    }
+  }
+
   return (
     <Container>
       {categories.map((category) => {
-        return <StyledButton>{category}</StyledButton>;
+        return <StyledButton key={category} onClick={() => {fetchItems(category)}}>{category}</StyledButton>;
       })}
     </Container>
   );
