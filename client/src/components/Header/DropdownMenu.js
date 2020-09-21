@@ -58,9 +58,9 @@ const Menu = styled.nav`
   background: #ffffff;
   border-radius: 8px;
   position: absolute;
-  top: 60px;
+  top: 25px;
   right: 0;
-  width: 300px;
+  width: 200px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   opacity: 0;
   visibility: hidden;
@@ -75,8 +75,14 @@ const MenuList = styled.ul`
 `
 
 const MenuOptionButton = styled.button`
+	background: none;
+	color: inherit;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  width: 100%;
   text-decoration: none;
-  color: #333333;
   padding: 15px 20px;
   display: block;
 `
