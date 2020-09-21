@@ -4,6 +4,7 @@ import SearchIcon from "@material-ui/icons/Search";
 
 // Styles
 import styled from "styled-components";
+import { THEME } from "../Style/Theme";
 
 const SearchBar = () => {
   return (
@@ -30,6 +31,11 @@ const Input = styled.input`
   width: 500px;
   border: none;
   padding: 15px;
+
+  @media (max-width: ${THEME.mobile}) {
+    width: 100%;
+    padding: 5px;
+  }
 `;
 
 const Form = styled.form`
@@ -53,6 +59,15 @@ const Wrapper = styled.div`
   justify-content: space-between;
   color: BLACK;
   padding: 30px 50px 30px 50px;
+
+  @media (max-width: ${THEME.mobile}) {
+    display: flex;
+    flex-direction: column;
+    color: BLACK;
+    background-color: white;
+    padding: 10px;
+    width: 100%;
+  }
 `;
 
 export default SearchBar;
