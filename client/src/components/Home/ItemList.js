@@ -1,5 +1,5 @@
-import React, {useEffect} from "react";
-import styled from "styled-components";
+import React, { useEffect } from "react";
+import styled from "styled-components/macro";
 import Item from "./Item";
 import { useSelector } from "react-redux";
 
@@ -12,7 +12,7 @@ const ItemList = () => {
         {itemsList &&
           (itemsList.map((items, index) => {
             return (<Row key={index}>
-                  {items.map(item => <Item key={item._id} item={item}/>)}
+              {items.map(item => <Item key={item._id} item={item} />)}
             </Row>)
           }))}
       </ListWrapper>
