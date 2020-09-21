@@ -1,3 +1,6 @@
+// filterObj: Key-value pairs of filter constraints
+// items: Array of items to filter
+// Returns an array of item object
 const filterItems = (filterObj, items) => {
   // Store all query parameters in an array
   const filterProps = Object.keys(filterObj);
@@ -23,10 +26,16 @@ const filterItems = (filterObj, items) => {
           filterObj["limit"].toLowerCase() === "max";
 
         if (validLimit) {
+          const priceToCompare = parseFloat(filterObj[prop]);
+
+          // Make sure price is minimum 0
+          if (priceToCompare < 0 || isNaN(priceToCompare))
+            throw "Invalid price value";
+
           filteredItems = filteredItems.filter((item) =>
             comparePrice(
               item.price,
-              filterObj[prop],
+              priceToCompare,
               filterObj["limit"].toLowerCase()
             )
           );
@@ -63,22 +72,38 @@ const filterItems = (filterObj, items) => {
   return filteredItems;
 };
 
+// items: Array of items to filter
+// skip: Amount of items to skip
+// take: Amount of items to take
+// Returns an array of item object
+const applySkipAndTake = (items, skip, take) => {
+  // Num of items to skip
+  let skipAmount = skip ? parseInt(skip) : 0;
+
+  if (isNaN(skipAmount)) throw "Invalid skip value";
+
+  // Skip cannot be greater than the array length
+  skipAmount = skipAmount > items.length ? items.length : skipAmount;
+
+  // Splice to skip n amount of items
+  items.splice(0, skipAmount);
+
+  // Slice to take 16 items
+  items = items.slice(0, take);
+
+  return items;
+};
+
+// Private Function
 const comparePrice = (itemPrice, priceToCompare, limit) => {
-  try {
-    // Convert item price and price to compare to numbers
-    const itemPriceParsed = parseFloat(itemPrice.replace("$", ""));
-    const priceToCompareParsed = parseFloat(priceToCompare);
+  // Convert item price and price to compare to numbers
+  const itemPriceParsed = parseFloat(itemPrice.replace("$", ""));
 
-    // Make sure price is minimum 0
-    if (priceToCompareParsed < 0) throw "Invalid price value";
-
-    if (limit === "min") return itemPriceParsed >= priceToCompareParsed;
-    else if (limit === "max") return itemPriceParsed <= priceToCompareParsed;
-  } catch {
-    throw "Invalid price value";
-  }
+  if (limit === "min") return itemPriceParsed >= priceToCompare;
+  else if (limit === "max") return itemPriceParsed <= priceToCompare;
 };
 
 module.exports = {
   filterItems,
+  applySkipAndTake,
 };

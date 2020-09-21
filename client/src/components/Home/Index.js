@@ -2,7 +2,10 @@ import React from "react";
 import styled from "styled-components/macro";
 import Footer from "../Footer/footer";
 import CategoryBar from "../CategoryBar";
+
 import Carousel from "./Carousel";
+
+import ItemList from "./ItemList";
 
 const categories = [
   "lifestyle",
@@ -16,9 +19,9 @@ const categories = [
 const Home = () => {
   return (
     <>
-      Home
       <CategoryBar categories={categories} />
       <Carousel />
+      <ItemList />
     </>
   );
 };

@@ -6,7 +6,7 @@ import { THEME } from '../Style/Theme';
 const BreadCrumbs = ({ device, children }) => {
 
     return (
-        <Wrapper dev={device}>
+        <Wrapper device={device}>
             <Breadcrumb>
                 <Span>
                     <Anchor href="/">
@@ -27,7 +27,7 @@ const BreadCrumbs = ({ device, children }) => {
 }
 
 const Wrapper = styled.div`
-    ${({ dev }) => dev === 'desktop' ? `@media (max-width:${THEME.mobile}){ display: none;}` : `@media (min-width:${THEME.mobile}){ display: none;}`};
+    ${({ device }) => device === 'desktop' ? `@media (max-width:${THEME.mobile}){ display: none;}` : `@media (min-width:${THEME.mobile}){ display: none;}`};
     display: flex;
     align-items: center;
 `

@@ -1,27 +1,35 @@
 import React from 'react';
 import styled from "styled-components/macro";
-import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from '../../Actions';
+import { useSelector } from "react-redux";
 import { Buttons } from '../Buttons';
 import { THEME } from '../Style/Theme';
+import { BuyButton } from '../Buttons';
 
 
-const QuantityBar = () => {
-    const counter = useSelector(state => state.counter.numberOfItems);
-    const dispatch = useDispatch();
+const QuantityBar = ({ id, addToCart }) => {
+    const cartQuantity = useSelector(state => state.purchase[id] ? state.purchase[id].quantity : 1);
+    const itemInStock = useSelector(state => state.purchase[id] ? state.purchase[id].numInStock : 1);
+    const [quantity, setQuantity] = React.useState(cartQuantity);
+
     return (
-        <Wrapper>
-            <Text>
-                Quantity:
+        <>
+            <Wrapper>
+                <Text>
+                    Quantity:
             </Text>
-            <Buttons onClick={() => dispatch(decrement())}>
-                -
+                <Buttons id={id} onClick={() => setQuantity(quantity - 1 || 1)}>
+                    -
             </Buttons>
-            <Span>{counter} </Span>
-            <Buttons onClick={() => dispatch(increment())}>
-                +
+                <Span>{quantity}</Span>
+                <Buttons id={id} onClick={() => setQuantity(Math.min(quantity + 1))}>
+                    +
             </Buttons>
-        </Wrapper >
+            </Wrapper >
+            <div>
+                <BuyButton id={id} type="button" onClick={() => addToCart(quantity)}>
+                </BuyButton>
+            </div>
+        </>
     );
 };
 
