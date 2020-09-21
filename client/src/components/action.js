@@ -19,3 +19,8 @@ export const updateQuantity = (item) => ({
 export const emptyCart = () => ({
   type: "EMPTY_CART",
 });
+
+export const receiveItems = (items) => ({
+  type: "RECEIVE_ITEMS",
+  items,
+})

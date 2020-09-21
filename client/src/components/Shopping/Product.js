@@ -35,6 +35,14 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
           </div>
         </div>
       </div>
+      <Button
+        onClick={() => {
+          dispatch(addItem({ _id, name, price, numInStock }));
+        }}
+        disabled={numInStock > 0 ? false : true}
+      >
+        Add to cart
+      </Button>
     </Wrapper>
   ) : (
     <LoadingIcon />
