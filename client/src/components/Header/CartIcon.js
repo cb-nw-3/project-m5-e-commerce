@@ -15,10 +15,9 @@ const CartIcon = () => {
 
   return (
     <Wrapper>
-      <ShoppingCartIcon />
-      <ShoppingCartIconCount>12</ShoppingCartIconCount>
       <CartBtn onClick={() => dispatch(toggleModal())}>
         <ShoppingCartIcon />
+        <ShoppingCartIconCount>12</ShoppingCartIconCount>
       </CartBtn>
       {isOpen ? <PaymentModal /> : null}
     </Wrapper>
