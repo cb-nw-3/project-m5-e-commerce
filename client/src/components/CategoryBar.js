@@ -46,4 +46,8 @@ const Container = styled.div`
   margin: 0 auto;
   background: rgb(248, 247, 243);
   border-radius: 5px;
+
+  @media (max-width: 699px) {
+    display: none;
+  }
 `;
