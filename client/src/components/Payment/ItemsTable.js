@@ -1,8 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { THEME } from "../Style/Theme";
+import { Buttons } from '../Buttons';
+import { useSelector, useDispatch } from "react-redux";
+import { getStoreItemsArray, getTotal } from '../reducers/Purchase';
+import { removeItem } from '../../Actions';
 
-const ItemsTable = ({ onClick, children }) => {
+const ItemsTable = ({ onClick, id, addToCart, children }) => {
+    const dispatch = useDispatch();
+    const itemArray = useSelector(getStoreItemsArray);
+    const subTotal = useSelector(getTotal);
+    const cartQuantity = useSelector(state => state.purchase[id] ? state.purchase[id].quantity : 1);
+    const [quantity, setQuantity] = React.useState(cartQuantity);
+
     return (
         <>
             <Header>
@@ -15,15 +25,30 @@ const ItemsTable = ({ onClick, children }) => {
                     <TableHead>Price</TableHead>
                     <TableHead></TableHead>
                 </TableRow>
-                <TableRow>
-                    <TableDescription></TableDescription>
-                    <TableDescription></TableDescription>
-                    <TableDescription></TableDescription>
-                    <TableDescription></TableDescription>
-                </TableRow>
+                {itemArray.map((item) => {
+                    return (
+                        <TableRow key={item.id}>
+                            <TableDescription>{item.nameCapitalized}</TableDescription>
+                            <TableDescription>
+
+                                <Buttons id={id} onClick={() => setQuantity(item.quantity - 1 || 1)}>
+                                    -
+                            </Buttons>
+                                <span>{item.quantity}</span>
+                                <Buttons id={id} onClick={() => setQuantity(Math.min(item.quantity + 1))}>
+                                    +
+                            </Buttons>
+                            </TableDescription>
+                            <TableDescription>${item.price}</TableDescription>
+                            <RemoveItemBtn onClick={() => dispatch(removeItem(item.id))}>
+                                X
+                            </RemoveItemBtn>
+                        </TableRow>
+                    )
+                })}
             </Table>
             <Total>
-                Total Cost: <Span>$11,00</Span>
+                Total Cost: <Span>${subTotal}</Span>
             </Total>
             <TextField
                 autoFocus
@@ -71,6 +96,14 @@ const Span = styled.span`
     font-weight: 700;
     padding-left: 10px;
     font-size: 18px;
+`
+
+const RemoveItemBtn = styled.button`
+    font-size: 15px;
+    background: none;
+    color: red;
+    border: none;
+    cursor: pointer;
 `
 
 const TextField = styled.input`

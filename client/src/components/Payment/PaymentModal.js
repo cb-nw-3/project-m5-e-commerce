@@ -4,17 +4,12 @@ import CloseIcon from "@material-ui/icons/Close";
 import ItemsTable from "./ItemsTable";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleModal } from "../../Actions";
-import { getStoreItemsArray, getTotal } from '../reducers/Purchase';
 import { ModalButton } from "../Buttons";
 
 const PaymentModal = ({ onClick }) => {
   const isOpen = useSelector((state) => state.modal.isOpen);
   const dispatch = useDispatch();
-  const itemArray = useSelector(getStoreItemsArray);
-  const subTotal = useSelector(getTotal);
 
-  console.log("cart Payment", itemArray)
-  console.log("Total Payment", subTotal)
   return (
     <ModalWrapper onClick={(event) => dispatch(toggleModal())}>
       <Modal
@@ -67,8 +62,10 @@ const ModalHeader = styled.div`
   justify-content: flex-end;
 `;
 
-const ModalWrapper = styled.button`
+const ModalWrapper = styled.div`
   position: absolute;
+  display: flex;
+  align-items: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -79,8 +76,8 @@ const ModalWrapper = styled.button`
 `;
 
 const Modal = styled.div`
-  width: 500px;
-  border: 1px solid grey;
+  width: 50%;
+  min-width: 500px; 
   margin: 0 auto;
   padding: 16px;
   background-color: #fff;

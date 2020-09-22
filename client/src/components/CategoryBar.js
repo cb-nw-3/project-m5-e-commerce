@@ -27,7 +27,7 @@ const CategoryBar = ({ categories }) => {
   return (
     <Container>
       {categories.map((category) => {
-        return <StyledButton key={category} onClick={() => {fetchItems(category)}}>{category}</StyledButton>;
+        return <StyledButton key={category} onClick={() => { fetchItems(category) }}>{category}</StyledButton>;
       })}
     </Container>
   );

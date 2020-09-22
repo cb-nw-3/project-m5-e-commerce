@@ -1,5 +1,4 @@
-const initialState = {
-};
+const initialState = {};
 
 export const purchaseReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -50,7 +49,7 @@ export const purchaseReducer = (state = initialState, action) => {
     }
 }
 
-export const getStoreItemsArray = (state) => Object.values(state);
+export const getStoreItemsArray = (state) => Object.values(state.purchase);
 
 export const getTotal = state =>
     getStoreItemsArray(state).reduce(
