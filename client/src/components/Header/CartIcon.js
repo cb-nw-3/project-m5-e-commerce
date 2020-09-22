@@ -57,7 +57,7 @@ const Wrapper = styled.section`
   color: BLACK;
   padding: 30px;
 
-  @media (max-width: ${THEME.mobile}) {
+  @media (max-width: 873px) {
     padding: 5px;
   }
 `;

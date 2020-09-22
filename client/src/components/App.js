@@ -1,6 +1,6 @@
 import React from "react";
 
-import Home from "./Home/Index";
+import Home from "./Home";
 import Header from "./Header/Index";
 import Product from "./Product/Index";
 import FourOhFour from "./FourOhFour";

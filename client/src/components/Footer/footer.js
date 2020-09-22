@@ -5,7 +5,7 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
-import { THEME } from '../Style/Theme';
+import { THEME } from "../Style/Theme";
 
 const socialIconDim = { height: "25px", width: "25px" };
 
@@ -15,11 +15,11 @@ const Footer = () => {
       <ShopQCard>
         <BioContainer>
           <Bio>
-            Lorem ipsum dolor sit amet, vel an decore denique assentior, mei
-            no inimicus adversarium. Vel duis reprimique in. Mei option
+            Lorem ipsum dolor sit amet, vel an decore denique assentior, mei no
+            inimicus adversarium. Vel duis reprimique in. Mei option
             consectetuer in, exerci recusabo oportere vim eu. Ea vivendo
             adipiscing efficiantur qui. Has cu posse harum impedit.
-            </Bio>
+          </Bio>
         </BioContainer>
         <SocialBar>
           <StyledTwitter />
@@ -62,7 +62,7 @@ const FooterContainer = styled.div`
   display: block;
   padding: 30px;
 
-  @media (min-width:${THEME.mobile}){
+  @media (min-width: ${THEME.mobile}) {
     display: flex;
     align-items: center;
   }
@@ -90,17 +90,32 @@ const Bio = styled.h4`
   color: #d9d9d9;
   font-weight: 400;
   margin-bottom: 30px;
+
+  @media (max-width: ${THEME.mobile}) {
+    font-size: 1rem;
+  }
 `;
 const SocialBar = styled.div`
   display: flex;
   width: 50%;
   justify-content: space-between;
+
+  @media (max-width: ${THEME.mobile}) {
+    padding-bottom: 25px;
+    width: 75%;
+    justify-content: space-between;
+  }
 `;
 
 const TabColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding-right: 20px;
+
+  @media (max-width: ${THEME.mobile}) {
+    padding-right: 20px;
+  }
 `;
 
 const TabHeader = styled.h4`

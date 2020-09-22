@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import CloseIcon from "@material-ui/icons/Close";
+import ItemsTable from "./ItemsTable";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleModal } from "../../Actions";
+import { ModalButton } from "../Buttons";
 
-const PaymentModal = () => {
+const PaymentModal = ({ onClick }) => {
   const isOpen = useSelector((state) => state.modal.isOpen);
   const dispatch = useDispatch();
 
@@ -25,16 +27,28 @@ const PaymentModal = () => {
             <CloseIcon />
           </IconBtn>
         </ModalHeader>
-        MODAL CONTENT GOES HERE
+        <ItemsTable />
+        <DividerButtons>
+          <ModalButton onClick={(event) => {
+            event.stopPropagation();
+            dispatch(toggleModal());
+          }}>
+            Continue Shopping
+          </ModalButton>
+          <ModalButton onClick={onClick}>
+            Purchase
+          </ModalButton>
+        </DividerButtons>
+
       </Modal>
-    </ModalWrapper>
+    </ModalWrapper >
   );
 };
 
 const IconBtn = styled.a`
   border: none;
   background-color: transparent;
-  text-decoraqtion: none;
+  text-decoration: none;
   cursor: pointer;
 
   &:focus {
@@ -48,8 +62,10 @@ const ModalHeader = styled.div`
   justify-content: flex-end;
 `;
 
-const ModalWrapper = styled.button`
+const ModalWrapper = styled.div`
   position: absolute;
+  display: flex;
+  align-items: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -60,13 +76,18 @@ const ModalWrapper = styled.button`
 `;
 
 const Modal = styled.div`
-  width: 400px;
-  border: 1px solid grey;
+  width: 50%;
+  min-width: 500px; 
   margin: 0 auto;
   padding: 16px;
   background-color: #fff;
   border-radius: 4px;
   cursor: default;
+`;
+
+const DividerButtons = styled.div`
+    display: flex;
+    justify-content: flex-end;
 `;
 
 export default PaymentModal;

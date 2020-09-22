@@ -54,8 +54,56 @@ export const BuyButton = ({ onClick, id }) => {
     const isAddedToCart = useSelector((state) => state.purchase[id] ? state.purchase[id].isAddedToCart : false);
 
     return (
-        <ButtonPurchase onClick={onClick} disabled={isAddedToCart}>
+        <ButtonAddToCart onClick={onClick} disabled={isAddedToCart}>
             <ShoppingCart /> {isAddedToCart ? 'Added to Cart' : 'Add to Cart'}
+        </ButtonAddToCart>
+    );
+}
+
+const ButtonAddToCart = styled.button`
+    display: flex;
+    align-items: center;
+    min-width: 40px;
+    border: none;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    color: ${THEME.black};
+    background-color: ${THEME.secondary};
+    border-radius: 25px;
+    padding: 10px 30px;
+    transition: background-color 500ms ease-in-out;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover{
+        box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+        background-color: #fcc46d;
+        text-decoration: none;
+    }
+
+    &:active{
+        box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);
+    }
+
+    &:focus{
+        outline: none;
+    }
+
+    &:disabled {
+        background: ${THEME.tertiary};
+        color: white;
+
+        &:hover{
+            box-shadow: none;
+            cursor: auto;
+        }
+    }
+`
+
+export const ModalButton = ({ onClick, children }) => {
+    return (
+        <ButtonPurchase onClick={onClick}>
+            {children}
         </ButtonPurchase>
     );
 }
@@ -67,10 +115,10 @@ const ButtonPurchase = styled.button`
     border: none;
     box-sizing: border-box;
     text-transform: uppercase;
-    color: ${THEME.black};
-    background-color: ${THEME.secondary};
+    background-color: ${props => props.color};
     border-radius: 25px;
     padding: 10px 30px;
+    margin: 10px 0 0 30px;
     transition: background-color 500ms ease-in-out;
     font-weight: 600;
     cursor: pointer;

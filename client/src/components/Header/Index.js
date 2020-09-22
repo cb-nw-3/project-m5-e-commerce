@@ -138,7 +138,7 @@ const Top = styled.section`
   justify-content: space-between;
   align-items: center;
   color: BLACK;
-  padding: 30px 50px 30px 50px;
+  padding: 10px;
 
   @media (max-width: ${THEME.mobile}) {
     display: flex;
@@ -151,7 +151,7 @@ const Top = styled.section`
 
 const Wrapper = styled.section`
   color: BLACK;
-  padding: 30px 50px 30px 50px;
+  padding: 10px;
 
   @media (max-width: ${THEME.mobile}) {
     padding: 0 15px 0 15px;

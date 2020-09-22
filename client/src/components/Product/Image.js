@@ -14,7 +14,6 @@ const Wrapper = styled.div`
     text-align: center;
     width: 100%;
     padding: 40px 0;
-    border: 5px double ${THEME.primary};
 
     @media (min-width:${THEME.mobile}){
         width: 50%;

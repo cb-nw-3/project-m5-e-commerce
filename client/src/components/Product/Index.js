@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from "styled-components/macro";
 import { useParams } from "react-router-dom";
-import PaymentModal from '../Product/PaymentModal';
-import { BuyButton } from '../Buttons';
 import Image from './Image';
 import BreadCrumbs from './BreadCrumbs';
 import { THEME } from '../Style/Theme';
@@ -35,7 +33,7 @@ const Product = () => {
             console.log('Error product message', err);
         }
     };
-    console.log(item);
+
     React.useEffect(() => {
         fetchProduct();
     }, []);
