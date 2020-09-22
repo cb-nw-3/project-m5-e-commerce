@@ -49,7 +49,10 @@ router.get("/api/item/:id", (req, res) => {
   } else {
     // Add company information to the item
     item = addCompanyInfoMapper(true, item);
-    return res.status(200).json(item);
+    // Convert price to number
+    const returnItem = { ...item };
+    returnItem.price = parseFloat(returnItem.price.replace('$', ''));
+    return res.status(200).json(returnItem);
   }
 });
 
