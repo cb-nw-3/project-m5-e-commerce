@@ -7,31 +7,65 @@ import "swiper/components/pagination/pagination.scss";
 
 import lifestyle1 from "../../images/lifestyle1.jpg";
 import lifestyle2 from "../../images/lifestyle2.jpg";
-import lifestyle3 from "../../images/lifestyle3.jpg";
-import lifestyle4 from "../../images/lifestyle4.jpg";
-const imageArray = [lifestyle1, lifestyle2, lifestyle3, lifestyle4];
+import pets1 from "../../images/pets1.jpg";
+import pets2 from "../../images/pets2.jpg";
+import medical1 from "../../images/medical1.jpg";
+import medical2 from "../../images/medical2.jpg";
+import industrial1 from "../../images/industrial1.jpg";
+import industrial2 from "../../images/industrial2.jpg";
+import fitness1 from "../../images/fitness1.jpg";
+import fitness2 from "../../images/fitness2.jpg";
+import entertainment1 from "../../images/entertainment1.jpg";
+import entertainment2 from "../../images/entertainment2.jpg";
+
+const lifestyleArray = [lifestyle1, lifestyle2];
+const petsArray = [pets1, pets2];
+const medicalArray = [medical1, medical2];
+const industrialArray = [industrial1, industrial2];
+const fitnessArray = [fitness1, fitness2];
+const entertainmentArray = [entertainment1, entertainment2];
 
 // install Swiper components
 SwiperCore.use([Pagination, Scrollbar, A11y]);
 
-const Carousel = () => {
+const Carousel = ({ category }) => {
+  const [photoArray, SetPhotoArray] = React.useState(lifestyleArray);
+
+  React.useEffect(() => {
+    switch (category) {
+      case "lifestyle":
+        SetPhotoArray(lifestyleArray);
+        break;
+      case "fitness":
+        SetPhotoArray(fitnessArray);
+        break;
+      case "medical":
+        SetPhotoArray(medicalArray);
+        break;
+      case "entertainment":
+        SetPhotoArray(entertainmentArray);
+        break;
+      case "industrial":
+        SetPhotoArray(industrialArray);
+        break;
+      case "pets and animals":
+        SetPhotoArray(petsArray);
+        break;
+    }
+  }, [category]);
+
   return (
     <SwiperContainer>
-      <Swiper slidesPerView={1} pagination={{ clickable: true }}>
-        {imageArray.map((image) => {
+      <StyledSwiper slidesPerView={1} pagination={{ clickable: true }}>
+        {photoArray.map((image) => {
           return (
-            <SwiperSlide
-              style={{
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
+            <SwiperSlide>
               <Image src={image} />
             </SwiperSlide>
           );
         })}
         ...
-      </Swiper>
+      </StyledSwiper>
     </SwiperContainer>
   );
 };
@@ -41,7 +75,7 @@ export default Carousel;
 const SwiperContainer = styled.div`
   margin: 0 auto;
   position: relative;
-  height: 300px;
+  height: 500px;
   display: flex;
   width: calc(100vw - 60px);
   cursor: pointer;
@@ -49,5 +83,29 @@ const SwiperContainer = styled.div`
 
 const Image = styled.img`
   object-fit: cover;
+  width: 100%;
+  object-position: 0px 0px;
+
+  @media (min-width: 500px) {
+    object-position: 0px -200px;
+  }
+  @media (min-width: 768px) {
+    object-position: 0px -400px;
+  }
+  @media (min-width: 1080px) {
+    object-position: 0px -500px;
+  }
+  @media (min-width: 1280px) {
+    object-position: 0px -300px;
+  }
+  @media (min-width: 1440px) {
+    object-position: 0px -900px;
+  }
+  @media (min-width: 1840px) {
+    object-position: 0px -1700px;
+  }
+`;
+
+const StyledSwiper = styled(Swiper)`
   width: 100%;
 `;

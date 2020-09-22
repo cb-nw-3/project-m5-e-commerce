@@ -17,10 +17,15 @@ const categories = [
 ]; // this is a test category array
 
 const Home = () => {
+  const [category, SetCategory] = React.useState("lifestyle");
+
+  React.useEffect(() => {
+    console.log(category);
+  }, [category]);
   return (
     <>
-      <CategoryBar categories={categories} />
-      <Carousel />
+      <CategoryBar categories={categories} SetCategory={SetCategory} />
+      <Carousel category={category} />
       <ItemList />
     </>
   );
