@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { getFirstPage } from "../Actions";
 import { listToMatrix } from "../Helper/matrixConverter";
 
-const CategoryBar = ({ categories }) => {
+const CategoryBar = ({ categories, SetCategory }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -12,22 +12,29 @@ const CategoryBar = ({ categories }) => {
   }, []);
 
   const fetchItems = async (category) => {
-
-    const data = await fetch(
-      "http://localhost:4000/api/items/" + category
-    );
+    const data = await fetch("http://localhost:4000/api/items/" + category);
 
     if (data.ok) {
       const items = await data.json();
       const matrix = listToMatrix(items);
       dispatch(getFirstPage(matrix));
     }
-  }
+  };
 
   return (
     <Container>
       {categories.map((category) => {
-        return <StyledButton key={category} onClick={() => { fetchItems(category) }}>{category}</StyledButton>;
+        return (
+          <StyledButton
+            key={category}
+            onClick={() => {
+              fetchItems(category);
+              SetCategory(category);
+            }}
+          >
+            {category}
+          </StyledButton>
+        );
       })}
     </Container>
   );
