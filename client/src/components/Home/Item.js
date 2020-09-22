@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { useHistory } from "react-router-dom";
 
 const Item = ({ item }) => {
@@ -8,6 +8,7 @@ const Item = ({ item }) => {
   const viewItem = (id) => {
     history.push("/item/" + id)
   }
+  console.log('Item', item);
 
   return (
     <Wrapper>
@@ -18,7 +19,7 @@ const Item = ({ item }) => {
         <ItemName>
           {item.name}
         </ItemName>
-        <ItemPrice>$39.99</ItemPrice>
+        <ItemPrice>{item.price}</ItemPrice>
       </ItemBtn>
     </Wrapper>
   );

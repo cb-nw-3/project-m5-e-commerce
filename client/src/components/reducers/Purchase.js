@@ -1,7 +1,7 @@
 const initialState = {
 };
 
-const purchaseReducer = (state = initialState, action) => {
+export const purchaseReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'BEGIN-PURCHASE-PROCESS': {
             return {
@@ -49,5 +49,16 @@ const purchaseReducer = (state = initialState, action) => {
         }
     }
 }
+
+export const getStoreItemsArray = (state) => Object.values(state);
+
+export const getTotal = state =>
+    getStoreItemsArray(state).reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+    );
+
+console.log('***', getStoreItemsArray)
+
 
 export default purchaseReducer;
