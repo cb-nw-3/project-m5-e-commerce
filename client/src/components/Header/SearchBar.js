@@ -9,14 +9,12 @@ import { THEME } from "../Style/Theme";
 const SearchBar = () => {
   return (
     <Wrapper>
-      <SearchBarContainer>
-        <Form action="/">
-          <Input type="text" placeholder="Search.." name="search"></Input>
-          <Button type="submit">
-            <SearchIcon />
-          </Button>
-        </Form>
-      </SearchBarContainer>
+      <Form action="/">
+        <Input type="text" placeholder="Search.." name="search"></Input>
+        <Button type="submit">
+          <SearchIcon />
+        </Button>
+      </Form>
     </Wrapper>
   );
 };
@@ -43,22 +41,18 @@ const Form = styled.form`
   display: flex;
   flex-direction: row;
   align-items: center;
-`;
-
-const SearchBarContainer = styled.div`
-  color: BLACK;
-  width: 100%;
   border: 1px solid #dcdcdc;
   border-radius: 5px;
+  /* @media (max-width: 873px) {
+    width: 100%;
+  } */
 `;
 
 const Wrapper = styled.div`
   background-color: white;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   color: BLACK;
-  padding: 30px 50px 30px 50px;
+  padding: 5px;
 
   @media (max-width: ${THEME.mobile}) {
     display: flex;
