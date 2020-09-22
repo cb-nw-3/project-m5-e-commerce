@@ -22,7 +22,7 @@ const Item = ({ item }) => {
         <ItemName>
           {item.name}
         </ItemName>
-        <ItemPrice>${item.price}</ItemPrice>
+        <ItemPrice>{item.price}</ItemPrice>
       </ItemBtn>
     </Wrapper>
   );
