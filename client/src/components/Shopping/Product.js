@@ -24,14 +24,6 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
           <div>
             <a href={`/shop/${_id}`}>{name}</a>
             <h4>{price}</h4>
-            <Button
-              onClick={() => {
-                dispatch(addItem({ _id, name, price }));
-              }}
-              // disabled={numInStock > 0 ? false : true}
-            >
-              Add to cart
-            </Button>
           </div>
         </div>
       </div>
