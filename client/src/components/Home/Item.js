@@ -16,7 +16,7 @@ const Item = ({ item }) => {
         <ImageWrapper>
           <ItemImage src={item.imageSrc} />
           {item.numInStock === 0 && <OutOfStock>
-            <div>Out of stock</div>
+            <StockText >Out of stock</StockText>
           </OutOfStock>}
         </ImageWrapper>
         <ItemName>
@@ -85,11 +85,17 @@ const OutOfStock = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(100, 100, 100, 0.3);
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 `;
+
+const StockText = styled.div`
+  background-color: rgba(70, 70, 70, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+`;
+
 
 export default Item;
