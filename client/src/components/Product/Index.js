@@ -77,7 +77,7 @@ const Product = () => {
                         {nameCapitalized}
                     </Paragraph>
                     <Paragraph>
-                        {price}
+                        ${price}
                     </Paragraph>
                     <Company src={item.company.url}>
                         {item.company.name}
