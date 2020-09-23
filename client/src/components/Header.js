@@ -14,7 +14,7 @@ const HeaderWrapper = styled.div`
   display: flex;
   justify-content: center;
   height: 25vh;
-  width: 100vh;
+  width: 75vh;
   text-align: center;
   margin: 0 auto;
 `;

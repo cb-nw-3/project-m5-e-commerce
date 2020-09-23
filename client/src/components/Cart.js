@@ -43,7 +43,7 @@ const Wrapper = styled.section`
   top: 0;
   min-width: 300px;
   height: 100vh;
-  background: #050a30;
+  background: #401f43;
   color: white;
   padding-top: 16px;
   padding-bottom: 16px;

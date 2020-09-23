@@ -8,31 +8,41 @@ import GlobalStyles from "./GlobalStyles";
 
 function App() {
   return (
-    <Wrapper>
+    <div>
       <Header />
-      <ItemGridWrapper />
-      <CartWrapper>
-        <Cart />
-      </CartWrapper>
-      <GlobalStyles />
-    </Wrapper>
+      <Wrapper>
+        <ItemGridWrap>
+          <ItemGridWrapper />
+        </ItemGridWrap>
+        <CartWrapper>
+          <Cart />
+        </CartWrapper>
+        <GlobalStyles />
+      </Wrapper>
+    </div>
   );
 }
 
 const CartWrapper = styled.div`
+  width: 20vw;
+  height: 100vh;
   grid-area: sidebar;
   border-left: 3px #ff406e;
   padding-left: 8px;
-  grid-row: first-line;
 `;
 
 const Wrapper = styled.div`
   position: relative;
   display: grid;
   grid-template-areas:
-    "header header header header"
+    "header header header sidebar"
     "main main main sidebar";
   /* grid-gap: 64px; */
 `;
 
+const ItemGridWrap = styled.main`
+  grid-area: main;
+  width: 75vw;
+  padding: 16px 64px;
+`;
 export default App;

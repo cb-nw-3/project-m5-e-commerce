@@ -8,16 +8,19 @@ export default function cartReducer(state = initialState, action) {
   switch (action.type) {
     case "ADD_ITEM": {
       return produce(state, (draftState) => {
+        console.log(action.item);
         // Check if we already have >=1 of these items
-        const alreadyHasItem = !!draftState.items[action.item.id];
+        const alreadyHasItem = draftState.items.hasOwnProperty(action.item.id);
 
         if (alreadyHasItem) {
           draftState.items[action.item.id].quantity++;
+          console.log(draftState);
         } else {
           draftState.items[action.item.id] = {
             ...action.item,
             quantity: 1,
           };
+          console.log(draftState);
         }
       });
     }

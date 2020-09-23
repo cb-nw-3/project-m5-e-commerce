@@ -6,6 +6,7 @@ import Pagination from "./Pagination";
 import Cart from "./Cart";
 import { useDispatch } from "react-redux";
 import { addItem } from "../actions/actions";
+import { updateQuantity } from "../actions/actions";
 
 const ItemGridWrapper = () => {
   const [items, setItems] = useState([]);
@@ -44,12 +45,22 @@ const ItemGridWrapper = () => {
               </ImageWrapper>
               <div>{item.description}</div>
               <PriceWrapper>{item.price}</PriceWrapper>
+              <div>
+                <h3>Quantity:{item.numInStock}</h3>
+              </div>
               <Button
-                onClick={(item) =>
-                  dispatch(addItem({ name: item.name, price: item.price }))
-                }
+                onClick={() => {
+                  dispatch(
+                    addItem({
+                      name: item.name,
+                      price: item.price,
+                      id: item._id,
+                    }) //,
+                    //dispatch(updateQuantity({ itemId: item._id }))
+                  );
+                }}
               >
-                Learn More
+                Add To Cart
               </Button>
             </ItemWrapper>
           </div>
@@ -66,6 +77,7 @@ const ItemGridWrapper = () => {
 
 const Wrapper = styled.div`
   display: grid;
+  grid-area: main;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   grid-gap: 24px;
 `;
@@ -114,6 +126,7 @@ const CartWrapper = styled.div`
   grid-area: sidebar;
   border-left: 3px #ff406e;
   padding-left: 8px;
+  height: 100vh;
 `;
 
 export default ItemGridWrapper;
