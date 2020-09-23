@@ -63,7 +63,7 @@ const ModalHeader = styled.div`
 `;
 
 const ModalWrapper = styled.div`
-  position: absolute;
+  position: fixed;
   display: flex;
   align-items: center;
   top: 0;
@@ -73,6 +73,7 @@ const ModalWrapper = styled.div`
   border: 1px solid #aaa;
   background-color: rgba(50, 50, 50, 0.5);
   cursor: pointer;
+  z-index: 999;
 `;
 
 const Modal = styled.div`
