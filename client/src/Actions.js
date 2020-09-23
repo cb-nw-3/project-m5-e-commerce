@@ -19,11 +19,20 @@ export const toggleModal = () => {
 };
 
 
-export const getFirstPage = (items) => {
+export const getFirstPage = (items, category) => {
   return {
     type: "GETFIRSTPAGE",
-    items: items
+    items: items,
+    category: category
   };
+};
+
+export const getNextPage = (items, category) => {
+    return {
+        type: "GETNEXTPAGE",
+        items: items,
+        category: category
+    }
 };
 
 export const beginPurchaseProcess = (item, quantity, numInStock) => {

@@ -17,7 +17,7 @@ const CategoryBar = ({ categories, SetCategory }) => {
     if (data.ok) {
       const items = await data.json();
       const matrix = listToMatrix(items);
-      dispatch(getFirstPage(matrix));
+      dispatch(getFirstPage(matrix, category));
     }
   };
 
