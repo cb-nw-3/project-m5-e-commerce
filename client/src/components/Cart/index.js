@@ -4,10 +4,11 @@ import CartHeader from "./CartHeader";
 import CartBody from "./CartBody";
 import CartFooter from "./CartFooter";
 
+const bag = require("../assets/bag.jpg");
 const Cart = () => {
   return (
     <CartContainer>
-      <CartHeader />
+      <CartHeader imgSrc={bag} />
       <CartBody />
       <CartFooter />
     </CartContainer>
@@ -15,7 +16,7 @@ const Cart = () => {
 };
 
 const CartContainer = styled.div`
-  background-color: beige;
+  background-color: white;
   width: 33%;
   float: right;
   height: 100vh;

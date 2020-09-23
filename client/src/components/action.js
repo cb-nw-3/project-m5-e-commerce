@@ -1,5 +1,6 @@
 // FIRST WRITE OUR ACTIONS HERE
 //This is the action we'll dispatch when the user clicks "Add to cart".
+//this is the definition
 
 export const addItem = (item) => ({
   type: "ADD_ITEM",

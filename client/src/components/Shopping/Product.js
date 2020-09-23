@@ -44,7 +44,6 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
     <LoadingIcon />
   );
 };
-
 const Wrapper = styled.div``;
 const Button = styled.button``;
 
