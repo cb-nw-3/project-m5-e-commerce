@@ -39,38 +39,46 @@ const Cart = () => {
 };
 
 const Wrapper = styled.section`
-  position: sticky;
+  position: absolute;
+  font-family: "Titillium Web", sans-serif;
   top: 0;
-  min-width: 300px;
+  width: 20vw;
   height: 100vh;
-  background: #401f43;
+  background: #ffe5b4;
   color: white;
   padding-top: 16px;
   padding-bottom: 16px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-right: 0px;
 `;
 
 const Top = styled.div`
   max-height: calc(100vh - 240px);
+  color: black;
   overflow: auto;
+  font-family: "Titillium Web", sans-serif;
   padding-left: 32px;
   padding-right: 32px;
 `;
 const Bottom = styled.div`
   display: flex;
+  color: black;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 64px;
+  font-family: "Titillium Web", sans-serif;
   padding-left: 32px;
   padding-right: 32px;
 `;
 
 const Title = styled.h2`
-  color: white;
+  color: black;
   font-size: 24px;
   font-weight: bold;
+  font-family: "Titillium Web", sans-serif;
   margin-bottom: 0;
 `;
 
@@ -78,6 +86,7 @@ const Subtitle = styled.p`
   margin: 0;
   margin-top: 8px;
   font-size: 16px;
+  font-family: "Titillium Web", sans-serif;
   opacity: 0.75;
 `;
 
@@ -85,6 +94,7 @@ const ItemList = styled.ul`
   list-style-type: none;
   display: flex;
   flex-direction: column;
+  font-family: "Titillium Web", sans-serif;
   gap: 16px;
   padding: 0;
   padding-top: 32px;
@@ -92,5 +102,7 @@ const ItemList = styled.ul`
 
 const Total = styled.div`
   font-size: 22px;
+  color: black;
+  font-family: "Titillium Web", sans-serif;
 `;
 export default Cart;

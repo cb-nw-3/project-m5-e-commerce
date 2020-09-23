@@ -23,6 +23,7 @@ const Pagination = ({ itemsPerPage, totalItems, paginate }) => {
 
 const Pages = styled.li`
   list-style-type: none;
+  font-family: "Titillium Web", sans-serif;
   display: inline-block;
   padding: 20px;
 `;

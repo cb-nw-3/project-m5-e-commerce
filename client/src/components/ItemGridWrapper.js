@@ -11,7 +11,7 @@ import { updateQuantity } from "../actions/actions";
 const ItemGridWrapper = () => {
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(20);
+  const [itemsPerPage, setItemsPerPage] = useState(9);
 
   useEffect(() => {
     fetch("/items")
@@ -29,7 +29,7 @@ const ItemGridWrapper = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div>
+    <>
       <Wrapper>
         {currentItems.map((item) => (
           <div key={item._id}>
@@ -45,9 +45,9 @@ const ItemGridWrapper = () => {
               </ImageWrapper>
               <div>{item.description}</div>
               <PriceWrapper>{item.price}</PriceWrapper>
-              <div>
-                <h3>Quantity:{item.numInStock}</h3>
-              </div>
+
+              <Quantity>Quantity:{item.numInStock}</Quantity>
+
               <Button
                 onClick={() => {
                   dispatch(
@@ -71,12 +71,13 @@ const ItemGridWrapper = () => {
         totalItems={items.length}
         paginate={paginate}
       />
-    </div>
+    </>
   );
 };
 
 const Wrapper = styled.div`
   display: grid;
+  font-family: "Titillium Web", sans-serif;
   grid-area: main;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   grid-gap: 24px;
@@ -96,12 +97,14 @@ const ItemWrapper = styled.article`
 
 const ImageWrapper = styled.div`
   overflow: hidden;
+  font-family: "Titillium Web", sans-serif;
   border-radius: 12px;
   border: 3px solid rgba(0, 0, 0, 0.1);
 `;
 
 const Image = styled.img`
   display: block;
+  font-family: "Titillium Web", sans-serif;
   max-width: 100%;
   transition: transform 400ms;
   transform-origin: center center;
@@ -112,6 +115,7 @@ const Image = styled.img`
 
 const Title = styled.h2`
   margin: 0;
+  font-family: "Titillium Web", sans-serif;
   margin-bottom: 16px;
   margin-top: 8px;
   font-size: 18px;
@@ -120,13 +124,21 @@ const Title = styled.h2`
 
 const PriceWrapper = styled.div`
   font-weight: bold;
+  font-family: "Titillium Web", sans-serif;
 `;
 
 const CartWrapper = styled.div`
   grid-area: sidebar;
+  font-family: "Titillium Web", sans-serif;
   border-left: 3px #ff406e;
-  padding-left: 8px;
+  padding-left: 0px;
   height: 100vh;
+`;
+
+const Quantity = styled.div`
+  font-family: "Titillium Web", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
 `;
 
 export default ItemGridWrapper;

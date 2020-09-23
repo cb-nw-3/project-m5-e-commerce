@@ -25,7 +25,7 @@ function App() {
 
 const CartWrapper = styled.div`
   width: 20vw;
-  height: 100vh;
+  height: 400vh;
   grid-area: sidebar;
   border-left: 3px #ff406e;
   padding-left: 8px;
@@ -39,10 +39,8 @@ const Wrapper = styled.div`
     "main main main sidebar";
   /* grid-gap: 64px; */
 `;
-
 const ItemGridWrap = styled.main`
-  grid-area: main;
   width: 75vw;
-  padding: 16px 64px;
+  padding: 16px 40px;
 `;
 export default App;

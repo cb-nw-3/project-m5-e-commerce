@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Button = styled.button`
   position: relative;
+  font-family: "Titillium Web", sans-serif;
   display: block;
   width: 100%;
   border-radius: 12px;
