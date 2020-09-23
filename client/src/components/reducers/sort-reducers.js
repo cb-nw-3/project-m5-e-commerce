@@ -4,6 +4,14 @@ const initialState = {
 
 export default function sortReducer(state = initialState, action) {
   switch (action.type) {
+
+    case "SELECT-SORT": {
+      return {
+        ...state,
+        "sorting": action.option ,
+      };
+    }
+
     default: {
       return state;
     }

@@ -1,7 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
+import { useDispatch } from "react-redux";
+
+import { selectSort} from '../action';
+import { selectBodyPart} from '../action';
+
 const DropdownMenu = (props) => {
+  const dispatch = useDispatch();
+
   //constants for content of the menu
   const title = props.title ;
   const menuOptions = props.menuOptions;
@@ -9,12 +16,15 @@ const DropdownMenu = (props) => {
   const dropdownRef = React.useRef(null);
   //Some bit of state that keeps track if the menu is open or closed
   const [isActive, setIsActive] = React.useState(false);
+
   //Function that toggles menu active with inactive
-  const onClick = () => setIsActive(!isActive);
+  const onClick = () => {
+    setIsActive(!isActive);
+  }
 
   React.useEffect(() => {
-    const pageClickEvent = (e) => {
-      if (dropdownRef.current !== null && !dropdownRef.current.contains(e.target)) {
+    const pageClickEvent = (ev) => {
+      if (dropdownRef.current !== null && !dropdownRef.current.contains(ev.target)) {
         setIsActive(!isActive);
       }
     };
@@ -28,7 +38,6 @@ const DropdownMenu = (props) => {
     }
   }, [isActive]);
 
-
   return(
     <MenuContainer className="menu-container">
       <button onClick={onClick} className="menu-trigger">{title}</button>
@@ -38,7 +47,15 @@ const DropdownMenu = (props) => {
           {
             menuOptions.map((option) => {
               return(
-              <MenuOption><MenuOptionButton href="/trips">{option}</MenuOptionButton></MenuOption>
+              <MenuOption>
+                <MenuOptionButton onClick={
+                (title === "Shop By Body Part")
+                ? (() => dispatch(selectBodyPart(option)))
+                : (() => dispatch(selectSort(option)))
+                }>
+                  {option}
+                </MenuOptionButton>
+              </MenuOption>
             )})
           }
         </MenuList>
@@ -46,9 +63,6 @@ const DropdownMenu = (props) => {
     </MenuContainer>
   )
 }
-
-
-//All the styles need massive rework
 
 const MenuContainer = styled.div`
   position: relative;

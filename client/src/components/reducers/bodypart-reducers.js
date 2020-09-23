@@ -1,9 +1,17 @@
 const initialState = {
-  sorting: 'All',
+  bodyPart: 'All',
 };
 
 export default function bodyPartReducer(state = initialState, action) {
   switch (action.type) {
+
+    case "SELECT-BODYPART": {
+      return {
+        ...state,
+        "bodyPart": action.option ,
+      };
+    }
+
     default: {
       return state;
     }
