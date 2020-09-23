@@ -13,9 +13,9 @@ const image6 = require("../assets/image6.jpg");
 const Featured = () => {
   return (
     <Wrapper>
-      <CampaignImg imgSrc={image1} position="bottom">
+      <CampaignImg imgSrc={image1} position="top">
         <Text>
-          The Wearables give you the <TextStrong>Freedom,</TextStrong>
+          Bagelz give you the <TextStrong>Freedom,</TextStrong>
         </Text>
       </CampaignImg>
       <CampaignImg imgSrc={image2} position="top">
@@ -43,7 +43,7 @@ const Featured = () => {
       <CampaignImg imgSrc={image6} position="top">
         {" "}
         <Text>
-          whenever <TextStrong>You</TextStrong>
+          whenever <TextStrongMint>You</TextStrongMint>
           <Text> want.</Text>
         </Text>
       </CampaignImg>
@@ -61,15 +61,22 @@ const Wrapper = styled.div`
 const TextStrong = styled.span`
   font-weight: bold;
   color: black;
-  font-family: "Source Serif Pro", serif;
+  font-family: "Montserrat", sans-serif;
 `;
 const TextStrongRed = styled.span`
   font-weight: bold;
-  color: red;
-  font-family: "Source Serif Pro", serif;
+  color: #f992fd;
+  font-family: "Montserrat", sans-serif;
 `;
+const TextStrongMint = styled.span`
+  font-weight: bold;
+  color: #bde5c2;
+  font-family: "Montserrat", sans-serif;
+`;
+
 const Text = styled.span`
   font-weight: light;
-  font-family: "Source Serif Pro", serif;
+  /* font-family: "Montserrat", sans-serif; */
+  font-family: "Montserrat", sans-serif;
 `;
 export default Featured;
