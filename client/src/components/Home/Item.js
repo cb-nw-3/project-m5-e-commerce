@@ -15,11 +15,14 @@ const Item = ({ item }) => {
       <ItemBtn onClick={() => { viewItem(item._id) }}>
         <ImageWrapper>
           <ItemImage src={item.imageSrc} />
+          {item.numInStock === 0 && <OutOfStock>
+            <StockText >Out of stock</StockText>
+          </OutOfStock>}
         </ImageWrapper>
         <ItemName>
           {item.name}
         </ItemName>
-        <ItemPrice>${item.price}</ItemPrice>
+        <ItemPrice>{item.price}</ItemPrice>
       </ItemBtn>
     </Wrapper>
   );
@@ -37,7 +40,7 @@ const ImageWrapper = styled.div`
   max-width: 100%;
   height: auto;
   text-align: center;
-
+  position: relative;
   padding: 8px;
   border-radius: 4px;
 `;
@@ -73,5 +76,26 @@ const ItemBtn = styled.button`
     transition: .3s ease-in-out;
   }
 `;
+
+const OutOfStock = styled.div`
+  position: absolute;
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+const StockText = styled.div`
+  background-color: rgba(70, 70, 70, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+`;
+
 
 export default Item;
