@@ -9,10 +9,10 @@ const upDateStock = (req, res) => {
     const foundItems = items.find((item) => {
       return item._id === data._id;
     });
-    return { ...foundItems, quantity: foundItems.numInStock - data.quantity };
+    return { ...foundItems, numInStock: foundItems.numInStock - data.quantity };
   });
   console.log(updatedItems);
-  res.json(updatedItems);
+  res.status(200).send({ status: 'success' });
 };
 
 module.exports = upDateStock;

@@ -4,25 +4,32 @@ import styled from "styled-components";
 import LoadingIcon from '../LoadingIcon/index'
 import Product from "./Product";
 
+import { getCartItemArray } from "../reducers/index";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { receiveItems } from "../action";
+
 const Shopping = () => {
+  const dispatch = useDispatch();
+  const state = useSelector(state => state);
   const [items, setItems] = React.useState([]);
-  // const fetchProducts = () => {
-  // };
+
   React.useEffect(() => {
     // fetchProducts();
     fetch("/items")
       .then((res) => res.json())
       .then((data) => {
         // items = data
+        // dispatch(receiveItems(data))
         setItems(data);
-      });
+      })
+      .catch(err => console.log(err));
   }, []);
 
   return (
     <Wrapper>
       {items.length > 0 ?
         items.map((item) => {
-          console.log(item)
           // we pass the item with {...item} so we can access his properties more easily in product
           return <Product key={item._id} {...item} />;
         }) : <LoadingIcon />}

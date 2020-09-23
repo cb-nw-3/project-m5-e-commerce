@@ -4,16 +4,11 @@ import styled from "styled-components";
 import { getCartItemArray } from "../reducers/index";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { emptyCart } from "../action";
 
 const CartFooter = () => {
   const dispatch = useDispatch();
   const state = useSelector(getCartItemArray);
-  // let amountOfItems =
-  //   state.length !== 0
-  //     ? state.reduce((amount, item) => {
-  //         return amount + item.quantity;
-  //       }, 0)
-  //     : 0;
   let priceOfItems =
     state.length !== 0
       ? state.reduce((price, item) => {
@@ -29,18 +24,6 @@ const CartFooter = () => {
 
   const handleCartPurchase = (event) => {
     event.preventDefault();
-    fetch("/cartItems", {
-      method: "POST",
-      body: JSON.stringify({
-        state,
-      }),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .catch((err) => console.log(err));
     fetch("/upDateStock", {
       method: "POST",
       body: JSON.stringify({
@@ -55,7 +38,9 @@ const CartFooter = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        if (res.status === "success") {
+          dispatch(emptyCart());
+        }
       })
       .catch((err) => console.log(err));
   };
