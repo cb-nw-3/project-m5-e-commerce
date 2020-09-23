@@ -13,11 +13,16 @@ const StoreLogo = ({ imgSrc }) => {
 
 const Image = styled.img`
   padding-bottom: 30px;
-  width: 220px;
+  width: 160px;
+  padding-left: 400px;
 `;
 const Container = styled.div`
-  /* position: relative;
-  text-align: right; */
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 `;
 
 export default StoreLogo;

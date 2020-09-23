@@ -4,7 +4,7 @@ import styled from "styled-components";
 import StoreLogo from "./StoreLogo";
 import NavBar from "./NavBar";
 
-const logo2 = require("../assets/logo2.jpg");
+const logo2 = require("../assets/bagel.gif");
 const Header = () => {
   return (
     <Wrapper>
@@ -21,7 +21,7 @@ const Wrapper = styled.div`
   align-items: left;
   justify-content: space-between;
   /* border: solid 2pt red; */
-  height: 20vh;
+  height: 33vh;
 `;
 
 export default Header;

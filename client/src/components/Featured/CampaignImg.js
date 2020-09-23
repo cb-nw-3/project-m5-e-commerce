@@ -40,5 +40,5 @@ const Container = styled.div`
   text-align: right;
   color: white;
   font-size: 50px;
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: "Montserrat", sans-serif;
 `;
