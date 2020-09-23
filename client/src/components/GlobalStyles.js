@@ -25,6 +25,8 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	font-family: 'Montserrat', sans-serif;
+
 }
 
     /* This is for the React Links (which are really anchor tags).*/
@@ -59,12 +61,4 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
-
-/* for the dropdown menus */
-.menu.active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-`
+}`;
