@@ -8,7 +8,7 @@ const SearchInputs = () => {
     <>
       <DropdownMenu 
         title="Shop By Body Part"
-        menuOptions= {['Head','Hands', 'Wrist', 'Arms','Chest',, 'Torso', 'Waist', 'Feet']}
+        menuOptions= {['All','Head','Hands', 'Wrist', 'Arms','Chest','Torso', 'Waist', 'Feet']}
       />
 
       <DropdownMenu 

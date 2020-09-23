@@ -4,7 +4,7 @@ import styled from "styled-components";
 import LoadingIcon from '../LoadingIcon/index'
 import Product from "./Product";
 
-import { getCartItemArray } from "../reducers/index";
+import { getCartItemArray } from "../reducers/cart-reducers";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { receiveItems } from "../action";
