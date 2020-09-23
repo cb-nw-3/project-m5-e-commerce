@@ -11,13 +11,15 @@ import { THEME } from "../Style/Theme";
 
 const CartIcon = () => {
   const isOpen = useSelector((state) => state.modal.isOpen);
+  const items = useSelector((state) => state.purchase);
+  const itemCount = Object.keys(items).length;
   const dispatch = useDispatch();
 
   return (
     <Wrapper>
       <CartBtn onClick={() => dispatch(toggleModal())}>
         <ShoppingCartIcon />
-        <ShoppingCartIconCount>12</ShoppingCartIconCount>
+        <ShoppingCartIconCount>{itemCount}</ShoppingCartIconCount>
       </CartBtn>
       {isOpen ? <PaymentModal /> : null}
     </Wrapper>
