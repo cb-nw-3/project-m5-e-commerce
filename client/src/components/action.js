@@ -25,3 +25,13 @@ export const receiveItems = (items) => ({
   type: "RECEIVE_ITEMS",
   items,
 })
+
+export const selectSort = (option) => ({
+  type: "SELECT-SORT",
+  option,
+});
+
+export const selectBodyPart = (option) => ({
+  type: "SELECT-BODYPART",
+  option,
+});

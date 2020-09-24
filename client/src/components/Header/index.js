@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import StoreLogo from "./StoreLogo";
 import NavBar from "./NavBar";
+import SearchInputs from './SearchInputs';
 
 const logo2 = require("../assets/bagel.gif");
 const Header = () => {
@@ -10,6 +11,7 @@ const Header = () => {
     <Wrapper>
       <StoreLogo imgSrc={logo2} />
       <NavBar />
+      <SearchInputs />
     </Wrapper>
   );
 };
