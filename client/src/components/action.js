@@ -35,3 +35,16 @@ export const selectBodyPart = (option) => ({
   type: "SELECT-BODYPART",
   option,
 });
+
+export const requestShoppingItems = () => ({
+  type: "REQUEST_ITEMS",
+})
+
+export const receiveShoppingItemsError = () => ({
+  type: "RECEIVE_ITEMS_ERROR",
+})
+
+export const receiveShoppingItems = (items) => ({
+  type: "RECEIVE_SHOPPING_ITEMS",
+  items,
+})

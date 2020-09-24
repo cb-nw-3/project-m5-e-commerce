@@ -19,13 +19,11 @@ const CartBody = () => {
           <>
             <CartItemDescription
               key={cartItem._id}
-              name={cartItem.name}
-              price={cartItem.price}
+              {...cartItem}
             />
             <CartItemInput
               key={cartItem._id + 0.1}
-              quantity={cartItem.quantity}
-              _id={cartItem._id}
+              {...cartItem}
             />
           </>
         );
