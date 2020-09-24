@@ -10,27 +10,13 @@ import MenuIcon from "@material-ui/icons/Menu";
 import CartIcon from "./CartIcon";
 import SearchBar from "./SearchBar";
 import Logo from "./Logo";
+import NavDropdown from "./NavDropdown";
 
 const Header = () => {
   return (
     <Wrapper>
       <Top>
-        <NavDropdown>
-          <MenuIcon style={{ color: "black" }} />
-          <NavDropdownDiv className="NavDropdownDiv">
-            <NavDropdownList>
-              <NavDropdownListLi>
-                <a href="#news">News</a>
-              </NavDropdownListLi>
-              <NavDropdownListLi>
-                <a href="#contact">Contact</a>
-              </NavDropdownListLi>
-              <NavDropdownListLi>
-                <a href="#about">About</a>
-              </NavDropdownListLi>
-            </NavDropdownList>
-          </NavDropdownDiv>
-        </NavDropdown>
+        <NavDropdown />
         <Logo />
         <SearchBarDesktop>
           <SearchBar />
@@ -45,68 +31,6 @@ const Header = () => {
     </Wrapper>
   );
 };
-
-const NavDropdownListLi = styled.li`
-  @media (min-width: ${THEME.mobile}) {
-    padding: 20px;
-    color: #fff;
-    text-decoration: none;
-    position: relative;
-    display: inline-block;
-  }
-`;
-
-const NavDropdownList = styled.ul`
-  @media (min-width: ${THEME.mobile}) {
-    padding: 20px;
-    color: #fff;
-    text-decoration: none;
-    position: relative;
-    display: inline-block;
-  }
-
-  @media (max-width: ${THEME.mobile}) {
-    display: none;
-  }
-`;
-
-const NavDropdownDiv = styled.div`
-  display: none;
-`;
-
-const NavDropdown = styled.span`
-  @media (min-width: ${THEME.mobile}) {
-    display: none;
-  }
-
-  @media (max-width: ${THEME.mobile}) {
-    padding: 20px;
-    color: #fff;
-    text-decoration: none;
-    position: relative;
-    display: inline-block;
-
-    /* &:hover > .NavDropdownDiv {
-      display: block;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: #03a9f4;
-    } */
-  }
-`;
-
-const NavMobile = styled.div`
-  @media (min-width: ${THEME.mobile}) {
-    display: none;
-  }
-
-  @media (max-width: ${THEME.mobile}) {
-    overflow: hidden;
-    background-color: red;
-    position: relative;
-  }
-`;
 
 const SearchBarDesktop = styled.div`
   @media (max-width: ${THEME.mobile}) {

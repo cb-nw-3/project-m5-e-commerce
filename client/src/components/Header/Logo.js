@@ -16,7 +16,7 @@ const Wrapper = styled.a`
 
   @media (max-width: ${THEME.mobile}) {
     font-size: 2rem;
-    padding: 10px;
+    padding: 15px;
   }
   text-decoration: none;
 `;

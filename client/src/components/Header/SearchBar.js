@@ -3,7 +3,7 @@ import React from "react";
 import SearchIcon from "@material-ui/icons/Search";
 
 // Styles
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { THEME } from "../Style/Theme";
 
 const SearchBar = () => {
@@ -26,7 +26,7 @@ const Button = styled.button`
 `;
 
 const Input = styled.input`
-  width: 500px;
+  width: 100%;
   border: none;
   padding: 15px;
 
@@ -43,9 +43,10 @@ const Form = styled.form`
   align-items: center;
   border: 1px solid #dcdcdc;
   border-radius: 5px;
-  /* @media (max-width: 873px) {
+  width: 430px;
+  @media (max-width: ${THEME.mobile}) {
     width: 100%;
-  } */
+  }
 `;
 
 const Wrapper = styled.div`
@@ -53,6 +54,7 @@ const Wrapper = styled.div`
   display: flex;
   color: BLACK;
   padding: 5px;
+  box-sizing: border-box;
 
   @media (max-width: ${THEME.mobile}) {
     display: flex;
