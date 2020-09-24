@@ -86,7 +86,7 @@ const Product = () => {
                         SKU: {id}
                     </Sku>
                 </div>
-                <QuantityBar id={id} addToCart={addToCart} />
+                <QuantityBar id={id} numInStock={numInStock} addToCart={addToCart} />
             </ItemDetails>
         </Wrapper>
     );

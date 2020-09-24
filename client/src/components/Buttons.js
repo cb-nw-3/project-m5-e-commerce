@@ -5,10 +5,12 @@ import { THEME } from '../components/Style/Theme';
 import { useSelector } from "react-redux";
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 
-export const Buttons = ({ children, onClick, id }) => {
+export const Buttons = ({ children, onClick, id, numInStock }) => {
     const isAddedToCart = useSelector((state) => state.purchase[id] ? state.purchase[id].isAddedToCart : false);
+    const isNotInSotck = numInStock > 0 ? false : true;
+
     return (
-        <Button onClick={onClick} disabled={isAddedToCart}>
+        <Button onClick={onClick} disabled={isAddedToCart || isNotInSotck}>
             {children}
         </Button >
     )
@@ -50,12 +52,15 @@ const Button = styled.button`
     }
 `
 
-export const BuyButton = ({ onClick, id }) => {
+export const BuyButton = ({ onClick, id, numInStock }) => {
     const isAddedToCart = useSelector((state) => state.purchase[id] ? state.purchase[id].isAddedToCart : false);
+    const isNotInSotck = numInStock > 0 ? false : true;
 
     return (
-        <ButtonAddToCart onClick={onClick} disabled={isAddedToCart}>
-            <ShoppingCart /> {isAddedToCart ? 'Added to Cart' : 'Add to Cart'}
+        <ButtonAddToCart onClick={onClick} disabled={isAddedToCart || isNotInSotck}>
+            <ShoppingCart /> {isAddedToCart ? 'Added to Cart'
+                : isNotInSotck ? 'Out of Stock'
+                    : 'Add to Cart'}
         </ButtonAddToCart>
     );
 }
