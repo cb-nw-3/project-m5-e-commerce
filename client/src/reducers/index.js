@@ -1,22 +1,58 @@
 import produce from "immer";
+import { combineReducers } from "redux";
 
 const initialState = {
-  items: {},
+  items: [],
 };
 
-export default function cartReducer(state = initialState, action) {
+const initialCartState = {
+  cartItems: {},
+};
+
+function items(state = initialState, action) {
+  switch (action.type) {
+    case "INCREMENT": {
+      return produce(state, (draftState) => {
+        const index = draftState.items.findIndex(
+          (item) => item._id == action.id
+        );
+        draftState.items[index].numInStock++;
+      });
+    }
+    case "DECREMENT": {
+      return produce(state, (draftState) => {
+        const index = draftState.items.findIndex(
+          (item) => item._id == action.id
+        );
+        draftState.items[index].numInStock--;
+      });
+    }
+    case "RECEIVE_ITEMS": {
+      console.log("RECEIVE_ITEMS");
+      return produce(state, (draftState) => {
+        draftState.items = action.items;
+      });
+    }
+    default:
+      return state;
+  }
+}
+
+function cart(state = initialCartState, action) {
   switch (action.type) {
     case "ADD_ITEM": {
       return produce(state, (draftState) => {
         console.log(action.item);
         // Check if we already have >=1 of these items
-        const alreadyHasItem = draftState.items.hasOwnProperty(action.item.id);
+        const alreadyHasItem = draftState.cartItems.hasOwnProperty(
+          action.item.id
+        );
 
         if (alreadyHasItem) {
-          draftState.items[action.item.id].quantity++;
+          draftState.cartItems[action.item.id].quantity++;
           console.log(draftState);
         } else {
-          draftState.items[action.item.id] = {
+          draftState.cartItems[action.item.id] = {
             ...action.item,
             quantity: 1,
           };
@@ -27,7 +63,7 @@ export default function cartReducer(state = initialState, action) {
 
     case "REMOVE_ITEM": {
       return produce(state, (draftState) => {
-        delete draftState.items[action.itemId];
+        delete draftState.cartItems[action.itemId];
       });
     }
 
@@ -35,7 +71,7 @@ export default function cartReducer(state = initialState, action) {
       const { itemId, newQuantity } = action;
 
       return produce(state, (draftState) => {
-        draftState.items[itemId].quantity = newQuantity;
+        draftState.cartItems[itemId].quantity = newQuantity;
       });
     }
 
@@ -48,9 +84,8 @@ export default function cartReducer(state = initialState, action) {
   }
 }
 
-export const getItemArray = (state) => Object.values(state.items);
+export default combineReducers({ cart, items });
+
+export const getItemArray = (state) => Object.values(state.cart.cartItems);
 export const getSubtotal = (state) =>
-  getItemArray(state).reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
+  state.items.items.reduce((acc, item) => acc + item.price * item.quantity, 0);

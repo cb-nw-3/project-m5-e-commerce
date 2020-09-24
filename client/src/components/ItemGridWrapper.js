@@ -4,23 +4,28 @@ import { useState, useEffect } from "react";
 import Button from "./Button";
 import Pagination from "./Pagination";
 import Cart from "./Cart";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../actions/actions";
-import { updateQuantity } from "../actions/actions";
+import { updateQuantity, decrementQty } from "../actions/actions";
 
 const ItemGridWrapper = () => {
-  const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(9);
 
   useEffect(() => {
     fetch("/items")
       .then((response) => response.json())
-      .then((data) => setItems(data));
+      .then((data) =>
+        dispatch({
+          type: "RECEIVE_ITEMS",
+          items: data,
+        })
+      );
   }, []);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const items = useSelector((state) => state.items.items);
   const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
   const dispatch = useDispatch();
 
@@ -51,13 +56,14 @@ const ItemGridWrapper = () => {
               <Button
                 onClick={() => {
                   dispatch(
-                    addItem({
-                      name: item.name,
-                      price: item.price,
-                      id: item._id,
-                    }) //,
-                    //dispatch(updateQuantity({ itemId: item._id }))
+                    addItem(
+                      item._id
+                      // name: item.name,
+                      // price: item.price,
+                      // id: item._id,
+                    )
                   );
+                  dispatch(decrementQty(item._id));
                 }}
               >
                 Add To Cart

@@ -9,7 +9,6 @@ import { updateQuantity, removeItem } from "../actions/actions";
 import UnstyledButton from "./GenericButton";
 
 const CartItem = ({ item }) => {
-  const itemQuantity = useSelector((state) => state.items[item.id].quantity);
   const dispatch = useDispatch();
 
   return (
@@ -23,7 +22,7 @@ const CartItem = ({ item }) => {
       <Body>
         Quantity:{" "}
         <TextInput
-          value={itemQuantity}
+          value={item.quantity}
           onChange={(ev) => dispatch(updateQuantity(item.id, ev.target.value))}
         />
       </Body>

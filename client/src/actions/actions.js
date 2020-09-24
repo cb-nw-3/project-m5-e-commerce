@@ -17,3 +17,18 @@ export const updateQuantity = (itemId, newQuantity) => ({
 export const clearCart = () => ({
   type: "CLEAR_CART",
 });
+
+export const incrementQty = (itemId) => ({
+  type: "INCREMENT",
+  id: itemId,
+});
+
+export const decrementQty = (itemId) => ({
+  type: "DECREMENT",
+  id: itemId,
+});
+
+export const receiveItems = (items) => ({
+  type: "RECEIVE_ITEMS",
+  items: items,
+});
