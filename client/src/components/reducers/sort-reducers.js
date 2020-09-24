@@ -17,3 +17,5 @@ export default function sortReducer(state = initialState, action) {
     }
   }
 }
+
+export const getSorting = (state) => state.sort.sorting;

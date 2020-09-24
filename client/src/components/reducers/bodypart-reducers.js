@@ -17,3 +17,5 @@ export default function bodyPartReducer(state = initialState, action) {
     }
   }
 }
+
+export const getBodyPart = (state) => state.bodyPart.bodyPart;
