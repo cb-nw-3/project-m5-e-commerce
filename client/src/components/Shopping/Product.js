@@ -2,8 +2,10 @@ import React from "react";
 import { useHistory, Link } from "react-router-dom";
 // allows us to use dispatch for the reducers action
 import { useDispatch } from "react-redux";
+import { useSelector } from 'react-redux';
 import styled from "styled-components";
 import LoadingIcon from "../LoadingIcon/index";
+import { getCartItemArray } from "../reducers/index";
 
 import { addItem } from "../action";
 // item property

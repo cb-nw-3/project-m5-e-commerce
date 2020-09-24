@@ -25,7 +25,7 @@ const CartFooter = () => {
   const handleCartPurchase = (event) => {
     event.preventDefault();
     fetch("/upDateStock", {
-      method: "POST",
+      method: "PATCH",
       body: JSON.stringify({
         //we are sending this body over to backend upDateStock
         purchasedStock: state,
