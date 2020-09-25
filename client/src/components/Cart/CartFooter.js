@@ -55,8 +55,28 @@ const CartFooter = () => {
   );
 };
 
-const CartFooterContainer = styled.div``;
-const StyledButton = styled.button``;
+const CartFooterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+  background-color: white;
+  text-align: center;
+ `;
+
+const StyledButton = styled.button`
+  border-radius: 20%;
+  background-color: black;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  width: 90px;
+  height: 40px;
+  align-items: center;
+  display: block;
+  `;
+
 const PriceTotal = styled.p``;
 
 export default CartFooter;

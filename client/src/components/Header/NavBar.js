@@ -6,10 +6,10 @@ const NavBar = () => {
   return (
     // This is temporary filler
     <Wrapper>
-      <NavBarItem to={"/"}>link1</NavBarItem>
-      <NavBarItem to={"/"}>link2</NavBarItem>
-      <NavBarItem to={"/"}>link3</NavBarItem>
-      <NavBarItem to={"/"}>About Us</NavBarItem>
+      <NavBarItem to={"/"}>Our Favorites</NavBarItem>
+      <NavBarItem to={"/"}>Just for Kidz</NavBarItem>
+      <NavBarItem to={"/"}>The Newz</NavBarItem>
+      <NavBarItem to={"/"}>Why Bagelz</NavBarItem>
     </Wrapper>
   );
 };
