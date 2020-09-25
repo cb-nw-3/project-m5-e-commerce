@@ -9,7 +9,7 @@ const NavBar = () => {
       <NavBarItem to={"/"}>link1</NavBarItem>
       <NavBarItem to={"/"}>link2</NavBarItem>
       <NavBarItem to={"/"}>link3</NavBarItem>
-      <NavBarItem to={"/"}>About Us</NavBarItem>
+      <NavBarItem to={"/AboutUs"}>About Us</NavBarItem>
     </Wrapper>
   );
 };

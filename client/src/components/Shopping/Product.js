@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 // allows us to use dispatch for the reducers action
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
@@ -10,10 +10,7 @@ import { addItem } from "../action";
 const Product = ({ imageSrc, name, price, _id, numInStock }) => {
   const dispatch = useDispatch();
   let history = useHistory();
-  function handleClick(ev) {
-    ev.preventDefault();
-    history.push(`/Shopping/`);
-  }
+
   return name ? (
     <Wrapper>
       <div>

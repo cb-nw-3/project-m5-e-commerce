@@ -6,6 +6,7 @@ import ProductDetails from "./Shopping/ProductDetails";
 import ErrorPage from "./ErrorPage/index";
 import HomePage from "./HomePage/index";
 import GlobalStyles from "./GlobalStyles";
+import AboutUs from "./Header/AboutUs";
 
 const App = () => {
   return (
@@ -14,6 +15,9 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <HomePage />
+          </Route>
+          <Route exact path="/AboutUs">
+            <AboutUs />
           </Route>
           <Route exact path="/shop/:itemId">
             <ProductDetails />

@@ -28,7 +28,7 @@ const ProductDetails = () => {
       <Wrapper>
         <StoreLogoLowOpacity src={logo} />
         <Div>
-          <Div2>
+          <ProductInfo>
             <Span>
               <strong> left in store :</strong>
               {item.numInStock}
@@ -52,11 +52,11 @@ const ProductDetails = () => {
               <strong>Company ID :</strong>
               {item.companyId}
             </Span>
-          </Div2>
-          <Div1>
+          </ProductInfo>
+          <ProductPhoto>
             <Img src={item.imageSrc} alt="productImage" />
-            <Span1>{item.name}</Span1>
-          </Div1>
+            <SpanName>{item.name}</SpanName>
+          </ProductPhoto>
         </Div>
       </Wrapper>
     </>
@@ -81,7 +81,7 @@ const Div = styled.div`
   justify-content: space-evenly;
 `;
 
-const Div1 = styled.div`
+const ProductPhoto = styled.div`
   display: flex;
   flex-direction: column;
   justify-items: space-around;
@@ -96,7 +96,7 @@ const StoreLogoLowOpacity = styled.img`
   width: 220px;
 `;
 
-const Div2 = styled.div`
+const ProductInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -118,7 +118,7 @@ const Span = styled.div`
   }
 `;
 
-const Span1 = styled.div`
+const SpanName = styled.div`
   display: flex;
   flex-direction: row;
   font-size: 50px;
