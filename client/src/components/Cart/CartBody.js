@@ -5,11 +5,9 @@ import CartItemInput from "./CartItemInput";
 import CartItemDescription from "./CartItemDescription";
 
 import { getCartItemArray } from "../reducers/cart-reducers";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 const CartBody = () => {
-  const dispatch = useDispatch();
   const state = useSelector(getCartItemArray);
 
   return (

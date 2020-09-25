@@ -48,3 +48,16 @@ export const receiveShoppingItems = (items) => ({
   type: "RECEIVE_SHOPPING_ITEMS",
   items,
 })
+
+export const requestPurchase = () => ({
+  type: "REQUEST_PURCHASE",
+})
+
+export const receivePurchase = () => ({
+  type: "RECEIVE_PURCHASE",
+})
+
+export const purchaseError = (error) => ({
+  type: "PURCHASE_ERROR",
+  error,
+})

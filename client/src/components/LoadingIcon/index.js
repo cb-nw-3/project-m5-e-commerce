@@ -3,10 +3,10 @@ import React from "react";
 import styled from "styled-components";
 import { keyframes } from "styled-components";
 
-const LoadingIcon = () => {
+const LoadingIcon = (props) => {
   return (
     <>
-      <RotatingImage src={require(`../assets/bagel1.png`)} />
+      <RotatingImage src={require(`../assets/bagel1.png`)} style={{width: `${props.size}px`, height: `${props.size}px`}} />
     </>
   );
 };
@@ -20,10 +20,8 @@ const RotatingAnimation = keyframes`
   }
 `;
 const RotatingImage = styled.img`
-  width: 100px;
-  height: 100px;
   animation: ${RotatingAnimation} 1.5s infinite linear;
-  margin: 100px auto;
+  margin: 0 auto;
 `;
 
 export default LoadingIcon;

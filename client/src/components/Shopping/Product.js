@@ -2,7 +2,6 @@ import React from "react";
 import { useHistory, Link } from "react-router-dom";
 // allows us to use dispatch for the reducers action
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import styled from "styled-components";
 import LoadingIcon from "../LoadingIcon/index";
 
@@ -35,12 +34,9 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
       </Button>
     </Wrapper>
   ) : (
-    <LoadingIcon />
+    <LoadingIcon size={100} />
   );
 };
-
-const WrapperNathalie = styled.div``;
-const ButtonNathalie = styled.button``;
 
 const Wrapper = styled.div`
   display: flex;

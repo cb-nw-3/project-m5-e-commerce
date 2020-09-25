@@ -17,12 +17,12 @@ import {
 const Shopping = () => {
   const dispatch = useDispatch();
   const shoppingItemsState = useSelector((state) => state.shoppingItems.items);
-  const shoppingItemsStatus = useSelector(
-    (state) => state.shoppingItems.status
-  );
+  const shoppingItemsStatus = useSelector((state) => state.shoppingItems.status);
   // Filter out the items based on the bodyPart state
   const bodyPartState = useSelector(getBodyPart);
   const sortingState = useSelector(getSorting);
+  const purchaseStatus = useSelector((state) => state.cartPurchase);
+
 
   //Sorting methods
   const sortAlphaAZ = (arr) =>
@@ -105,7 +105,7 @@ const Shopping = () => {
         console.error(err);
         dispatch(receiveShoppingItemsError());
       });
-  }, [bodyPartState, sortingState]);
+  }, [bodyPartState, sortingState, purchaseStatus]);
 
   return (
     <>
@@ -117,7 +117,7 @@ const Shopping = () => {
           })}
         </Wrapper>
       ) : (
-        <LoadingIcon />
+        <LoadingIcon size={100} />
       )}
     </>
   );
