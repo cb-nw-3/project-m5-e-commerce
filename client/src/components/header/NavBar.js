@@ -63,7 +63,8 @@ export default NavBar;
 
 const NavWrapper = styled.div`
   position: sticky;
-  top: 0;
+  top: -2px;
+  padding-top: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
