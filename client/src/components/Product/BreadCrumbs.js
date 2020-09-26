@@ -13,7 +13,6 @@ const BreadCrumbs = ({ device, children }) => {
           </Anchor>
         </Span>
         |<Span>ALL PRODUCTS</Span>|
-
       </Breadcrumb>
       <Span>{children}</Span>
     </Wrapper>
@@ -29,6 +28,10 @@ const Wrapper = styled.div`
   align-items: center;
   font-size: 12px;
   margin-bottom: 10px;
+
+  @media (max-width: ${THEME.mobile}) {
+    margin-left: 35px;
+  }
 `;
 
 const Anchor = styled.a`
@@ -55,10 +58,6 @@ const StyledHomeIcon = styled(HomeIcon)`
   width: 18px !important;
   height: 18px !important;
   display: flex !important;
-
-  @media (max-width: ${THEME.mobile}) {
-    padding-left: 20px;
-  }
 `;
 
 export default BreadCrumbs;
