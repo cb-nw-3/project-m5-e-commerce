@@ -6,12 +6,15 @@ import NavBar from "./NavBar";
 import SearchInputs from './SearchInputs';
 
 const logo2 = require("../assets/bagel.gif");
+
 const Header = () => {
   return (
     <Wrapper>
       <StoreLogo imgSrc={logo2} />
-      <NavBar />
-      <SearchInputs />
+      <NavPages>
+        <SearchInputs />
+        <NavBar />
+      </NavPages>
     </Wrapper>
   );
 };
@@ -21,7 +24,10 @@ const Wrapper = styled.div`
   flex-direction: row;
   align-items: left;
   justify-content: space-between;
-  height: 33vh;
 `;
+const NavPages = styled.div`
+  display: flex;
+  
+`
 
 export default Header;

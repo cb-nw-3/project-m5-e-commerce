@@ -5,7 +5,7 @@ import DropdownMenu from './DropdownMenu';
 const SearchInputs = () => {
 
   return (
-    <>
+    <DropdownContainer>
       <DropdownMenu 
         title="Shop By Body Part"
         menuOptions= {['All','Head','Hands', 'Wrist', 'Arms','Chest','Torso', 'Waist', 'Feet']}
@@ -13,12 +13,15 @@ const SearchInputs = () => {
 
       <DropdownMenu 
         title="Sort By"
-        menuOptions= {['Alphabetically (A to Z)', 'Alphabetically (Z to A)', 'Price ($ to $$$)', 'Price ($$$ to $)']}
+        menuOptions= {['A ↑', 'Z ↓', '$ ↑', '$$$ ↓']}
         />
-    </>
+    </DropdownContainer>
   );
 };
 
-
+const DropdownContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
 
 export default SearchInputs;
