@@ -18,6 +18,7 @@ const QuantityBar = ({ id, addToCart, numInStock }) => {
     <>
       <Wrapper>
         <Text>Quantity:</Text>
+
         <Buttons
           id={id}
           numInStock={numInStock}
@@ -42,6 +43,7 @@ const QuantityBar = ({ id, addToCart, numInStock }) => {
           onClick={() => addToCart(quantity)}
         ></BuyButton>
       </div>
+
     </>
   );
 };
@@ -49,8 +51,8 @@ const QuantityBar = ({ id, addToCart, numInStock }) => {
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: left;
-  padding: 15px 0 30px 0;
+  justify-content: center;
+  margin-top: 20px;
 
   @media (min-width: ${THEME.mobile}) {
     justify-content: initial;

@@ -67,12 +67,24 @@ const Product = () => {
       <Image itemSrc={image} />
       <ItemDetails>
         <BreadCrumbs device="desktop">{category}</BreadCrumbs>
-        <Tag>{numInStock ? "IN STOCK" : "OUT OF STOCK"}</Tag>
         <div>
+          <Tag>{numInStock ? "IN STOCK" : "OUT OF STOCK"}</Tag>
           <Paragraph>{nameCapitalized}</Paragraph>
           <Paragraph>${price}</Paragraph>
-          <Company src={item.company.url}>{item.company.name}</Company>
-          <Sku>SKU: {id}</Sku>
+          <AlignBox>
+            <Company src={item.company.url}>{item.company.name}</Company>
+            <BarSpan
+              style={{
+                marginRight: "5px",
+                marginLeft: "5px",
+                fontWeight: "200",
+                color: `${THEME.primary}`,
+              }}
+            >
+              |
+            </BarSpan>
+            <Sku>SKU: {id}</Sku>
+          </AlignBox>
         </div>
         <QuantityBar id={id} numInStock={numInStock} addToCart={addToCart} />
       </ItemDetails>
@@ -87,6 +99,18 @@ const Wrapper = styled.div`
     display: flex;
     margin: 0 40px 40px 40px;
   }
+`;
+
+
+const AlignBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
+const BarSpan = styled.span`
+  margin-right: 5px;
+  margin-left: 5px;
+  font-weight: 200;
+  color: ${THEME.primary};
 `;
 
 const Paragraph = styled.p`

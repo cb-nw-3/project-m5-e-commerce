@@ -9,10 +9,11 @@ const BreadCrumbs = ({ device, children }) => {
       <Breadcrumb>
         <Span>
           <Anchor href="/">
-            <HomeIcon />
+            <StyledHomeIcon />
           </Anchor>
         </Span>
-        /<Span>ALL PRODUCTS</Span>/
+        |<Span>ALL PRODUCTS</Span>|
+
       </Breadcrumb>
       <Span>{children}</Span>
     </Wrapper>
@@ -26,11 +27,15 @@ const Wrapper = styled.div`
       : `@media (min-width:${THEME.mobile}){ display: none;}`};
   display: flex;
   align-items: center;
+  font-size: 12px;
+  margin-bottom: 10px;
 `;
 
 const Anchor = styled.a`
   text-decoration: none;
   color: inherit;
+  margin: 0;
+  padding: 0;
 `;
 
 const Span = styled.span`
@@ -44,6 +49,12 @@ const Breadcrumb = styled.div`
   color: ${THEME.primary};
   display: flex;
   align-items: center;
+`;
+
+const StyledHomeIcon = styled(HomeIcon)`
+  width: 18px !important;
+  height: 18px !important;
+  display: flex !important;
 
   @media (max-width: ${THEME.mobile}) {
     padding-left: 20px;

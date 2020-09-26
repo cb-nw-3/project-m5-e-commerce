@@ -11,17 +11,16 @@ const Tag = ({ children }) => {
 };
 
 const Wrapper = styled.div`
-  display: inherit;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  display: flex;
 `;
 
 const Paragraph = styled.p`
   background: ${THEME.primary};
-  width: auto;
-  padding: 5px 10px;
-  border-radius: 40px;
+  padding: 0px 10px;
+  border-radius: 5px;
   color: ${THEME.white};
-  font-size: 14px;
+  font-size: 12px;
+  margin-bottom: 10px;
+  max-width: 105px;
 `;
 export default Tag;
