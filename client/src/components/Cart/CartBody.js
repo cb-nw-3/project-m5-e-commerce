@@ -5,12 +5,11 @@ import CartItemInput from "./CartItemInput";
 import CartItemDescription from "./CartItemDescription";
 
 import { getCartItemArray } from "../reducers/cart-reducers";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 const CartBody = () => {
-  const dispatch = useDispatch();
   const state = useSelector(getCartItemArray);
+
   return (
     <CartItemContainer>
       {state.map((cartItem) => {
@@ -18,13 +17,11 @@ const CartBody = () => {
           <>
             <CartItemDescription
               key={cartItem._id}
-              name={cartItem.name}
-              price={cartItem.price}
+              {...cartItem}
             />
             <CartItemInput
               key={cartItem._id + 0.1}
-              quantity={cartItem.quantity}
-              _id={cartItem._id}
+              {...cartItem}
             />
           </>
         );

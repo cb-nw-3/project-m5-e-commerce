@@ -9,11 +9,7 @@ import { addItem } from "../action";
 // item property
 const Product = ({ imageSrc, name, price, _id, numInStock }) => {
   const dispatch = useDispatch();
-  let history = useHistory();
-  function handleClick(ev) {
-    ev.preventDefault();
-    history.push(`/Shopping/`);
-  }
+
   return name ? (
     <Wrapper>
       <div>
@@ -24,15 +20,8 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
           <div>
             <a href={`/shop/${_id}`}>{name}</a>
             <h4>{price}</h4>
-            <Button
-              onClick={() => {
-                dispatch(addItem({ _id, name, price }));
-              }}
-              // disabled={numInStock > 0 ? false : true}
-            >
-              Add to cart
-            </Button>
           </div>
+          <p>{numInStock}</p>
         </div>
       </div>
       <Button
@@ -45,12 +34,9 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
       </Button>
     </Wrapper>
   ) : (
-    <LoadingIcon />
+    <LoadingIcon size={100} />
   );
 };
-
-const WrapperNathalie = styled.div``;
-const ButtonNathalie = styled.button``;
 
 const Wrapper = styled.div`
   display: flex;
