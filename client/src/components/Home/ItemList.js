@@ -4,6 +4,7 @@ import Item from "./Item";
 import { useSelector, useDispatch } from "react-redux";
 import { getNextPage } from "../../Actions";
 import { listToMatrix } from "../../Helper/matrixConverter";
+import Filter from "./Filters";
 
 const ItemList = () => {
   const itemsList = useSelector((state) => state.itemList.items);
@@ -11,10 +12,14 @@ const ItemList = () => {
   const showViewMore = useSelector((state) => state.itemList.showViewMore);
   const dispatch = useDispatch();
 
-
   const fetchItems = async (category) => {
     const numOfItemsToSkip = itemsList.flat().length;
-    const data = await fetch("http://localhost:4000/api/items/" + category + "?skip=" + numOfItemsToSkip);
+    const data = await fetch(
+      "http://localhost:4000/api/items/" +
+        category +
+        "?skip=" +
+        numOfItemsToSkip
+    );
 
     if (data.ok) {
       const items = await data.json();
@@ -26,17 +31,30 @@ const ItemList = () => {
 
   return (
     <Wrapper>
+      <Filter />
       <ListWrapper>
         {itemsList &&
-          (itemsList.map((items, index) => {
-            return (<Row key={index}>
-              {items.map(item => <Item key={item._id} item={item} />)}
-            </Row>)
-          }))}
+          itemsList.map((items, index) => {
+            return (
+              <Row key={index}>
+                {items.map((item) => (
+                  <Item key={item._id} item={item} />
+                ))}
+              </Row>
+            );
+          })}
       </ListWrapper>
-      {showViewMore && <ListFooter>
-        <ViewMore onClick={() => {fetchItems(category)}}>View more...</ViewMore>
-      </ListFooter>}
+      {showViewMore && (
+        <ListFooter>
+          <ViewMore
+            onClick={() => {
+              fetchItems(category);
+            }}
+          >
+            View more...
+          </ViewMore>
+        </ListFooter>
+      )}
     </Wrapper>
   );
 };
@@ -71,6 +89,6 @@ const ViewMore = styled.a`
   &:hover {
     color: blue;
   }
-`
+`;
 
 export default ItemList;
