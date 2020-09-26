@@ -30,13 +30,12 @@ const Filter = () => {
   };
 
   const onApplyFilter = async () => {
-    const filterUrl = BuildFiltertUrl(filters, category);
+    const filterUrl = BuildFiltertUrl(filters, category, 0);
 
     const data = await fetch(filterUrl);
     if (data.ok) {
       const items = await data.json();
       const matrix = listToMatrix(items);
-      console.log(matrix);
       dispatch(applyFilter(matrix, true));
     }
   };
@@ -64,7 +63,7 @@ const Filter = () => {
           onChange={(event) => {
             dispatch(setName(event.target.value));
           }}
-          defaultValue={filters.name}
+          value={filters.name}
         />
       </InputWrapper>
       <InputWrapper>
@@ -72,7 +71,7 @@ const Filter = () => {
           onChange={(event) => {
             dispatch(setLocation(event.target.value));
           }}
-          defaultValue={filters.location}
+          value={filters.location}
         >
           <option value={""}>Location</option>
           {filterInfos &&
@@ -90,7 +89,7 @@ const Filter = () => {
           onChange={(event) => {
             dispatch(setCompany(event.target.value));
           }}
-          defaultValue={filters.company}
+          value={filters.company}
         >
           <option value={""}>Company</option>
           {filterInfos &&
@@ -109,7 +108,7 @@ const Filter = () => {
           type="range"
           min="0"
           max="2000"
-          defaultValue={filters.price}
+          value={filters.price}
           onChange={(event) => {
             dispatch(setPrice(event.target.value));
           }}
@@ -121,7 +120,7 @@ const Filter = () => {
           onChange={(event) => {
             dispatch(setLimit(event.target.value));
           }}
-          defaultValue={filters.limit}
+          value={filters.limit}
         >
           {filterInfos &&
             filterInfos.limits.map((limit) => {

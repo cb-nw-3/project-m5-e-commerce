@@ -1,4 +1,4 @@
-export const BuildFiltertUrl = (filters, category) => {
+export const BuildFiltertUrl = (filters, category, skip) => {
   let requestUrl = "http://localhost:4000/api/filter?";
   const parameters = [];
   if (filters.name && filters.name !== "") {
@@ -16,6 +16,7 @@ export const BuildFiltertUrl = (filters, category) => {
   parameters.push("category=" + category);
   parameters.push("price=" + filters.price);
   parameters.push("limit=" + filters.limit);
+  parameters.push("skip=" + skip);
 
   for (let i = 0; i < parameters.length; i++) {
     if (i === 0) requestUrl += parameters[i];

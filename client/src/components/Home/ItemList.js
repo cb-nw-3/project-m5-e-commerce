@@ -5,11 +5,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { getNextPage } from "../../Actions";
 import { listToMatrix } from "../../Helper/matrixConverter";
 import Filter from "./Filters";
+import { BuildFiltertUrl } from "../../Helper/UrlBuilder";
 
 const ItemList = () => {
   const itemsList = useSelector((state) => state.itemList.items);
   const category = useSelector((state) => state.itemList.category);
   const showViewMore = useSelector((state) => state.itemList.showViewMore);
+  const filters = useSelector((state) => state.itemList.filters);
+  const isFiltered = useSelector((state) => state.itemList.filterApplied);
   const dispatch = useDispatch();
 
   const fetchItems = async (category) => {
@@ -21,6 +24,19 @@ const ItemList = () => {
         numOfItemsToSkip
     );
 
+    if (data.ok) {
+      const items = await data.json();
+      const matrix = listToMatrix(items);
+      const newSet = itemsList.concat(matrix);
+      dispatch(getNextPage(newSet, category));
+    }
+  };
+
+  const fetchFilteredItems = async (category) => {
+    const numOfItemsToSkip = itemsList.flat().length;
+    const filterUrl = BuildFiltertUrl(filters, category, numOfItemsToSkip);
+
+    const data = await fetch(filterUrl);
     if (data.ok) {
       const items = await data.json();
       const matrix = listToMatrix(items);
@@ -50,7 +66,11 @@ const ItemList = () => {
         <ListFooter>
           <ViewMore
             onClick={() => {
-              fetchItems(category);
+              if (!isFiltered) {
+                fetchItems(category);
+              } else {
+                fetchFilteredItems(category);
+              }
             }}
           >
             View more...
