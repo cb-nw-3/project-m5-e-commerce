@@ -18,19 +18,25 @@ export const Buttons = ({ children, onClick, id, numInStock }) => {
 
 const Button = styled.button`
   background-color: #d8d8d8;
-  border: 1px solid #d8d8d8;
+  border: none;
   border-radius: 50%;
-  margin: 0 5px 0 5px;
+  margin: 0 10px 0 10px;
   color: black;
   font-size: 16px;
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
   padding: 5px;
-  display: inline-block;
 
-  &:hover {
-    box-shadow: none;
-    cursor: auto;
+  @media (max-width: ${THEME.mobile}) {
+    background-color: #d8d8d8;
+    border: none;
+    border-radius: 50%;
+    margin: 0 5px 0 5px;
+    color: black;
+    font-size: 12px;
+    height: 20px;
+    width: 20px;
+    padding: 5px;
   }
 `;
 
