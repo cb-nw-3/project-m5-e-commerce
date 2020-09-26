@@ -29,7 +29,7 @@ const Cart = () => {
       </Top>
       <Bottom>
         <Total>
-          Total: <strong>{subtotal}</strong>
+          Total: <strong>${subtotal.toFixed(2)}</strong>
         </Total>
         <Button style={{ width: 140 }}>Purchase</Button>
       </Bottom>
