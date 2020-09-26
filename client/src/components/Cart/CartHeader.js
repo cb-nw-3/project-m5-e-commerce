@@ -1,15 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 
-const CartHeader = () => {
+const CartHeader = ({ imgSrc }) => {
   return (
     <CartTitleContainer>
-      <CartTitle>My Cart</CartTitle>
+      <CartTitle>My Shopping Bag</CartTitle>
+      <Image src={imgSrc} />
     </CartTitleContainer>
   );
 };
 
-const CartTitle = styled.h2``;
-const CartTitleContainer = styled.div``;
+const CartTitle = styled.h2`
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+`;
+const CartTitleContainer = styled.div`
+  width: 33%;
+`;
+
+const Image = styled.img`
+  width: 200px;
+`;
 
 export default CartHeader;

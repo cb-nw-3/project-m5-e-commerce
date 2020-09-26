@@ -17,10 +17,13 @@ const NavBar = () => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  align-content: center;
 `;
 
 const NavBarItem = styled(Link)`
   margin: 0 20pt;
+  font-family: "Montserrat", sans-serif;
 `;
 
 export default NavBar;

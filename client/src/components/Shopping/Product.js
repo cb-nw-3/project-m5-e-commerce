@@ -46,6 +46,9 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
   );
 };
 
+const WrapperNathalie = styled.div``;
+const ButtonNathalie = styled.button``;
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

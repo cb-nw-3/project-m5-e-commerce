@@ -1,5 +1,6 @@
 // FIRST WRITE OUR ACTIONS HERE
 //This is the action we'll dispatch when the user clicks "Add to cart".
+//this is the definition
 
 export const addItem = (item) => ({
   type: "ADD_ITEM",
@@ -24,3 +25,13 @@ export const receiveItems = (items) => ({
   type: "RECEIVE_ITEMS",
   items,
 })
+
+export const selectSort = (option) => ({
+  type: "SELECT-SORT",
+  option,
+});
+
+export const selectBodyPart = (option) => ({
+  type: "SELECT-BODYPART",
+  option,
+});
