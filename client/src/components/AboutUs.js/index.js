@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import StoreLogo from "../Header/StoreLogo";
+import Header from "../Header/index";
 
 const logo2 = require("../assets/bagel.gif");
 const alex = require("../assets/alex.jpg");
@@ -16,7 +16,7 @@ const AboutUs = () => {
   return (
     <>
       <Wrapper>
-        <StoreLogo imgSrc={logo2} />
+        <Header />
         <MainText>
           <h1>Why baglez</h1>
           Bagelz wearables circle us physically but also virtually as they
