@@ -13,6 +13,7 @@ const BreadCrumbs = ({ device, children }) => {
           </Anchor>
         </Span>
         |<Span>ALL PRODUCTS</Span>|
+
       </Breadcrumb>
       <Span>{children}</Span>
     </Wrapper>
@@ -54,6 +55,10 @@ const StyledHomeIcon = styled(HomeIcon)`
   width: 18px !important;
   height: 18px !important;
   display: flex !important;
+
+  @media (max-width: ${THEME.mobile}) {
+    padding-left: 20px;
+  }
 `;
 
 export default BreadCrumbs;

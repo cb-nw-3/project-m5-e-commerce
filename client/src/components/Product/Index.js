@@ -69,7 +69,6 @@ const Product = () => {
         <BreadCrumbs device="desktop">{category}</BreadCrumbs>
         <div>
           <Tag>{numInStock ? "IN STOCK" : "OUT OF STOCK"}</Tag>
-
           <Paragraph>{nameCapitalized}</Paragraph>
           <Paragraph>${price}</Paragraph>
           <AlignBox>
@@ -87,7 +86,7 @@ const Product = () => {
             <Sku>SKU: {id}</Sku>
           </AlignBox>
         </div>
-        <QuantityBar id={id} addToCart={addToCart} />
+        <QuantityBar id={id} numInStock={numInStock} addToCart={addToCart} />
       </ItemDetails>
     </Wrapper>
   );
@@ -101,6 +100,8 @@ const Wrapper = styled.div`
     margin: 0 40px 40px 40px;
   }
 `;
+
+
 const AlignBox = styled.div`
   display: flex;
   align-items: center;

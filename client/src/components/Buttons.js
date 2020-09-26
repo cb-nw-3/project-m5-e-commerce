@@ -4,15 +4,15 @@ import { THEME } from "../components/Style/Theme";
 import { useSelector } from "react-redux";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 
-export const Buttons = ({ children, onClick, id }) => {
-  const isAddedToCart = useSelector((state) =>
-    state.purchase[id] ? state.purchase[id].isAddedToCart : false
-  );
-  return (
-    <Button onClick={onClick} disabled={isAddedToCart}>
-      {children}
-    </Button>
-  );
+export const Buttons = ({ children, onClick, id, numInStock }) => {
+    const isAddedToCart = useSelector((state) => state.purchase[id] ? state.purchase[id].isAddedToCart : false);
+    const isNotInSotck = numInStock > 0 ? false : true;
+
+    return (
+        <Button onClick={onClick} disabled={isAddedToCart || isNotInSotck}>
+            {children}
+        </Button >
+    )
 };
 
 const Button = styled.button`
@@ -53,15 +53,18 @@ const Button = styled.button`
   }
 `;
 
-export const BuyButton = ({ onClick, id }) => {
+export const BuyButton = ({ onClick, id, numInStock }) => {
   const isAddedToCart = useSelector((state) =>
     state.purchase[id] ? state.purchase[id].isAddedToCart : false
   );
-
+ const isNotInSotck = numInStock > 0 ? false : true;
+  
   return (
-    <ButtonAddToCart onClick={onClick} disabled={isAddedToCart}>
+    <ButtonAddToCart onClick={onClick} disabled={isAddedToCart || isNotInSotck}>
       <StyledCartIcon />
-      <BuyText>{isAddedToCart ? "Added to Cart" : "Add to Cart"}</BuyText>
+      <BuyText>{isAddedToCart ? 'Added to Cart'
+                : isNotInSotck ? 'Out of Stock'
+                    : 'Add to Cart'}</BuyText>
     </ButtonAddToCart>
   );
 };
@@ -69,6 +72,7 @@ export const BuyButton = ({ onClick, id }) => {
 const BuyText = styled.h4`
   font-weight: 400;
 `;
+
 
 const ButtonAddToCart = styled.button`
   transition: all 100ms ease-in 0s;

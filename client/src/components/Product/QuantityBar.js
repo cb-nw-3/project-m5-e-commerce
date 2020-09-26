@@ -5,7 +5,7 @@ import { Buttons } from "../Buttons";
 import { THEME } from "../Style/Theme";
 import { BuyButton } from "../Buttons";
 
-const QuantityBar = ({ id, addToCart }) => {
+const QuantityBar = ({ id, addToCart, numInStock }) => {
   const cartQuantity = useSelector((state) =>
     state.purchase[id] ? state.purchase[id].quantity : 1
   );
@@ -18,19 +18,32 @@ const QuantityBar = ({ id, addToCart }) => {
     <>
       <Wrapper>
         <Text>Quantity:</Text>
-        <Buttons id={id} onClick={() => setQuantity(quantity - 1 || 1)}>
+
+        <Buttons
+          id={id}
+          numInStock={numInStock}
+          onClick={() => setQuantity(quantity - 1 || 1)}
+        >
           -
         </Buttons>
         <Span>{quantity}</Span>
-        <Buttons id={id} onClick={() => setQuantity(Math.min(quantity + 1))}>
+        <Buttons
+          id={id}
+          numInStock={numInStock}
+          onClick={() => setQuantity(Math.min(quantity + 1))}
+        >
           +
         </Buttons>
       </Wrapper>
-      <BuyButton
-        id={id}
-        type="button"
-        onClick={() => addToCart(quantity)}
-      ></BuyButton>
+      <div>
+        <BuyButton
+          id={id}
+          type="button"
+          numInStock={numInStock}
+          onClick={() => addToCart(quantity)}
+        ></BuyButton>
+      </div>
+
     </>
   );
 };
