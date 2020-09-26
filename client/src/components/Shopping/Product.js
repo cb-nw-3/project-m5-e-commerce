@@ -20,27 +20,18 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
           <div>
             <a href={`/shop/${_id}`}>{name}</a>
             <h4>{price}</h4>
-            {/* <Button
-              onClick={() => {
-                dispatch(addItem({ _id, name, price }));
-              }}
-              // disabled={numInStock > 0 ? false : true}
-            >
-              Add to cart
-            </Button> */}
-
           </div>
           <p>{numInStock}</p>
         </div>
       </div>
-      <Button2
+      <Button
         onClick={() => {
           dispatch(addItem({ _id, name, price, numInStock }));
         }}
         disabled={numInStock > 0 ? false : true}
       >
         Add to cart
-      </Button2>
+      </Button>
     </Wrapper>
   ) : (
     <LoadingIcon size={100} />
@@ -61,7 +52,7 @@ const Wrapper = styled.div`
   padding-bottom: 20px;
 `;
 
-const Button2 = styled.button`
+const Button = styled.button`
   border-radius: 20%;
   background-color: black;
   font-weight: bold;
