@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-
+import Header from "../Header/index";
+import LoadingIcon from '../LoadingIcon/index'
 // goal is to display details of a specific product
 // information : the id of the product(from params)
 // we will fetch the data from the server
@@ -22,44 +23,42 @@ const ProductDetails = () => {
   }, [itemId]);
   console.log(item);
 
-  if (!item) return <>loading</>;
+  if (!item) return <LoadingIcon />;
   return (
-    <>
       <Wrapper>
-        <StoreLogoLowOpacity src={logo2} />
-        <Div>
-          <ProductInfo>
-            <Span>
-              <strong> left in store :</strong>
-              {item.numInStock}
-            </Span>
-            <Span>
-              <strong>Price :</strong> {item.price}
-            </Span>
-            <Span>
-              <strong>Body Location : </strong>
-              {item.body_location}
-            </Span>
-            <Span>
-              <strong>Category :</strong>
-              {item.category}
-            </Span>
-            <Span>
-              <strong> ID :</strong>
-              {item._id}
-            </Span>
-            <Span>
-              <strong>Company ID :</strong>
-              {item.companyId}
-            </Span>
-          </ProductInfo>
+        <Header />
+        <ProductDetailContainer>
           <ProductPhoto>
             <Img src={item.imageSrc} alt="productImage" />
             <SpanName>{item.name}</SpanName>
           </ProductPhoto>
-        </Div>
+          <ProductInfo>
+            <Span>
+              Available in store :
+              <InfoValue>{item.numInStock}</InfoValue>
+            </Span>
+            <Span>
+              Price : <InfoValue>{item.price}</InfoValue>
+            </Span>
+            <Span>
+              Body Location : 
+              <InfoValue>{item.body_location}</InfoValue>
+            </Span>
+            <Span>
+              Category :
+              <InfoValue>{item.category}</InfoValue>
+            </Span>
+            <Span>
+              ID :
+              <InfoValue>{item._id}</InfoValue>
+            </Span>
+            <Span>
+              Company ID :
+              <InfoValue>{item.companyId}</InfoValue>
+            </Span>
+          </ProductInfo>
+        </ProductDetailContainer>
       </Wrapper>
-    </>
   );
 };
 
@@ -69,44 +68,47 @@ const Wrapper = styled.div`
   justify-items: space-between;
   background-color: white;
 `;
-
+const InfoValue = styled.span`
+  font-weight: bold;
+  margin-left: 5px;
+`
 const Img = styled.img`
   border-radius: 10%;
+  margin-bottom: 50px;
   width: 300px;
   height: 300px;
 `;
 
-const Div = styled.div`
+const ProductDetailContainer = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-items: space-around;
   justify-content: space-evenly;
-  height: 350px;
+  height: 70vh;
 `;
-
 const ProductPhoto = styled.div`
   display: flex;
   flex-direction: column;
-  justify-items: space-evenly;
-  width: 300px;
+  justify-items: center;
+  align-items: center;
+  width: 500px;
 `;
-
-const StoreLogoLowOpacity = styled.img`
-  opacity: 0.5;
-  padding-bottom: 30px;
-  width: 220px;
-`;
-
 const ProductInfo = styled.div`
+  align-items: center;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 6px 2px 18px 1px rgba(150, 150, 150, 1);
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-content: center;
-  border-radius: 50%;
   background-color: white;
   padding: 15px;
-  border: 1px solid black;
-  border-radius: 3px;
+  font-family: "Montserrat", sans-serif;
+  width: 350px;
+  height: 500px;
 `;
 
 const Span = styled.div`
@@ -119,11 +121,13 @@ const Span = styled.div`
   }
 `;
 
-const SpanName = styled.div`
+const SpanName = styled.p`
   display: flex;
   flex-direction: row;
   font-size: 20px;
   font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
 `;
 
 export default ProductDetails;

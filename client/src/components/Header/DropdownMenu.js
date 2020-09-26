@@ -104,14 +104,12 @@ const Menu = styled.nav`
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
   z-index: 100;
 `
-
 const MenuList = styled.ul`
   font-family: "Montserrat", sans-serif;
   list-style: none;
   padding: 0;
   margin: 0;
 `
-
 const MenuOptionButton = styled.button`
   background-color: #fafafa;
 	color: black;
@@ -130,7 +128,6 @@ const MenuOptionButton = styled.button`
     color: #fafafa;
   }
 `
-
 const MenuOption = styled.li`
   border-bottom: 1px solid #dddddd;
 `
