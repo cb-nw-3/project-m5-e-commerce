@@ -37,7 +37,6 @@ const Wrapper = styled.div`
   grid-template-areas:
     "header header header sidebar"
     "main main main sidebar";
-  /* grid-gap: 64px; */
 `;
 const ItemGridWrap = styled.main`
   width: 75vw;

@@ -55,13 +55,15 @@ const ItemGridWrapper = () => {
 
               <Button
                 onClick={() => {
+                  if (item.numInStock < 1) {
+                    return;
+                  }
                   dispatch(
-                    addItem(
-                      item._id
-                      // name: item.name,
-                      // price: item.price,
-                      // id: item._id,
-                    )
+                    addItem({
+                      name: item.name,
+                      price: item.price,
+                      id: item._id,
+                    })
                   );
                   dispatch(decrementQty(item._id));
                 }}

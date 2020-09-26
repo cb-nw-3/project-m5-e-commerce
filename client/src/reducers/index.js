@@ -13,7 +13,7 @@ function items(state = initialState, action) {
   switch (action.type) {
     case "INCREMENT": {
       return produce(state, (draftState) => {
-        const index = draftState.items.findIndex(
+        const index = draftState.items.items.findIndex(
           (item) => item._id == action.id
         );
         draftState.items[index].numInStock++;
@@ -88,4 +88,7 @@ export default combineReducers({ cart, items });
 
 export const getItemArray = (state) => Object.values(state.cart.cartItems);
 export const getSubtotal = (state) =>
-  state.items.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  Object.values(state.cart.cartItems).reduce(
+    (acc, item) => acc + parseFloat(item.price.substring(1)) * item.quantity,
+    0
+  );
