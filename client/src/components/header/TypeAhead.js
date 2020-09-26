@@ -1,41 +1,82 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 import { COLORS } from "../styles/Colors";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { BiCurrentLocation } from "react-icons/bi";
+import {
+  requestItems,
+  receiveItems,
+  PaginateItems,
+  catchError,
+} from "../../actions";
+import { FilteredItemsByBody } from "../../filterHelpers";
 
-const TypeAhead = ({ isOpen, setIsOpen }) => {
-  let allItems = useSelector((state) => state.feed.items.items);
+const TypeAhead = ({ setIsOpen }) => {
+  const allItems = useSelector((state) => state.feed.items.items);
+  const dispatch = useDispatch();
+  const data = useSelector((state) => {
+    return state.feed;
+  });
+
+  const currentFilter = data.filter;
+
+  React.useEffect(() => {
+    if (allItems === undefined) {
+      dispatch(requestItems());
+      fetch("/bigData")
+        .then((res) => res.json())
+        .then((json) => {
+          dispatch(receiveItems(json));
+          if (currentFilter !== null) {
+            dispatch(
+              PaginateItems(FilteredItemsByBody(currentFilter, json.items))
+            );
+            return;
+          }
+          dispatch(PaginateItems(json.items));
+        })
+        .catch((err) => {
+          dispatch(catchError(err));
+        });
+    }
+  }, []);
+
   const [searchTerm, setSearchTerm] = React.useState("");
-  const [selectedSuggestionIndex, setSelectedSuggestionIndex] = React.useState(
-    0
-  );
+
   const searchRef = useRef(null);
 
   React.useEffect(() => {
-    searchRef.current.focus();
-  }, []);
-
-  if (allItems === undefined) {
-    allItems = [];
-  }
-
-  let matchedItemsArray = allItems.filter((item) => {
-    let LowerCaseSearch = searchTerm.toLowerCase();
-    let itemLowerCaseName = item.name.toLowerCase();
-    if (
-      searchTerm !== "" &&
-      searchTerm.length >= 2 &&
-      itemLowerCaseName.includes(LowerCaseSearch)
-    ) {
-      return true;
-    } else {
-      return false;
+    if (allItems !== undefined) {
+      searchRef.current.focus();
     }
-  });
+  }, [allItems]);
+  let matchedItemsArray = [];
+  let resultsFound = true;
 
-  // matchedItemsArray = matchedItemsArray.slice(0, 5);
+  if (allItems !== undefined) {
+    matchedItemsArray = allItems.filter((item) => {
+      let LowerCaseSearch = searchTerm.toLowerCase();
+      let itemLowerCaseName = item.name.toLowerCase();
+      if (
+        searchTerm !== "" &&
+        searchTerm.length >= 2 &&
+        itemLowerCaseName.includes(LowerCaseSearch)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    if (matchedItemsArray.length === 0 && searchTerm.length >= 2) {
+      resultsFound = false;
+    }
+  }
+  console.log("results", resultsFound);
+
+  if (!allItems) {
+    return <div></div>;
+  }
 
   return (
     <Wrapper onClick={() => setIsOpen(false)}>
@@ -48,6 +89,11 @@ const TypeAhead = ({ isOpen, setIsOpen }) => {
             setSearchTerm(ev.target.value);
           }}
         />
+        {resultsFound === false ? (
+          <DropDown>
+            <SearchResult>No search results found</SearchResult>
+          </DropDown>
+        ) : null}
         {matchedItemsArray.length > 1 && (
           <DropDown>
             {matchedItemsArray.map((item, index) => {
@@ -59,17 +105,9 @@ const TypeAhead = ({ isOpen, setIsOpen }) => {
               let indexToSlice = indexOfSearch;
               let firstSlice = item.name.slice(0, indexToSlice);
               let secondSlice = item.name.slice(indexToSlice);
-              // const isSelected = selectedSuggestionIndex === index;
+
               return (
-                <SearchResult
-                  key={item._id + index}
-                  // onMouseEnter={() => setSelectedSuggestionIndex(index)}
-                  // style={{
-                  //   background: isSelected
-                  //     ? "hsla(50deg, 100%, 80%, 0.25)"
-                  //     : "transparent",
-                  // }}
-                >
+                <SearchResult key={item._id + index}>
                   <ItemsPrediction
                     to={`/items/${item._id}`}
                     onClick={() => setIsOpen(false)}
@@ -124,7 +162,7 @@ const Input = styled.input`
 
 const DropDown = styled.ul`
   width: 70%;
-  background: white;
+  background-color: white;
   border-left: 1px solid ${COLORS.PURPLE.PRIMARY};
   border-bottom: 1px solid ${COLORS.PURPLE.PRIMARY};
   border-right: 1px solid ${COLORS.PURPLE.PRIMARY};
