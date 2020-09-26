@@ -10,7 +10,7 @@ import styled from "styled-components";
 // useEffect to get data about the product
 // use params to get the id from the url
 
-const logo = require("../assets/logo.jpg");
+const logo2 = require("../assets/bagel.gif");
 
 const ProductDetails = () => {
   const [item, setItem] = useState(null);
@@ -26,7 +26,7 @@ const ProductDetails = () => {
   return (
     <>
       <Wrapper>
-        <StoreLogoLowOpacity src={logo} />
+        <StoreLogoLowOpacity src={logo2} />
         <Div>
           <ProductInfo>
             <Span>
@@ -72,6 +72,8 @@ const Wrapper = styled.div`
 
 const Img = styled.img`
   border-radius: 10%;
+  width: 300px;
+  height: 300px;
 `;
 
 const Div = styled.div`
@@ -79,15 +81,14 @@ const Div = styled.div`
   flex-direction: row;
   justify-items: space-around;
   justify-content: space-evenly;
+  height: 350px;
 `;
 
 const ProductPhoto = styled.div`
   display: flex;
   flex-direction: column;
-  justify-items: space-around;
-  width: 250px;
-  font-size: 25px;
-  font-family: "Times New Roman", Times, serif;
+  justify-items: space-evenly;
+  width: 300px;
 `;
 
 const StoreLogoLowOpacity = styled.img`
@@ -113,7 +114,7 @@ const Span = styled.div`
   flex-direction: row;
   justify-content: space-between;
   :hover {
-    background: lightblue;
+    background: lightgray;
     font-size: 150%;
   }
 `;
@@ -121,7 +122,7 @@ const Span = styled.div`
 const SpanName = styled.div`
   display: flex;
   flex-direction: row;
-  font-size: 50px;
+  font-size: 20px;
   font-family: "Times New Roman", Times, serif;
 `;
 
