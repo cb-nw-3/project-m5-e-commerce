@@ -21,6 +21,6 @@ const Paragraph = styled.p`
   color: ${THEME.white};
   font-size: 12px;
   margin-bottom: 10px;
-  max-width: 105px;
+  max-width: 125px;
 `;
 export default Tag;
