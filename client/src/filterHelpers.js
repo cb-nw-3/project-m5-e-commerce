@@ -6,5 +6,6 @@ export const FilteredItemsByBody = (BodyPart, itemsArray) => {
     if (item.body_location === BodyPart) {
       return true;
     }
+    return false;
   });
 };

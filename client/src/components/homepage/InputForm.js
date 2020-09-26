@@ -16,7 +16,7 @@ export const InputForm = () => {
   }
   return (
     <Wrapper>
-      <Label for="bodyPart">Choose a body part!</Label>
+      <Label htmlFor="bodyPart">Choose a body part!</Label>
       <Select
         id="bodyPart"
         name="bodyPart"

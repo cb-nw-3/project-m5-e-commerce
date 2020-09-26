@@ -27,7 +27,6 @@ const Cart = () => {
   if (status === "loading") {
     return (
       <LoaderWrapper>
-        {/* Loading Style */}
         <Loader
           type="Grid"
           color={COLORS.BLUE.PRIMARY}

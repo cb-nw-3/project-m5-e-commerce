@@ -39,7 +39,7 @@ const TypeAhead = ({ setIsOpen }) => {
           dispatch(catchError(err));
         });
     }
-  }, []);
+  }, [dispatch, allItems, currentFilter]);
 
   const [searchTerm, setSearchTerm] = React.useState("");
 
@@ -128,11 +128,12 @@ const TypeAhead = ({ setIsOpen }) => {
 export default TypeAhead;
 
 const Wrapper = styled.div`
-  height: 100vh;
+  height: 150vh;
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
-  z-index: 300;
+  z-index: 400;
   display: flex;
+  top: -300px;
   justify-content: center;
   align-items: center;
   margin: 0;

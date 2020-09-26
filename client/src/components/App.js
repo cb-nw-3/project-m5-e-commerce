@@ -1,10 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import styled from "styled-components";
-import { COLORS } from "./styles/Colors";
 
 import GlobalStyles from "./styles/GlobalStyles";
 import Header from "../components/header/header";
+import NavBar from "../components/header/NavBar";
 import Homepage from "./homepage/Homepage";
 import Cart from "../components/Cart/Cart";
 import IndividualItem from "./IndividualItem";
@@ -14,17 +13,10 @@ function App() {
   return (
     <Router>
       <GlobalStyles />
-      {
-        //this is where the header component will be placed
-      }
       <Header />
+      <NavBar />
       <Switch>
         <Route exact path="/">
-          {
-            //this is where the feed component will be placed
-            // Homepage is the feed component, placeholders where items will be
-          }
-
           <Homepage />
         </Route>
         <Route path="/items/:itemId">
@@ -38,10 +30,5 @@ function App() {
     </Router>
   );
 }
-
-const Test = styled.p`
-  color: ${COLORS.PURPLE.PRIMARY};
-  font-size: 100px;
-`;
 
 export default App;
