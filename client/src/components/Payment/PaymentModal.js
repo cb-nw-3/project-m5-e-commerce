@@ -5,6 +5,7 @@ import ItemsTable from "./ItemsTable";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleModal } from "../../Actions";
 import { ModalButton } from "../Buttons";
+import { THEME } from "../Style/Theme";
 
 const PaymentModal = ({ onClick }) => {
   const isOpen = useSelector((state) => state.modal.isOpen);
@@ -83,6 +84,12 @@ const Modal = styled.div`
   background-color: #fff;
   border-radius: 4px;
   cursor: default;
+
+  @media (max-width: ${THEME.mobile}) {
+    width: 90%;
+    min-width: 300px;
+    padding: 10px;
+  }
 `;
 
 const DividerButtons = styled.div`

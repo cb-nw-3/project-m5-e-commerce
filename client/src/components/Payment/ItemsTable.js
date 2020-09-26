@@ -48,7 +48,9 @@ const ItemsTable = ({
                       numInStock={numInStock}
                       onClick={() => setQuantity(quantity - 1 || 1)}
                     >
-                      <strong>-</strong>
+                      <Text>
+                        <strong>-</strong>
+                      </Text>
                     </Buttons>
                     <span>{item.quantity}</span>
                     <Buttons
@@ -56,7 +58,9 @@ const ItemsTable = ({
                       numInStock={numInStock}
                       onClick={() => setQuantity(Math.min(quantity + 1))}
                     >
-                      <strong>+</strong>
+                      <Text>
+                        <strong>+</strong>
+                      </Text>
                     </Buttons>
                   </QuantityWrapper>
                 </Cell>
@@ -79,9 +83,22 @@ const ItemsTable = ({
   );
 };
 
+const Text = styled.p`
+  margin-bottom: 10px;
+
+  @media (max-width: ${THEME.mobile}) {
+    font-size: 12px;
+  }
+`;
+
 const ItemImage = styled.img`
   width: 60px;
   border-radius: 70%;
+
+  @media (max-width: ${THEME.mobile}) {
+    width: 30px;
+    border-radius: 70%;
+  }
 `;
 
 const Heading = styled.div`
@@ -98,6 +115,11 @@ const Cell = styled.div`
   display: table-cell;
   border: none;
   padding: 10px;
+
+  @media (max-width: ${THEME.mobile}) {
+    font-size: 10px;
+    padding: 5px;
+  }
 `;
 
 const Row = styled.div`
@@ -111,11 +133,19 @@ const QuantityWrapper = styled.div`
   min-width: 125px;
   border: none;
   text-align: left;
+  position: relative;
+  @media (max-width: ${THEME.mobile}) {
+    min-width: 100px;
+  }
 `;
 
 const Table = styled.div`
   display: table;
   min-width: 300px;
+
+  @media (max-width: ${THEME.mobile}) {
+    min-width: 200px;
+  }
 `;
 
 const Title = styled.h2`
@@ -129,12 +159,21 @@ const Title = styled.h2`
 const Total = styled.p`
   text-align: right;
   padding: 15px 20px 15px 0;
+
+  @media (max-width: ${THEME.mobile}) {
+    font-size: 14px;
+    padding: 10px 5px 10px 0;
+  }
 `;
 
 const Span = styled.span`
   font-weight: 700;
   padding-left: 10px;
   font-size: 18px;
+  @media (max-width: ${THEME.mobile}) {
+    font-size: 14px;
+    padding: 10px 5px 10px 0;
+  }
 `;
 
 const RemoveItemBtn = styled.button`
@@ -144,11 +183,18 @@ const RemoveItemBtn = styled.button`
   color: red;
   border: none;
   cursor: pointer;
+
+  @media (max-width: ${THEME.mobile}) {
+    font-size: 10px;
+  }
 `;
 
 const Wrapper = styled.div`
   display: table;
   min-width: 500px;
+  @media (max-width: ${THEME.mobile}) {
+    min-width: 200px;
+  }
 `;
 
 export default ItemsTable;
