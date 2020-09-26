@@ -1,86 +1,89 @@
 import React from "react";
 import styled from "styled-components";
-import { THEME } from "../Style/Theme";
 import { Buttons } from "../ModalQuantityButtons";
 import { useSelector, useDispatch } from "react-redux";
 import { getStoreItemsArray, getTotal } from "../reducers/Purchase";
-import { removeItem } from "../../Actions";
+import { increment, decrement, removeItem } from "../../Actions";
+import { THEME } from "../Style/Theme";
+
 
 const ItemsTable = ({
-  onClick,
-  id,
-  addToCart,
-  children,
-  itemSrc,
-  numInStock,
+    onClick,
+    id,
+    addToCart,
+    children,
+    itemSrc,
+    numInStock,
 }) => {
-  const dispatch = useDispatch();
-  const itemArray = useSelector(getStoreItemsArray);
-  const subTotal = useSelector(getTotal);
-  const cartQuantity = useSelector((state) =>
-    state.purchase[id] ? state.purchase[id].quantity : 1
-  );
-  const [quantity, setQuantity] = React.useState(cartQuantity);
+    const dispatch = useDispatch();
+    const itemArray = useSelector(getStoreItemsArray);
+    const subTotal = useSelector(getTotal);
+    const total = subTotal.toFixed(2);
 
-  return (
-    <>
-      <Wrapper>
-        <Table>
-          <Title>SHOPPING CART</Title>
-          <Heading>
-            <Cell>Product</Cell>
-            <Cell></Cell>
-            <Cell>Amount</Cell>
-            <Cell>Price</Cell>
-            <Cell></Cell>
-          </Heading>
-          {itemArray.map((item) => {
-            return (
-              <Row key={item.id}>
-                <Cell>
-                  <ItemImage src={item.image} />
-                </Cell>
-                <Cell>{item.nameCapitalized}</Cell>
-                <Cell>
-                  <QuantityWrapper>
-                    <Buttons
-                      id={id}
-                      numInStock={numInStock}
-                      onClick={() => setQuantity(quantity - 1 || 1)}
-                    >
-                      <Text>
-                        <strong>-</strong>
-                      </Text>
-                    </Buttons>
-                    <span>{item.quantity}</span>
-                    <Buttons
-                      id={id}
-                      numInStock={numInStock}
-                      onClick={() => setQuantity(Math.min(quantity + 1))}
-                    >
-                      <Text>
-                        <strong>+</strong>
-                      </Text>
-                    </Buttons>
-                  </QuantityWrapper>
-                </Cell>
-                <Cell>${item.price}</Cell>
-                <Cell>
-                  <RemoveItemBtn onClick={() => dispatch(removeItem(item.id))}>
-                    X
-                  </RemoveItemBtn>
-                </Cell>
-              </Row>
-            );
-          })}
-        </Table>
-        <Total>
-          Total Cost: <Span>${subTotal}</Span>
-        </Total>
-        {children}
-      </Wrapper>
-    </>
-  );
+    const cartQuantity = useSelector((state) =>
+        state.purchase[id] ? state.purchase[id].quantity : 1
+    );
+    const [quantity, setQuantity] = React.useState(cartQuantity);
+
+    return (
+        <>
+            <Wrapper>
+                <Table>
+                    <Title>SHOPPING CART</Title>
+                    <Heading>
+                        <Cell>Product</Cell>
+                        <Cell></Cell>
+                        <Cell>Amount</Cell>
+                        <Cell>Price</Cell>
+                        <Cell></Cell>
+                    </Heading>
+                    {itemArray.map((item) => {
+                        return (
+                            <Row key={item.id}>
+                                <Cell>
+                                    <ItemImage src={item.image} />
+                                </Cell>
+                                <Cell>{item.nameCapitalized}</Cell>
+                                <Cell>
+                                    <QuantityWrapper>
+                                        <Buttons
+                                            id={id}
+                                            numInStock={numInStock}
+                                            onClick={() => dispatch(decrement(item.id))}
+                                        >
+                                            <Text>
+                                                <strong>-</strong>
+                                            </Text>
+                                        </Buttons>
+                                        <span>{item.quantity}</span>
+                                        <Buttons
+                                            id={id}
+                                            numInStock={numInStock}
+                                            onClick={() => dispatch(increment(item.id))}
+                                        >
+                                            <Text>
+                                                <strong>+</strong>
+                                            </Text>
+                                        </Buttons>
+                                    </QuantityWrapper>
+                                </Cell>
+                                <Cell>${item.price}</Cell>
+                                <Cell>
+                                    <RemoveItemBtn onClick={() => dispatch(removeItem(item.id))}>
+                                        X
+                      </RemoveItemBtn>
+                                </Cell>
+                            </Row>
+                        );
+                    })}
+                </Table>
+                <Total>
+                    Total Cost: <Span>${total}</Span>
+                </Total>
+                {children}
+            </Wrapper>
+        </>
+    );
 };
 
 const Text = styled.p`

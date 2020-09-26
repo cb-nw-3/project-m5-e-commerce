@@ -1,7 +1,7 @@
 export const increment = (id) => {
     return {
         type: "INCREMENT",
-        id: id,
+        id,
     };
 };
 
@@ -20,11 +20,11 @@ export const toggleModal = () => {
 
 
 export const getFirstPage = (items, category) => {
-  return {
-    type: "GETFIRSTPAGE",
-    items: items,
-    category: category
-  };
+    return {
+        type: "GETFIRSTPAGE",
+        items: items,
+        category: category
+    };
 };
 
 export const getNextPage = (items, category) => {
@@ -35,12 +35,11 @@ export const getNextPage = (items, category) => {
     }
 };
 
-export const beginPurchaseProcess = (item, quantity, numInStock) => {
+export const beginPurchaseProcess = (item, quantity) => {
     return {
         type: 'BEGIN-PURCHASE-PROCESS',
         item,
         quantity,
-        numInStock,
     };
 };
 
