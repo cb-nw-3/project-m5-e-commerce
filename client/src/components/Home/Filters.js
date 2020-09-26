@@ -1,20 +1,93 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { THEME } from "../Style/Theme";
+import { useSelector, useDispatch } from "react-redux";
+import { BuildFiltertUrl } from "../../Helper/UrlBuilder";
+import {
+  getFilterInfo,
+  setPrice,
+  setLocation,
+  setName,
+  setCompany,
+  setLimit,
+  applyFilter,
+} from "../../Actions";
 
 const Filter = () => {
-  const [price, setPrice] = useState(2000);
+  const category = useSelector((state) => state.itemList.category);
+  const filterInfos = useSelector((state) => state.itemList.filterInfos);
+  const filters = useSelector((state) => state.itemList.filters);
+  const dispatch = useDispatch();
+
+  const fetchFilterInfo = async () => {
+    const data = await fetch("http://localhost:4000/api/filterinfo");
+
+    if (data.ok) {
+      const info = await data.json();
+      dispatch(getFilterInfo(info));
+    }
+  };
+
+  const onApplyFilter = async () => {
+    const filterUrl = BuildFiltertUrl(filters, category);
+    console.log(filterUrl);
+    const data = await fetch(filterUrl);
+    if (data.ok) {
+      const items = await data.json();
+      console.log(items);
+    }
+  };
+
+  useEffect(() => {
+    fetchFilterInfo();
+  }, []);
 
   return (
     <Wrapper>
       <InputWrapper>
-        <Input type="text" placeholder="Name" />
+        <Input
+          type="text"
+          placeholder="Name"
+          onChange={(event) => {
+            dispatch(setName(event.target.value));
+          }}
+          defaultValue={filters.name}
+        />
       </InputWrapper>
       <InputWrapper>
-        <Input type="text" placeholder="Location" />
+        <Select
+          onChange={(event) => {
+            dispatch(setLocation(event.target.value));
+          }}
+          defaultValue={filters.location}
+        >
+          <option value={""}>Location</option>
+          {filterInfos &&
+            filterInfos.locations.map((loc) => {
+              return (
+                <option key={loc} value={loc}>
+                  {loc}
+                </option>
+              );
+            })}
+        </Select>
       </InputWrapper>
       <InputWrapper>
-        <Input type="text" placeholder="Company" />
+        <Select
+          onChange={(event) => {
+            dispatch(setCompany(event.target.value));
+          }}
+          defaultValue={filters.company}
+        >
+          <option value={""}>Company</option>
+          {filterInfos &&
+            filterInfos.companies.map((com) => {
+              return (
+                <option key={com} value={com}>
+                  {com}
+                </option>
+              );
+            })}
+        </Select>
       </InputWrapper>
       <InputWrapper>
         <Label>Price</Label>
@@ -22,23 +95,38 @@ const Filter = () => {
           type="range"
           min="0"
           max="2000"
-          value={price}
+          defaultValue={filters.price}
           onChange={(event) => {
-            setPrice(event.target.value);
+            dispatch(setPrice(event.target.value));
           }}
         />
-        <Label>${price}</Label>
+        <Label>${filters.price}</Label>
       </InputWrapper>
       <InputWrapper>
-        <Select>
-          <option value="Max" selected>
-            Max
-          </option>
-          <option value="Min">Min</option>
+        <Select
+          onChange={(event) => {
+            dispatch(setLimit(event.target.value));
+          }}
+          defaultValue={filters.limit}
+        >
+          {filterInfos &&
+            filterInfos.limits.map((limit) => {
+              return (
+                <option key={limit} value={limit}>
+                  {limit.toUpperCase()}
+                </option>
+              );
+            })}
         </Select>
       </InputWrapper>
       <InputWrapper>
-        <FilterBtn>Apply</FilterBtn>
+        <FilterBtn
+          onClick={() => {
+            onApplyFilter();
+          }}
+        >
+          Apply
+        </FilterBtn>
         <FilterBtn>Clear</FilterBtn>
       </InputWrapper>
     </Wrapper>
@@ -104,6 +192,7 @@ const Select = styled.select`
   border: 1px solid #aaa;
   padding: 8px 4px;
   cursor: pointer;
+  max-height: 100;
 
   &:focus {
     outline-color: #45abff;

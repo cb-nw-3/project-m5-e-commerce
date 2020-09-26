@@ -6,22 +6,25 @@ const Item = ({ item }) => {
   const history = useHistory();
 
   const viewItem = (id) => {
-    history.push("/item/" + id)
-  }
-  console.log('Item', item);
+    history.push("/item/" + id);
+  };
 
   return (
     <Wrapper>
-      <ItemBtn onClick={() => { viewItem(item._id) }}>
+      <ItemBtn
+        onClick={() => {
+          viewItem(item._id);
+        }}
+      >
         <ImageWrapper>
           <ItemImage src={item.imageSrc} />
-          {item.numInStock === 0 && <OutOfStock>
-            <StockText >Out of stock</StockText>
-          </OutOfStock>}
+          {item.numInStock === 0 && (
+            <OutOfStock>
+              <StockText>Out of stock</StockText>
+            </OutOfStock>
+          )}
         </ImageWrapper>
-        <ItemName>
-          {item.name}
-        </ItemName>
+        <ItemName>{item.name}</ItemName>
         <ItemPrice>{item.price}</ItemPrice>
       </ItemBtn>
     </Wrapper>
@@ -73,7 +76,7 @@ const ItemBtn = styled.button`
 
   &:hover {
     transform: scale(1.1);
-    transition: .3s ease-in-out;
+    transition: 0.3s ease-in-out;
   }
 `;
 
@@ -96,6 +99,5 @@ const StockText = styled.div`
   padding: 10px;
   border-radius: 10px;
 `;
-
 
 export default Item;
