@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 // allows us to use dispatch for the reducers action
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
