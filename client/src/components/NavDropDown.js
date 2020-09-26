@@ -111,8 +111,10 @@ const NavDropdownListLi = styled.li`
     font-size: 18px;
     border-right: 1px solid rgba(160, 101, 65, 0.1);
     background: transparent;
-&:hover {
-    background-color: darkgray;
+    &:hover {
+      background-color: darkgray;
+      cursor: pointer;
+    }
   }
 `;
 
