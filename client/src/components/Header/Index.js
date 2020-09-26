@@ -4,7 +4,6 @@ import React from "react";
 // Styles
 import styled from "styled-components";
 import { THEME } from "../Style/Theme";
-import MenuIcon from "@material-ui/icons/Menu";
 
 // Components
 import CartIcon from "./CartIcon";

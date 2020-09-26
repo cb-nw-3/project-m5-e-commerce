@@ -1,14 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { THEME } from "../components/Style/Theme";
-import { useSelector } from "react-redux";
 
 export const Buttons = ({ children, onClick, id, numInStock }) => {
-  const isAddedToCart = useSelector((state) =>
-    state.purchase[id] ? state.purchase[id].isAddedToCart : false
-  );
-  const isNotInStock = numInStock > 0 ? false : true;
-
   return (
     <Button onClick={onClick}>
       {children}

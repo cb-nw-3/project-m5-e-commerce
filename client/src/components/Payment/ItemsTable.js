@@ -20,11 +20,6 @@ const ItemsTable = ({
     const subTotal = useSelector(getTotal);
     const total = subTotal.toFixed(2);
 
-    const cartQuantity = useSelector((state) =>
-        state.purchase[id] ? state.purchase[id].quantity : 1
-    );
-    const [quantity, setQuantity] = React.useState(cartQuantity);
-
     return (
         <>
             <Wrapper>
