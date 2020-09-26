@@ -18,14 +18,14 @@ function App() {
       <>
         <Header />
         <Switch>
-          <Route exact path="/test">
-            <FourOhFour />
-          </Route>
           <Route exact path="/">
             <Home />
           </Route>
           <Route path="/item/:id">
             <Product />
+          </Route>
+          <Route path="/notfound">
+            <FourOhFour />
           </Route>
         </Switch>
         <Footer />

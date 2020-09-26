@@ -51,7 +51,7 @@ router.get("/api/item/:id", (req, res) => {
     item = addCompanyInfoMapper(true, item);
     // Convert price to number
     const returnItem = { ...item };
-    returnItem.price = parseFloat(returnItem.price.replace('$', ''));
+    returnItem.price = parseFloat(returnItem.price.replace("$", ""));
     return res.status(200).json(returnItem);
   }
 });
@@ -96,6 +96,38 @@ router.get("/api/filter", (req, res) => {
   } catch (error) {
     return res.status(409).send(error);
   }
+});
+
+router.get("/api/filterinfo", (req, res) => {
+  // Create new array
+  let tempItems = [...items];
+
+  // Add company info to each item
+  tempItems = addCompanyInfoMapper(false, ...tempItems);
+
+  // Get location list then filter
+  let tlocation = tempItems.map((x) => x.body_location);
+  let allLocation = [];
+  tlocation.forEach((x) => {
+    if (!allLocation.includes(x)) {
+      allLocation.push(x);
+    }
+  });
+
+  // Get companies list then filter
+  let tcompanies = tempItems.map((x) => x.company.name);
+  let allCompanies = [];
+  tcompanies.forEach((x) => {
+    if (!allCompanies.includes(x)) allCompanies.push(x);
+  });
+
+  // return the list
+  const returnObj = {
+    locations: allLocation,
+    companies: allCompanies,
+  };
+
+  return res.status(200).json(returnObj);
 });
 
 module.exports = router;
