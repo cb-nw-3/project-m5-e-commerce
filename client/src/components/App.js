@@ -7,7 +7,7 @@ import NavBar from "../components/header/NavBar";
 import Homepage from "./homepage/Homepage";
 import Cart from "../components/Cart/Cart";
 import IndividualItem from "./IndividualItem";
-import FourOhFour from "./errrorPage/FourOhFour";
+import FourOhFour from "./errrorPage/fourOhFour";
 
 function App() {
   return (
