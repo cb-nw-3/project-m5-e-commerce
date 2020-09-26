@@ -29,19 +29,18 @@ const PaymentModal = ({ onClick }) => {
         </ModalHeader>
         <ItemsTable />
         <DividerButtons>
-          <ModalButton onClick={(event) => {
-            event.stopPropagation();
-            dispatch(toggleModal());
-          }}>
-            Continue Shopping
+          <ModalButton
+            onClick={(event) => {
+              event.stopPropagation();
+              dispatch(toggleModal());
+            }}
+          >
+            CONTINUE SHOPPING
           </ModalButton>
-          <ModalButton onClick={onClick}>
-            Purchase
-          </ModalButton>
+          <ModalButton onClick={onClick}>Purchase</ModalButton>
         </DividerButtons>
-
       </Modal>
-    </ModalWrapper >
+    </ModalWrapper>
   );
 };
 
@@ -78,7 +77,7 @@ const ModalWrapper = styled.div`
 
 const Modal = styled.div`
   width: 50%;
-  min-width: 500px; 
+  min-width: 650px;
   margin: 0 auto;
   padding: 16px;
   background-color: #fff;
@@ -87,8 +86,8 @@ const Modal = styled.div`
 `;
 
 const DividerButtons = styled.div`
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 export default PaymentModal;
