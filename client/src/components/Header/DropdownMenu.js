@@ -69,7 +69,8 @@ const MenuContainer = styled.div`
 `
 
 const Menu = styled.nav`
-  background: #ffffff;
+  background: black;
+  color: white;
   border-radius: 8px;
   position: absolute;
   top: 25px;
@@ -84,6 +85,7 @@ const Menu = styled.nav`
 
 const MenuList = styled.ul`
 font-family: "Montserrat", sans-serif;
+background-color: black;
     list-style: none;
   padding: 0;
   margin: 0;
