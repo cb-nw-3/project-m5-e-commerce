@@ -7,7 +7,6 @@ import { toggleModal } from "../../Actions";
 
 // Styles
 import styled from "styled-components";
-import { THEME } from "../Style/Theme";
 
 const CartIcon = () => {
   const isOpen = useSelector((state) => state.modal.isOpen);

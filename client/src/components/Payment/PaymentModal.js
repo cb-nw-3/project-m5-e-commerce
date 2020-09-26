@@ -5,6 +5,7 @@ import ItemsTable from "./ItemsTable";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleModal } from "../../Actions";
 import { ModalButton } from "../Buttons";
+import { THEME } from "../Style/Theme";
 
 const PaymentModal = ({ onClick }) => {
   const isOpen = useSelector((state) => state.modal.isOpen);
@@ -37,7 +38,7 @@ const PaymentModal = ({ onClick }) => {
           >
             CONTINUE SHOPPING
           </ModalButton>
-          <ModalButton onClick={onClick}>Purchase</ModalButton>
+          <ModalButton onClick={onClick}>Next</ModalButton>
         </DividerButtons>
       </Modal>
     </ModalWrapper>
@@ -76,13 +77,21 @@ const ModalWrapper = styled.div`
 `;
 
 const Modal = styled.div`
-  width: 50%;
-  min-width: 650px;
+  width: 70vw;
+  min-width: 300px;
+  max-height: 70vh;
+  overflow: auto;
   margin: 0 auto;
   padding: 16px;
   background-color: #fff;
   border-radius: 4px;
   cursor: default;
+
+  @media (max-width: ${THEME.mobile}) {
+    width: 90%;
+    min-width: 300px;
+    padding: 10px;
+  }
 `;
 
 const DividerButtons = styled.div`

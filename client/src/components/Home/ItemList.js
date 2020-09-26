@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components/macro";
 import Item from "./Item";
 import { useSelector, useDispatch } from "react-redux";
@@ -62,6 +62,7 @@ const ItemList = () => {
           })}
         {itemsList && itemsList.length === 0 && <h2>Items found 0</h2>}
       </ListWrapper>
+
       {showViewMore && (
         <ListFooter>
           <ViewMore
@@ -77,6 +78,7 @@ const ItemList = () => {
           </ViewMore>
         </ListFooter>
       )}
+
     </Wrapper>
   );
 };

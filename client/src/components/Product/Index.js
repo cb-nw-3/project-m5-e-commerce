@@ -58,7 +58,7 @@ const Product = () => {
 
   const addToCart = (quantity) =>
     dispatch(
-      beginPurchaseProcess({ id, price, image, nameCapitalized }, quantity)
+      beginPurchaseProcess({ id, price, image, nameCapitalized, numInStock }, quantity)
     );
 
   return (

@@ -5,7 +5,6 @@ import modalTogglerReducer from "./ToggleModal";
 import getItemsReducer from "./ItemGetter";
 
 const allReducers = combineReducers({
-  modal: modalTogglerReducer,
   itemList: getItemsReducer,
   purchase: purchaseReducer,
   modal: modalTogglerReducer,

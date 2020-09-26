@@ -174,4 +174,10 @@ const ButtonPurchase = styled.button`
       cursor: auto;
     }
   }
+
+  @media (max-width: ${THEME.mobile}) {
+    font-size: 14px;
+    padding: 10px 15px 10px 15px;
+    min-width: 40px;
+  }
 `;

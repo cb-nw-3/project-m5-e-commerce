@@ -8,27 +8,34 @@ export const purchaseReducer = (state = initialState, action) => {
                 [action.item.id]: {
                     ...action.item,
                     quantity: action.quantity,
-                    numInStock: action.numInStock,
                     isAddedToCart: true,
                 },
             }
         }
         case 'INCREMENT': {
+            let incrementQuantity = state[action.id].quantity;
+            if (state[action.id].quantity < state[action.id].numInStock) {
+                incrementQuantity += 1;
+            }
             return {
                 ...state,
                 [action.id]: {
                     ...state[action.id],
-                    quantity: state[action.id].quantity + 1,
+                    quantity: incrementQuantity,
                 },
             }
         }
 
         case 'DECREMENT': {
+            let decrementQuantity = state[action.id].quantity;
+            if (state[action.id].quantity > 1) {
+                decrementQuantity -= 1;
+            }
             return {
                 ...state,
                 [action.id]: {
                     ...state[action.id],
-                    quantity: state[action.id].quantity - 1,
+                    quantity: decrementQuantity,
                 },
             }
         }
@@ -56,8 +63,5 @@ export const getTotal = state =>
         (total, item) => total + item.price * item.quantity,
         0
     );
-
-console.log('***', getStoreItemsArray)
-
 
 export default purchaseReducer;

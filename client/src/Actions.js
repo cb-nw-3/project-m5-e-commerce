@@ -1,8 +1,15 @@
 export const increment = (id) => {
+
   return {
     type: "INCREMENT",
     id: id,
   };
+=======
+    return {
+        type: "INCREMENT",
+        id,
+    };
+
 };
 
 export const decrement = (id) => {
@@ -24,6 +31,12 @@ export const getFirstPage = (items, category) => {
     items: items,
     category: category,
   };
+=======
+    return {
+        type: "GETFIRSTPAGE",
+        items: items,
+        category: category
+    };
 };
 
 export const getNextPage = (items, category) => {
@@ -34,6 +47,7 @@ export const getNextPage = (items, category) => {
   };
 };
 
+
 export const beginPurchaseProcess = (item, quantity, numInStock) => {
   return {
     type: "BEGIN-PURCHASE-PROCESS",
@@ -41,6 +55,13 @@ export const beginPurchaseProcess = (item, quantity, numInStock) => {
     quantity,
     numInStock,
   };
+
+export const beginPurchaseProcess = (item, quantity) => {
+    return {
+        type: 'BEGIN-PURCHASE-PROCESS',
+        item,
+        quantity,
+    };
 };
 
 export const removeItem = (id) => ({
