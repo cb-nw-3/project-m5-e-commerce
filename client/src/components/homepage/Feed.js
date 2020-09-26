@@ -128,6 +128,13 @@ export const Feed = () => {
 const Li = styled.li`
   margin-top: 15px;
   border-top: 1px solid ${COLORS.BLUE.PRIMARY};
+  @media (min-width: 800px) {
+    border: 1px solid skyblue;
+    border-radius: 10px;
+    padding: 5px;
+  }
+  width: 300px;
+  height: 300px;
 `;
 
 const Name = styled.p`

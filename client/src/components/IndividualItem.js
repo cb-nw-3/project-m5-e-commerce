@@ -164,6 +164,9 @@ const Button = styled.button`
   &:disabled {
     background-color: grey;
   }
+  @media (min-width: 800px) {
+    width: 350px;
+  }
 `;
 
 export default IndividualItem;
