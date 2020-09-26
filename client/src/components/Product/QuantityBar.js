@@ -43,7 +43,6 @@ const QuantityBar = ({ id, addToCart, numInStock }) => {
           onClick={() => addToCart(quantity)}
         ></BuyButton>
       </div>
-
     </>
   );
 };
@@ -51,10 +50,11 @@ const QuantityBar = ({ id, addToCart, numInStock }) => {
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   margin-top: 20px;
+  margin-bottom: 20px;
 
-  @media (min-width: ${THEME.mobile}) {
+  @media (max-width: ${THEME.mobile}) {
     justify-content: initial;
   }
 `;
