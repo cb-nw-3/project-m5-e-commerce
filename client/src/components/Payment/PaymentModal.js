@@ -37,7 +37,7 @@ const PaymentModal = ({ onClick }) => {
           >
             CONTINUE SHOPPING
           </ModalButton>
-          <ModalButton onClick={onClick}>Purchase</ModalButton>
+          <ModalButton onClick={onClick}>Next</ModalButton>
         </DividerButtons>
       </Modal>
     </ModalWrapper>

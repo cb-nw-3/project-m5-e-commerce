@@ -24,24 +24,24 @@ const ItemsTable = ({
 
   return (
     <>
-      <Table>
-        <Title>SHOPPING CART</Title>
-        <Heading>
-          <Cell>Product</Cell>
-          <Cell></Cell>
-          <Cell>Amount</Cell>
-          <Cell>Price</Cell>
-          <Cell></Cell>
-        </Heading>
-        <ProductRow>
+      <Wrapper>
+        <Table>
+          <Title>SHOPPING CART</Title>
+          <Heading>
+            <Cell>Product</Cell>
+            <Cell></Cell>
+            <Cell>Amount</Cell>
+            <Cell>Price</Cell>
+            <Cell></Cell>
+          </Heading>
           {itemArray.map((item) => {
             return (
-              <TableRow key={item.id}>
-                <TableDescription>
-                  <ItemImage src={itemSrc} />
-                </TableDescription>
-                <TableDescription>{item.nameCapitalized}</TableDescription>
-                <TableDescription>
+              <Row key={item.id}>
+                <Cell>
+                  <ItemImage src={item.image} />
+                </Cell>
+                <Cell>{item.nameCapitalized}</Cell>
+                <Cell>
                   <QuantityWrapper>
                     <Buttons
                       id={id}
@@ -59,93 +59,76 @@ const ItemsTable = ({
                       <strong>+</strong>
                     </Buttons>
                   </QuantityWrapper>
-                </TableDescription>
-                <TableDescription>${item.price}</TableDescription>
-                <RemoveItemBtn onClick={() => dispatch(removeItem(item.id))}>
-                  X
-                </RemoveItemBtn>
-              </TableRow>
+                </Cell>
+                <Cell>${item.price}</Cell>
+                <Cell>
+                  <RemoveItemBtn onClick={() => dispatch(removeItem(item.id))}>
+                    X
+                  </RemoveItemBtn>
+                </Cell>
+              </Row>
             );
           })}
-        </ProductRow>
+        </Table>
         <Total>
           Total Cost: <Span>${subTotal}</Span>
         </Total>
-        <TextField
-          autoFocus
-          margin="dense"
-          id="card"
-          label="Credit Card"
-          type="number"
-        />
-        <TextField
-          margin="dense"
-          id="expiration"
-          label="Expiration"
-          type="number"
-        />
         {children}
-      </Table>
+      </Wrapper>
     </>
   );
 };
 
-const Title = styled.h2`
-  padding-bottom: 50px;
-  display: table-caption;
-  text-align: center;
-  font-weight: bold;
-  font-size: larger;
-`;
-
 const ItemImage = styled.img`
-  border-radius: 25%;
+  width: 60px;
+  border-radius: 70%;
 `;
 
 const Heading = styled.div`
   display: table-row;
   font-weight: bold;
   text-align: center;
+  text-transform: uppercase;
 `;
 
 const Cell = styled.div`
-  display: table-cell;
-  border: solid;
-  border-width: thin;
-  padding-left: 5px;
-  padding-right: 5px;
-`;
-
-const ProductRow = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const TableRow = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const TableDescription = styled.div`
-  font-size: 14px;
   text-align: left;
+  vertical-align: middle;
+  align-items: center;
+  display: table-cell;
+  border: none;
+  padding: 10px;
+`;
+
+const Row = styled.div`
+  display: table-row;
+  text-align: center;
 `;
 
 const QuantityWrapper = styled.div`
   border: 1px solid black;
   background-color: white;
+  min-width: 125px;
   border: none;
-  padding: 0;
+  text-align: left;
 `;
 
 const Table = styled.div`
-  padding: 10px;
   display: table;
+  min-width: 300px;
+`;
+
+const Title = styled.h2`
+  padding-bottom: 40px;
+  display: table-caption;
+  text-align: center;
+  font-weight: bold;
+  font-size: larger;
 `;
 
 const Total = styled.p`
   text-align: right;
-  padding: 15px 0 15px 0;
+  padding: 15px 20px 15px 0;
 `;
 
 const Span = styled.span`
@@ -156,7 +139,6 @@ const Span = styled.span`
 
 const RemoveItemBtn = styled.button`
   font-size: 15px;
-  margin-top: 2px;
   font-weight: bold;
   background: none;
   color: red;
@@ -164,12 +146,9 @@ const RemoveItemBtn = styled.button`
   cursor: pointer;
 `;
 
-const TextField = styled.input`
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+const Wrapper = styled.div`
+  display: table;
+  min-width: 500px;
 `;
 
 export default ItemsTable;
