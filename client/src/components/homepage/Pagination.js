@@ -97,18 +97,22 @@ const PaginationWrapper = styled.div`
 
 const ToFirstPage = styled.a`
   margin-right: 10px;
+  cursor: pointer;
 `;
 
 const Previous = styled.a`
   margin-right: 5px;
+  cursor: pointer;
 `;
 
 const Next = styled.a`
   margin-right: 5px;
+  cursor: pointer;
 `;
 
 const PagePrevious = styled.a`
   margin-right: 5px;
+  cursor: pointer;
 `;
 
 const PageActive = styled.a`
@@ -119,10 +123,12 @@ const PageActive = styled.a`
   padding: 2px;
   border-radius: 3px;
   transform: translateY(-3px);
+  cursor: pointer;
 `;
 
 const PageNext = styled.a`
   margin-right: 5px;
+  cursor: pointer;
 `;
 
 const Dots = styled.span`
@@ -131,7 +137,10 @@ const Dots = styled.span`
 
 const FinalPage = styled.a`
   margin-right: 10px;
+  cursor: pointer;
 `;
 
-const ToFinalPage = styled.a``;
+const ToFinalPage = styled.a`
+  cursor: pointer;
+`;
 export default Pagination;

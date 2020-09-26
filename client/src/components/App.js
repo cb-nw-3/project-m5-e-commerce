@@ -5,6 +5,7 @@ import { COLORS } from "./styles/Colors";
 
 import GlobalStyles from "./styles/GlobalStyles";
 import Header from "../components/header/header";
+import NavBar from "../components/header/NavBar";
 import Homepage from "./homepage/Homepage";
 import Cart from "../components/Cart/Cart";
 import IndividualItem from "./IndividualItem";
@@ -18,6 +19,7 @@ function App() {
         //this is where the header component will be placed
       }
       <Header />
+      <NavBar></NavBar>
       <Switch>
         <Route exact path="/">
           {
