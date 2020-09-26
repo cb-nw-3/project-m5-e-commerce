@@ -34,6 +34,7 @@ const ItemList = () => {
       <Filter />
       <ListWrapper>
         {itemsList &&
+          itemsList.length > 0 &&
           itemsList.map((items, index) => {
             return (
               <Row key={index}>
@@ -43,6 +44,7 @@ const ItemList = () => {
               </Row>
             );
           })}
+        {itemsList && itemsList.length === 0 && <h2>Items found 0</h2>}
       </ListWrapper>
       {showViewMore && (
         <ListFooter>

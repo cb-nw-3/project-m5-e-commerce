@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { BuildFiltertUrl } from "../../Helper/UrlBuilder";
+import { listToMatrix } from "../../Helper/matrixConverter";
 import {
   getFilterInfo,
   setPrice,
@@ -10,6 +11,7 @@ import {
   setCompany,
   setLimit,
   applyFilter,
+  clearFilter,
 } from "../../Actions";
 
 const Filter = () => {
@@ -29,11 +31,23 @@ const Filter = () => {
 
   const onApplyFilter = async () => {
     const filterUrl = BuildFiltertUrl(filters, category);
-    console.log(filterUrl);
+
     const data = await fetch(filterUrl);
     if (data.ok) {
       const items = await data.json();
-      console.log(items);
+      const matrix = listToMatrix(items);
+      console.log(matrix);
+      dispatch(applyFilter(matrix, true));
+    }
+  };
+
+  const onClearFilter = async () => {
+    const data = await fetch("http://localhost:4000/api/items/" + category);
+
+    if (data.ok) {
+      const items = await data.json();
+      const matrix = listToMatrix(items);
+      dispatch(clearFilter(matrix, false));
     }
   };
 
@@ -127,7 +141,13 @@ const Filter = () => {
         >
           Apply
         </FilterBtn>
-        <FilterBtn>Clear</FilterBtn>
+        <FilterBtn
+          onClick={() => {
+            onClearFilter();
+          }}
+        >
+          Clear
+        </FilterBtn>
       </InputWrapper>
     </Wrapper>
   );

@@ -92,3 +92,9 @@ export const applyFilter = (items, filterApplied) => ({
   items: items,
   filterApplied: filterApplied,
 });
+
+export const clearFilter = (items, filterApplied) => ({
+  type: "CLEAR_FILTER",
+  items: items,
+  filterApplied: filterApplied,
+});

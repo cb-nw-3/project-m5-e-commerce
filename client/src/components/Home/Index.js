@@ -19,9 +19,7 @@ const categories = [
 const Home = () => {
   const [category, SetCategory] = React.useState("lifestyle");
 
-  React.useEffect(() => {
-    console.log(category);
-  }, [category]);
+  React.useEffect(() => {}, [category]);
   return (
     <>
       <CategoryBar categories={categories} SetCategory={SetCategory} />

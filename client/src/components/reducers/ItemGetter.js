@@ -75,6 +75,33 @@ const getItemsReducer = (state = initialState, action) => {
       // newState.filters.limit = action.limit;
       return newState;
     }
+    case "APPLY_FILTER": {
+      return {
+        ...state,
+        filterApplied: action.filterApplied,
+        items: action.items,
+        showViewMore:
+          action.items[action.items.length - 1] &&
+          action.items[action.items.length - 1].length === 4,
+      };
+    }
+    case "CLEAR_FILTER": {
+      return {
+        ...state,
+        filterApplied: action.filterApplied,
+        items: action.items,
+        showViewMore:
+          action.items[action.items.length - 1] &&
+          action.items[action.items.length - 1].length === 4,
+        filters: {
+          name: "",
+          location: "",
+          company: "",
+          price: 2000,
+          limit: "max",
+        },
+      };
+    }
     case "GETFIRSTPAGE": {
       return {
         ...state,
