@@ -16,32 +16,63 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-const Header = () => {
+const NavBar = () => {
+  const cartItems = useSelector((state) => Object.values(state.cart));
+
+  const [isOpen, setIsOpen] = React.useState(false);
+  // let maxHeight = 0;
+  // if (isOpen) {
+  //   maxHeight = "1000px";
+  // }
+  const toggleSearchForm = () => setIsOpen(!isOpen);
+  const [showForm, setShowForm] = useState(false);
+  const displayForm = () => setShowForm(true);
+  const hideForm = () => setShowForm(false);
+
+  const scrollPos = window.scrollY;
+
+  function checkScrollPos(scrollPos) {
+    console.log(scrollPos);
+  }
+  window.addEventListener("scroll", checkScrollPos(scrollPos));
   return (
-    <Wrapper>
-      <Logo src={logo} />
-    </Wrapper>
+    <NavWrapper>
+      <Nav>
+        <A to="/">
+          <ImgLogo src={imgLogo} />
+        </A>
+        <Button onClick={toggleSearchForm}>
+          <BiSearchAlt size={35} />
+        </Button>
+        <A to="/cart" /* onClick to go to cart / cart modal */>
+          <FaShoppingCart size={35} />
+          <CartItemNumDisplay>{cartItems.length}</CartItemNumDisplay>
+        </A>
+      </Nav>
+      {isOpen ? <TypeAhead isOpen={isOpen} setIsOpen={setIsOpen} /> : null}
+      <Input type="submit" value="Options" onClick={displayForm} />
+      {showForm ? <InputForm /> : null}
+      {showForm ? (
+        <Input type="submit" value="Hide" onClick={hideForm} />
+      ) : null}
+    </NavWrapper>
   );
 };
 
-export default Header;
+export default NavBar;
 
-const Wrapper = styled.div`
+const NavWrapper = styled.div`
+  position: sticky;
+  top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  z-index: 100;
-  transition: height 0.5ms;
-`;
-
-const Logo = styled.img`
-  height: 150px;
-  width: 150px;
+  border-bottom: 1px solid ${COLORS.BLUE.PRIMARY};
+  z-index: 300;
 `;
 
 const Nav = styled.nav`
-  width: 750px;
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
 `;
@@ -74,10 +105,12 @@ const Input = styled.input`
   border-radius: 5px;
   border: none;
   margin-bottom: 10px;
+  width: 75px;
 `;
 
 const Button = styled.button`
   color: ${COLORS.PURPLE.PRIMARY};
   background: none;
   border: none;
+  width: 50px;
 `;
