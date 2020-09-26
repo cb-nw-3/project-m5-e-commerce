@@ -40,7 +40,7 @@ const DropdownMenu = (props) => {
 
   return(
     <MenuContainer className="menu-container">
-      <button onClick={onClick} className="menu-trigger">{title}</button>
+      <MenuButton onClick={onClick} className="menu-trigger">{title}</MenuButton>
 
       <Menu ref={dropdownRef} className={`menu ${isActive ? 'active' : 'inactive'}`}>
         <MenuList>
@@ -66,33 +66,54 @@ const DropdownMenu = (props) => {
 
 const MenuContainer = styled.div`
   position: relative;
+  padding: 0 50px;
 `
+const MenuButton = styled.button`
+  background-color: rgb(150,150,150);
+  padding: 25px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  color: #fafafa;
+  transition: background-color 1s;
 
+  &:hover, &:focus {
+    background-color: rgba(150,150,150,0.7);
+    transform: scale(1.01);
+    outline: none;
+  }
+`
 const Menu = styled.nav`
   background: black;
   color: white;
   border-radius: 8px;
   position: absolute;
-  top: 25px;
+  top: 68px;
   right: 0;
+  left: 0;
   width: 200px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-20px);
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+  z-index: 100;
 `
 
 const MenuList = styled.ul`
-font-family: "Montserrat", sans-serif;
-background-color: black;
-    list-style: none;
+  font-family: "Montserrat", sans-serif;
+  list-style: none;
   padding: 0;
   margin: 0;
 `
 
 const MenuOptionButton = styled.button`
-background-color: black;
+  background-color: #fafafa;
 	color: black;
 	border: none;
 	font: inherit;
@@ -102,6 +123,12 @@ background-color: black;
   text-decoration: none;
   padding: 8px 20px;
   display: block;
+
+  &:hover {
+    background-color: rgba(150,150,150,1);
+    transform: scale(1.1);
+    color: #fafafa;
+  }
 `
 
 const MenuOption = styled.li`

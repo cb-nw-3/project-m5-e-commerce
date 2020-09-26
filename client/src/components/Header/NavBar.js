@@ -6,10 +6,8 @@ const NavBar = () => {
   return (
     // This is temporary filler
     <Wrapper>
-      <NavBarItem to={"/"}>Our Favorites</NavBarItem>
-      <NavBarItem to={"/"}>Just for Kidz</NavBarItem>
-      <NavBarItem to={"/"}>The Newz</NavBarItem>
-      <NavBarItem to={"/"}>Why Bagelz</NavBarItem>
+      <NavBarItem to={"/aboutus"}>Who? Bagelz!</NavBarItem>
+      <NavBarItem to={"/fashion"}>Merch</NavBarItem>
     </Wrapper>
   );
 };
@@ -22,7 +20,7 @@ const Wrapper = styled.div`
 `;
 
 const NavBarItem = styled(Link)`
-  margin: 0 20pt;
+  margin: 0 50px;
   font-family: "Montserrat", sans-serif;
 `;
 
