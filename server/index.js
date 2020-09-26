@@ -39,6 +39,6 @@ express()
   .get("/companies/:company", itemsFromCompany)
   .get("/companies", allCompanies)
   .get("/item/:_id", itemFrom_id)
-  .post("/upDateStock", upDateStock)
+  .patch("/upDateStock", upDateStock)
 
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));
