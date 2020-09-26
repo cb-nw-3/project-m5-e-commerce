@@ -93,19 +93,20 @@ const CartFooterContainer = styled.div`
   align-items: center;
   background-color: white;
   text-align: center;
- `;
+`;
 
 const StyledButton = styled.button`
-  border-radius: 20%;
-  background-color: black;
+  border-radius: 20px;
+  border: 1px solid #ff882e;
+  background-color: #ff882e;
   font-weight: bold;
   font-family: "Montserrat", sans-serif;
-  color: white;
+  color: #fafafa;
   width: 90px;
   height: 40px;
   align-items: center;
   display: block;
-  `;
+`;
 
 const PriceTotal = styled.p``;
 const Error = styled.p``;

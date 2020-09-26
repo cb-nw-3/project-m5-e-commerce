@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import StoreLogo from "./StoreLogo";
+import StoreLogo from "../Header/StoreLogo";
 
 const logo2 = require("../assets/bagel.gif");
 const alex = require("../assets/alex.jpg");
@@ -124,10 +124,10 @@ const AboutUs = () => {
 
           <HoldingWrapper>
             <LineWrapper>
-              <BigLetter>I</BigLetter>
+              <BigLetter>L</BigLetter>
               <TextWrapper>
                 <Uppertext>
-                  The <PurpleText>i</PurpleText> comes from the{" "}
+                  The <PurpleText>l</PurpleText> comes from the{" "}
                   <PurpleText>LAUDABLE CONTRIBUTION</PurpleText>
                   of Alex <PurpleText>L</PurpleText>angevin
                 </Uppertext>
@@ -189,7 +189,6 @@ const HoldingWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: -5%;
 `;
 
 const LineWrapper = styled.div`

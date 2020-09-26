@@ -6,7 +6,7 @@ const NavBar = () => {
   return (
     // This is temporary filler
     <Wrapper>
-      <NavBarItem to={"/AboutUs"}>Who? Bagelz!</NavBarItem>
+      <NavBarItem to={"/aboutus"}>Who? Bagelz!</NavBarItem>
       <NavBarItem to={"/fashion"}>Merch</NavBarItem>
     </Wrapper>
   );
