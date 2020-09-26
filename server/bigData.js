@@ -106,7 +106,6 @@ const renderBigDataByBodyTypeAlpha = async (req, res) => {
       collected_by_body_type.push(body_obj);
     });
 
-    console.log(collected_by_body_type[0]);
 
     res.status(200).json({ companies, collected_by_body_type });
   } catch (e) {
@@ -147,7 +146,6 @@ const renderBigDataCategoryAlpha = async (req, res) => {
 
     categories.sort();
 
-    console.log(categories);
     // now that we have all our body types in a nice array, go through each and pull out all the items with that type of body_type, then add it an object keyed with that body_type, and push to a master collection
 
     let collected_by_category = [];
@@ -159,7 +157,6 @@ const renderBigDataCategoryAlpha = async (req, res) => {
       collected_by_category.push(category_obj);
     });
 
-    console.log(collected_by_category[0]);
 
     res.status(200).json({ companies, collected_by_category });
   } catch (e) {

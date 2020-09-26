@@ -97,9 +97,10 @@ export const Feed = () => {
                 />
               )}
             </div>
-
-            <Location>{item.body_location} - </Location>
-            <Category>{item.category}</Category>
+            <div>
+              <Location>{item.body_location} - </Location>
+              <Category>{item.category}</Category>
+            </div>
             <StockCont>
               <Stock>
                 {/* If Stock is 0, it will simply display 'Out Of Stock */}
@@ -128,7 +129,9 @@ export const Feed = () => {
   }
 };
 
+
 const ItemWrapper = styled.li`
+
   margin-top: 15px;
   border-top: 1px solid ${COLORS.BLUE.PRIMARY};
   @media (min-width: 800px) {
@@ -137,7 +140,7 @@ const ItemWrapper = styled.li`
     padding: 5px;
   }
   width: 300px;
-  height: 300px;
+  height: 350px;
 `;
 
 const Name = styled.p`
@@ -185,4 +188,5 @@ const Button = styled.button`
   color: #fff;
   font-size: 15px;
   padding: 3px 10px;
+  max-width: 150px;
 `;

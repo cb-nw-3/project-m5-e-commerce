@@ -131,7 +131,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 15px 0 0 0;
-  max-width: 100%;
+  max-width: 500px;
+  margin: auto;
 `;
 
 const TotalWrapper = styled.div`
@@ -182,6 +183,12 @@ const Empty = styled.p``;
 const ValidationWrapper = styled.div`
   margin-top: 40px;
   margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  
 `;
 
 const Confirmation = styled.h1`

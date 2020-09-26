@@ -3,7 +3,6 @@ const { openFilePromise } = require("./filelibs.js");
 const renderBodyTypes = async (req, res) => {
   try {
     const items_data = await openFilePromise("./data/items.json");
-    console.log(items_data);
 
     let items = JSON.parse(items_data);
 

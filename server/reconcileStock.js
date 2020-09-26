@@ -1,13 +1,11 @@
 const { openFilePromise, writeFile } = require("./filelibs.js");
 
 const promiseCheckItemsAgainstPurchasedStock = async (items) => {
-  // console.log(items[0]);
 
   let purchases_data;
   try {
     purchases_data = await openFilePromise("./data/purchases.json");
   } catch (e) {
-    console.log("promiseCheckItemsAgainstPurchasedStock");
     console.error(e.code);
 
     let purchases = [];
@@ -18,7 +16,6 @@ const promiseCheckItemsAgainstPurchasedStock = async (items) => {
 
   myPromise = new Promise((resolve, reject) => {
     let purchases = JSON.parse(purchases_data);
-    console.log(purchases[0]);
     let last_index = 0;
     purchases.forEach((purchase) => {
       // find the items sub array from items that macthes the purchase
@@ -36,7 +33,6 @@ const promiseCheckItemsAgainstPurchasedStock = async (items) => {
           purchase.itemsBought[0].quantity;
       });
     });
-    console.log(items[0]);
 
     resolve(items);
   });

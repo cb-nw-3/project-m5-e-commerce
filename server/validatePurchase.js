@@ -74,7 +74,6 @@ const validatePurchase = async (req, res) => {
     //If the purchase has no error and passes the form validation, then it will be pushed to the stockUpdates array and will be send back to the user.
     const order = { orderId: uuidv4(), itemsBought: purchasedItemsArray };
     stockUpdates.push(order);
-    console.log("error", error);
     // open the file from purchases.json,
 
     try {
@@ -83,7 +82,6 @@ const validatePurchase = async (req, res) => {
       purchases.push(order);
       let file_confirmation = await writeFile("purchases.json", purchases);
     } catch (e) {
-      console.log("e");
       console.error(e.code);
 
       let purchases = [order];

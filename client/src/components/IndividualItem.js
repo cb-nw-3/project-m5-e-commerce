@@ -115,6 +115,10 @@ const Img = styled.img`
   max-height: 80%;
   max-width: 90%;
   border-radius: 15px;
+  @media (min-width: 800px) {
+    height: 275px;
+    width: auto;
+  }
 `;
 
 const Name = styled.p`
