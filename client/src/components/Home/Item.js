@@ -8,7 +8,6 @@ const Item = ({ item }) => {
   const viewItem = (id) => {
     history.push("/item/" + id)
   }
-  console.log('Item', item);
 
   return (
     <Wrapper>

@@ -6,12 +6,11 @@ import { THEME } from "../Style/Theme";
 import { BuyButton } from "../Buttons";
 
 const QuantityBar = ({ id, addToCart, numInStock }) => {
+
   const cartQuantity = useSelector((state) =>
     state.purchase[id] ? state.purchase[id].quantity : 1
   );
-  const itemInStock = useSelector((state) =>
-    state.purchase[id] ? state.purchase[id].numInStock : 1
-  );
+
   const [quantity, setQuantity] = React.useState(cartQuantity);
 
   return (
@@ -30,7 +29,7 @@ const QuantityBar = ({ id, addToCart, numInStock }) => {
         <Buttons
           id={id}
           numInStock={numInStock}
-          onClick={() => setQuantity(Math.min(quantity + 1))}
+          onClick={() => setQuantity(quantity < numInStock ? quantity + 1 : quantity)}
         >
           +
         </Buttons>

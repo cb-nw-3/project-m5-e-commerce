@@ -18,8 +18,6 @@ let sample = [
 
 let example = JSON.stringify({ cart: sample });
 
-console.log(example);
-
 function updateStoreHandler(req, res) {
   const cart = req.body;
 

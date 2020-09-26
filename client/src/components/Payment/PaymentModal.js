@@ -76,8 +76,10 @@ const ModalWrapper = styled.div`
 `;
 
 const Modal = styled.div`
-  width: 50%;
-  min-width: 650px;
+  width: 70vw;
+  min-width: 300px;
+  max-height: 70vh;
+  overflow: auto;
   margin: 0 auto;
   padding: 16px;
   background-color: #fff;

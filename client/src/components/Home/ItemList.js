@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components/macro";
 import Item from "./Item";
 import { useSelector, useDispatch } from "react-redux";
@@ -35,7 +35,7 @@ const ItemList = () => {
           }))}
       </ListWrapper>
       {showViewMore && <ListFooter>
-        <ViewMore onClick={() => {fetchItems(category)}}>View more...</ViewMore>
+        <ViewMore onClick={() => { fetchItems(category) }}>View more...</ViewMore>
       </ListFooter>}
     </Wrapper>
   );

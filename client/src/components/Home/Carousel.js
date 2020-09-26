@@ -59,7 +59,7 @@ const Carousel = ({ category }) => {
       <StyledSwiper slidesPerView={1} pagination={{ clickable: true }}>
         {photoArray.map((image) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={image}>
               <Image src={image} />
             </SwiperSlide>
           );
