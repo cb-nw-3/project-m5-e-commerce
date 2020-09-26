@@ -129,9 +129,7 @@ export const Feed = () => {
   }
 };
 
-
 const ItemWrapper = styled.li`
-
   margin-top: 15px;
   border-top: 1px solid ${COLORS.BLUE.PRIMARY};
   @media (min-width: 800px) {
@@ -141,6 +139,10 @@ const ItemWrapper = styled.li`
   }
   width: 300px;
   height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Name = styled.p`
