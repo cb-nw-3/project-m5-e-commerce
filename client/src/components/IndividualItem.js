@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { addItem, catchError } from "../actions";
 import { COLORS } from "./styles/Colors";
 import Loader from "react-loader-spinner";
@@ -25,12 +25,11 @@ const IndividualItem = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.item);
         setItemData(data.item);
         setLoadStatus("loaded");
       })
       .catch((err) => dispatch(catchError(err)));
-  }, [itemId]);
+  }, [itemId, dispatch]);
 
   React.useEffect(() => {
     fetch("/companies", {
@@ -42,15 +41,13 @@ const IndividualItem = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setCompaniesData(data);
         setLoadCompanyStatus("loaded");
       })
       .catch((err) => dispatch(catchError(err)));
-  }, [itemId]);
+  }, [itemId, dispatch]);
 
   if (loadStatus === "loaded" && loadCompanyStatus === "loaded") {
-    console.log("test");
     {
       let company = companies.sorted_companies.find((company) => {
         return company._id === item.companyId;
@@ -81,7 +78,7 @@ const IndividualItem = () => {
               ev.stopPropagation();
               dispatch(addItem(item));
             }}
-            disabled={item.numInStock == 0}
+            disabled={item.numInStock === 0}
           >
             Add To Cart
           </Button>

@@ -27,7 +27,6 @@ const Cart = () => {
   if (status === "loading") {
     return (
       <LoaderWrapper>
-        {/* Loading Style */}
         <Loader
           type="Grid"
           color={COLORS.BLUE.PRIMARY}
@@ -102,7 +101,6 @@ const Cart = () => {
             })
               .then((res) => {
                 if (!res.ok) {
-                  console.log(res.status);
                   throw Error("server Error");
                 }
                 return res.json();

@@ -1,8 +1,7 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components";
 import { COLORS } from "../styles/Colors";
-// This is the full logo with text
-import logo from "../../public/WE_LOGO.png";
+
 // This is the IMG portion of logo only
 import imgLogo from "../../public/IMG_Logo.png";
 // React Icons being used
@@ -20,21 +19,12 @@ const NavBar = () => {
   const cartItems = useSelector((state) => Object.values(state.cart));
 
   const [isOpen, setIsOpen] = React.useState(false);
-  // let maxHeight = 0;
-  // if (isOpen) {
-  //   maxHeight = "1000px";
-  // }
+
   const toggleSearchForm = () => setIsOpen(!isOpen);
   const [showForm, setShowForm] = useState(false);
   const displayForm = () => setShowForm(true);
   const hideForm = () => setShowForm(false);
 
-  const scrollPos = window.scrollY;
-
-  function checkScrollPos(scrollPos) {
-    console.log(scrollPos);
-  }
-  window.addEventListener("scroll", checkScrollPos(scrollPos));
   return (
     <NavWrapper>
       <Nav>
