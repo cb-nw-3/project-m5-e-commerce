@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { COLORS } from "../styles/Colors";
+
 import errorImg from "../../public/fiveHundred.png";
 
 const FiveHundred = () => {
@@ -23,8 +23,3 @@ const Wrapper = styled.div`
 `;
 
 const Img = styled.img``;
-
-const Text = styled.p`
-  color: ${COLORS.BLUE.SECONDARY};
-  width: 75%;
-`;

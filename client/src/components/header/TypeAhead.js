@@ -39,7 +39,7 @@ const TypeAhead = ({ setIsOpen }) => {
           dispatch(catchError(err));
         });
     }
-  }, []);
+  }, [dispatch, allItems, currentFilter]);
 
   const [searchTerm, setSearchTerm] = React.useState("");
 
@@ -72,7 +72,6 @@ const TypeAhead = ({ setIsOpen }) => {
       resultsFound = false;
     }
   }
-  console.log("results", resultsFound);
 
   if (!allItems) {
     return <div></div>;

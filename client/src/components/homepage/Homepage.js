@@ -7,10 +7,9 @@ import Pagination from "./Pagination";
 const Homepage = () => {
   return (
     <Wrapper>
-      
-      <Ul>
+      <FeedWrapper>
         <Feed />
-      </Ul>
+      </FeedWrapper>
 
       <LineBreak></LineBreak>
       <Pagination />
@@ -30,8 +29,8 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const Ul = styled.ul`
-display: flex;
+const FeedWrapper = styled.div`
+  display: flex;
   list-style-type: none;
   width: 75%;
   text-align: center;
@@ -41,18 +40,6 @@ display: flex;
   @media (min-width: 800px) {
     flex-wrap: no-wrap;
   }
-  /* @media (min-width: 900px) {
-  display: inline-grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  }
-  @media (max-width: 899px) {
-  display: inline-grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  }
-  @media (max-width: 600px) {
-  display: inline-grid;
-  grid-template-columns: 1fr;
-  } */
 `;
 
 export default Homepage;

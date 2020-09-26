@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { COLORS } from "../styles/Colors";
-import { FaCartPlus } from "react-icons/fa";
+
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -51,7 +51,7 @@ export const Feed = () => {
       .catch((err) => {
         dispatch(catchError(err));
       });
-  }, [purchaseTracker]);
+  }, [purchaseTracker, dispatch, currentFilter]);
 
   if (status === "error") {
     return (
@@ -76,11 +76,10 @@ export const Feed = () => {
     );
   }
   if (data.pages !== undefined) {
-    return pages[pageNumber].map((item) => {
+    return pages[pageNumber].map((item, index) => {
       return (
-        <div>
-          <Li
-            key={item.name}
+        <div key={item.name + index}>
+          <ItemWrapper
             onClick={(ev) => {
               ev.stopPropagation();
               history.push(`/items/${item._id}`);
@@ -122,23 +121,14 @@ export const Feed = () => {
                 Add To Cart{" "}
               </Button>
             ) : null}
-
-            {/* this */}
-            {/* <Button
-            onClick={() => {
-            dispatch(addItem(item));
-          }}
-          >
-          Purchase
-        </Button> */}
-          </Li>
+          </ItemWrapper>
         </div>
       );
     });
   }
 };
 
-const Li = styled.li`
+const ItemWrapper = styled.li`
   margin-top: 15px;
   border-top: 1px solid ${COLORS.BLUE.PRIMARY};
   @media (min-width: 800px) {

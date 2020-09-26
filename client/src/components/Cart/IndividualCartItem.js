@@ -19,9 +19,6 @@ const IndividualCartItem = ({ item }) => {
         <ItemDetails>
           <div>
             <ItemName to={`items/${item._id}`}>{item.name}</ItemName>
-            {/* <Brand>
-              By: <BrandName>{brand.name}</BrandName>
-            </Brand> */}
           </div>
           <Price>CAN{item.price}</Price>
           <InputSection>
@@ -29,7 +26,6 @@ const IndividualCartItem = ({ item }) => {
               value={inputValue}
               onChange={(ev) => {
                 const numbersOnly = /^\d+$/;
-
                 //this first if checks for positive whole numbers and doesn't register an error if the string is empty
                 if (
                   (!numbersOnly.test(ev.target.value) &&
@@ -125,13 +121,6 @@ const ItemName = styled(Link)`
   text-overflow: ellipsis;
   margin-bottom: 10px;
 `;
-
-// const Brand = styled.p``;
-
-// const BrandName = styled.span`
-//   font-weight: 400;
-//   font-style: italic;
-// `;
 
 const Price = styled.p`
   font-weight: 600;
