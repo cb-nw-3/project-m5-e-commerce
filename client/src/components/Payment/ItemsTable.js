@@ -4,6 +4,7 @@ import { Buttons } from "../ModalQuantityButtons";
 import { useSelector, useDispatch } from "react-redux";
 import { getStoreItemsArray, getTotal } from "../reducers/Purchase";
 import { increment, decrement, removeItem } from "../../Actions";
+import { THEME } from "../Style/Theme";
 
 
 const ItemsTable = ({
@@ -18,6 +19,11 @@ const ItemsTable = ({
     const itemArray = useSelector(getStoreItemsArray);
     const subTotal = useSelector(getTotal);
     const total = subTotal.toFixed(2);
+
+    const cartQuantity = useSelector((state) =>
+        state.purchase[id] ? state.purchase[id].quantity : 1
+    );
+    const [quantity, setQuantity] = React.useState(cartQuantity);
 
     return (
         <>
@@ -43,7 +49,7 @@ const ItemsTable = ({
                                         <Buttons
                                             id={id}
                                             numInStock={numInStock}
-                                            onClick={() => setQuantity(quantity - 1 || 1)}
+                                            onClick={() => dispatch(decrement(item.id))}
                                         >
                                             <Text>
                                                 <strong>-</strong>
@@ -53,7 +59,7 @@ const ItemsTable = ({
                                         <Buttons
                                             id={id}
                                             numInStock={numInStock}
-                                            onClick={() => setQuantity(Math.min(quantity + 1))}
+                                            onClick={() => dispatch(increment(item.id))}
                                         >
                                             <Text>
                                                 <strong>+</strong>
