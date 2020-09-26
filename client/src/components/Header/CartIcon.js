@@ -1,5 +1,5 @@
 // Libraries
-import React, { useState } from "react";
+import React from "react";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PaymentModal from "../Payment/PaymentModal";
 import { useSelector, useDispatch } from "react-redux";

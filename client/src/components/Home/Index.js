@@ -1,6 +1,4 @@
 import React from "react";
-import styled from "styled-components/macro";
-import Footer from "../Footer/footer";
 import CategoryBar from "../CategoryBar";
 
 import Carousel from "./Carousel";

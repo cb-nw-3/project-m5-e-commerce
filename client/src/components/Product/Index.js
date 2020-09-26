@@ -9,7 +9,7 @@ import Tag from "./Tag";
 import Company from "./Company";
 import Sku from "./Sku";
 import { beginPurchaseProcess } from "../../Actions";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Product = () => {
   const { id } = useParams();
@@ -17,7 +17,6 @@ const Product = () => {
   const [item, setItem] = React.useState();
   const [loading, setLoading] = React.useState(true);
 
-  const purchase = useSelector((state) => state.purchase);
   const dispatch = useDispatch();
 
   const [open, setOpen] = React.useState(false);

@@ -9,7 +9,6 @@ import Footer from "./Footer/footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 //Style
-import styled from "styled-components/macro";
 import GlobalStyles from "./Style/GlobalStyle";
 
 function App() {

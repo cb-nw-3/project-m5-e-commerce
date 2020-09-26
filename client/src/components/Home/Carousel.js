@@ -51,6 +51,8 @@ const Carousel = ({ category }) => {
       case "pets and animals":
         SetPhotoArray(petsArray);
         break;
+      default:
+        return category
     }
   }, [category]);
 
