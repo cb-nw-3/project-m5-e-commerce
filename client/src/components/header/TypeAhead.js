@@ -51,6 +51,7 @@ const TypeAhead = ({ setIsOpen }) => {
     }
   }, [allItems]);
   let matchedItemsArray = [];
+  let resultsFound = true;
 
   if (allItems !== undefined) {
     matchedItemsArray = allItems.filter((item) => {
@@ -66,7 +67,12 @@ const TypeAhead = ({ setIsOpen }) => {
         return false;
       }
     });
+
+    if (matchedItemsArray.length === 0 && searchTerm.length >= 2) {
+      resultsFound = false;
+    }
   }
+  console.log("results", resultsFound);
 
   if (!allItems) {
     return <div></div>;
@@ -83,6 +89,11 @@ const TypeAhead = ({ setIsOpen }) => {
             setSearchTerm(ev.target.value);
           }}
         />
+        {resultsFound === false ? (
+          <DropDown>
+            <SearchResult>No search results found</SearchResult>
+          </DropDown>
+        ) : null}
         {matchedItemsArray.length > 1 && (
           <DropDown>
             {matchedItemsArray.map((item, index) => {
@@ -151,7 +162,7 @@ const Input = styled.input`
 
 const DropDown = styled.ul`
   width: 70%;
-  background: white;
+  background-color: white;
   border-left: 1px solid ${COLORS.PURPLE.PRIMARY};
   border-bottom: 1px solid ${COLORS.PURPLE.PRIMARY};
   border-right: 1px solid ${COLORS.PURPLE.PRIMARY};
