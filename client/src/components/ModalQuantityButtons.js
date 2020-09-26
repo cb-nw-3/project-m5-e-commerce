@@ -18,40 +18,20 @@ export const Buttons = ({ children, onClick, id, numInStock }) => {
 };
 
 const Button = styled.button`
-  border: none;
-  box-sizing: border-box;
-  transition: all 20ms ease-in 0s;
-  box-shadow: rgba(252, 176, 59, 0.1) 0px 0px 2rem;
-  background-color: ${THEME.primary};
-  font-size: 20px;
+  background-color: #d8d8d8;
+  border: 1px solid #d8d8d8;
   border-radius: 50%;
-  margin: 0 2px;
-  padding: 0 10px;
-  overflow: visible;
-  z-index: 100;
+  margin: 0 5px 0 5px;
+  color: black;
+  font-size: 16px;
+  height: 25px;
+  width: 25px;
+  padding: 5px;
+  display: inline-block;
 
   &:hover {
-    background-color: #d5d5d5;
-    text-decoration: none;
-  }
-
-  &:active {
-    transform: scale(0.95);
-    box-shadow: rgba(252, 176, 59, 0.1) 0px 0px 1rem;
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  &:disabled {
-    background: ${THEME.tertiary};
-    color: white;
-
-    &:hover {
-      box-shadow: none;
-      cursor: auto;
-    }
+    box-shadow: none;
+    cursor: auto;
   }
 `;
 

@@ -74,6 +74,7 @@ export default Carousel;
 
 const SwiperContainer = styled.div`
   margin: 0 auto;
+  padding-top: 30px;
   position: relative;
   height: 500px;
   display: flex;

@@ -60,7 +60,7 @@ const Wrapper = styled.section`
   padding: 30px;
 
   @media (max-width: 873px) {
-    padding: 5px;
+    padding: 1px;
   }
 `;
 

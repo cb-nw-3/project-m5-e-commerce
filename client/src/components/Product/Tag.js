@@ -1,29 +1,26 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import { THEME } from '../Style/Theme';
+import React from "react";
+import styled from "styled-components/macro";
+import { THEME } from "../Style/Theme";
 
 const Tag = ({ children }) => {
-
-    return (
-        <Wrapper>
-            <Paragraph>
-                {children}
-            </Paragraph>
-        </Wrapper>
-    )
-}
+  return (
+    <Wrapper>
+      <Paragraph>{children}</Paragraph>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
-    display: inherit;
-
-`
+  display: flex;
+`;
 
 const Paragraph = styled.p`
-    background: ${THEME.primary};
-    width: auto;
-    padding: 5px 10px;
-    border-radius: 40px;
-    color: ${THEME.white};
-    font-size: 14px;
-`
+  background: ${THEME.primary};
+  padding: 0px 10px;
+  border-radius: 5px;
+  color: ${THEME.white};
+  font-size: 12px;
+  margin-bottom: 10px;
+  max-width: 125px;
+`;
 export default Tag;
