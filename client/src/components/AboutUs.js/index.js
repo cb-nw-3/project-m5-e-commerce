@@ -18,7 +18,7 @@ const AboutUs = () => {
       <Wrapper>
         <Header />
         <MainText>
-          <h1>Why baglez</h1>
+          <h1>Why bagelz</h1>
           Bagelz wearables circle us physically but also virtually as they
           encircle many realms of our lives ...wether for business or pleasure,
           for individual growth or to connect with others we will find that
@@ -35,7 +35,7 @@ const AboutUs = () => {
                 <Uppertext>
                   The <PurpleText>b</PurpleText> comes with the{" "}
                   <PurpleText>BLESSING</PurpleText> <br />
-                  of nathalie <PurpleText>B</PurpleText>enaroch
+                  of Nathalie <PurpleText>B</PurpleText>enaroch
                 </Uppertext>
                 <LowerText>
                   Having led the Creative Direction of lifestyle and fashion
@@ -209,7 +209,7 @@ const BigLetter = styled.div`
 
 const BigLetterZ = styled.div`
   font-size: 150px;
-  color: purple;
+  color: #a181f5;
   padding: 20px;
   font-family: "Continuum", sans-serif;
 `;
@@ -248,7 +248,7 @@ const LowerText = styled.p`
 `;
 
 const PurpleText = styled.span`
-  color: purple;
+  color: #a181f5;
 `;
 
 const Color = styled.img`
