@@ -17,12 +17,10 @@ const Header = () => {
 };
 
 const Wrapper = styled.div`
-  /* Temporary styles */
   display: flex;
   flex-direction: row;
   align-items: left;
   justify-content: space-between;
-  /* border: solid 2pt red; */
   height: 33vh;
 `;
 

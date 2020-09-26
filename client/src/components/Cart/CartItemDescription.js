@@ -12,7 +12,21 @@ const CartItemDescription = ({ name, price }) => {
 };
 
 const CartItemImage = styled.img``;
-const CartItemName = styled.p``;
-const CartItemPrice = styled.p``;
+const CartItemName = styled.p`
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  display: block;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+ `;
+
+
+const CartItemPrice = styled.p`
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  display: block;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+`;
 
 export default CartItemDescription;

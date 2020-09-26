@@ -26,7 +26,7 @@ const Featured = () => {
       </CampaignImg>
       <CampaignImg imgSrc={image3} position="top">
         <Text>
-          give you the <TextStrong>Power,</TextStrong>
+          give you the <TextStrongOrange>Power,</TextStrongOrange>
         </Text>
       </CampaignImg>
       <CampaignImg imgSrc={image4} position="top">
@@ -37,13 +37,13 @@ const Featured = () => {
       <CampaignImg imgSrc={image5} position="top">
         {" "}
         <Text>
-          so you can <TextStrong>Connect,</TextStrong>
+          so you can <TextStrongMint>Connect,</TextStrongMint>
         </Text>
       </CampaignImg>
       <CampaignImg imgSrc={image6} position="top">
         {" "}
         <Text>
-          whenever <TextStrongMint>You</TextStrongMint>
+          whenever <TextStrongMauve>You</TextStrongMauve>
           <Text> want.</Text>
         </Text>
       </CampaignImg>
@@ -66,6 +66,17 @@ const TextStrong = styled.span`
 const TextStrongRed = styled.span`
   font-weight: bold;
   color: #f992fd;
+  font-family: "Montserrat", sans-serif;
+`;
+const TextStrongMauve = styled.span`
+  font-weight: bold;
+  color: #a181f5;
+  font-family: "Montserrat", sans-serif;
+`;
+
+const TextStrongOrange = styled.span`
+  font-weight: bold;
+  color: #ff882e;
   font-family: "Montserrat", sans-serif;
 `;
 const TextStrongMint = styled.span`
