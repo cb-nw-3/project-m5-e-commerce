@@ -29,6 +29,12 @@ const Header = () => {
   const displayForm = () => setShowForm(true);
   const hideForm = () => setShowForm(false);
 
+  const scrollPos = window.scrollY;
+
+  function checkScrollPos(scrollPos) {
+    console.log(scrollPos)
+  }
+  window.addEventListener('scroll', checkScrollPos(scrollPos))
   return (
     <Wrapper>
       <Logo src={logo} />
@@ -70,12 +76,16 @@ const Wrapper = styled.div`
 const Logo = styled.img`
   height: 150px;
   width: 150px;
+  @media (max-width: 899px) {
+    display: none;
+  }
 `;
 
 const Nav = styled.nav`
-  width: 100%;
+  width: 750px;
   display: flex;
   justify-content: space-evenly;
+  
 `;
 
 const A = styled(Link)`

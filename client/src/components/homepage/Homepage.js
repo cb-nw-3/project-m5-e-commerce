@@ -24,6 +24,7 @@ const Homepage = () => {
 
   return (
     <Wrapper>
+      
       <Ul>
         <Feed />
       </Ul>
@@ -195,10 +196,28 @@ const Input = styled.input`
 `;
 
 const Ul = styled.ul`
+display: flex;
   list-style-type: none;
   width: 75%;
   text-align: center;
   margin-top: 15px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  @media (min-width: 800px) {
+    flex-wrap: no-wrap;
+  }
+  /* @media (min-width: 900px) {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  @media (max-width: 899px) {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media (max-width: 600px) {
+  display: inline-grid;
+  grid-template-columns: 1fr;
+  } */
 `;
 
 export default Homepage;
