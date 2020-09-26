@@ -25,7 +25,6 @@ const IndividualItem = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.item);
         setItemData(data.item);
         setLoadStatus("loaded");
       })
@@ -42,7 +41,6 @@ const IndividualItem = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setCompaniesData(data);
         setLoadCompanyStatus("loaded");
       })
@@ -50,7 +48,6 @@ const IndividualItem = () => {
   }, [itemId]);
 
   if (loadStatus === "loaded" && loadCompanyStatus === "loaded") {
-    console.log("test");
     {
       let company = companies.sorted_companies.find((company) => {
         return company._id === item.companyId;
@@ -118,6 +115,10 @@ const Img = styled.img`
   max-height: 80%;
   max-width: 90%;
   border-radius: 15px;
+  @media (min-width: 800px) {
+    height: 275px;
+    width: auto;
+  }
 `;
 
 const Name = styled.p`

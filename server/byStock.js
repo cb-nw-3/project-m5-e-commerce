@@ -89,7 +89,6 @@ const renderOnlyInStockByBodyType = async (req, res) => {
 
     body_types.sort();
 
-    console.log(body_types);
 
     // now that we have all our body types in a nice array, go through each and pull out all the items with that type of body_type, then add it an object keyed with that body_type, and push to a master collection
 
@@ -201,7 +200,6 @@ const renderOnlyInStockCategory = async (req, res) => {
 
     categories.sort();
 
-    console.log(categories);
     // now that we have all our body types in a nice array, go through each and pull out all the items with that type of body_type, then add it an object keyed with that body_type, and push to a master collection
 
     let collected_by_category = [];
@@ -213,7 +211,6 @@ const renderOnlyInStockCategory = async (req, res) => {
       collected_by_category.push(category_obj);
     });
 
-    console.log(collected_by_category[0]);
 
     res.status(200).json({ collected_by_category });
   } catch (e) {
@@ -254,7 +251,6 @@ const renderOnlyOutOfStockCategory = async (req, res) => {
 
     categories.sort();
 
-    console.log(categories);
     // now that we have all our body types in a nice array, go through each and pull out all the items with that type of body_type, then add it an object keyed with that body_type, and push to a master collection
 
     let collected_by_category = [];
@@ -266,7 +262,6 @@ const renderOnlyOutOfStockCategory = async (req, res) => {
       collected_by_category.push(category_obj);
     });
 
-    console.log(collected_by_category[0]);
 
     res.status(200).json({ collected_by_category });
   } catch (e) {
@@ -304,8 +299,6 @@ const renderItemsByCompanyID = async (req, res) => {
     let items = await promiseCheckItemsAgainstPurchasedStock(items_parsed);
     items = cleanPriceData(items);
 
-    console.log(companyID);
-    console.log(companyID);
 
     let itemsForCompany = items.filter(
       (item) => item.companyId === companyIDNum

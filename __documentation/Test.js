@@ -25,4 +25,3 @@ const NumTwoOfSlice = NumOneOfSlice + itemsPerPage;
 
 let ArrayToMapOver = data.slice(NumOneOfSlice, NumTwoOfSlice);
 
-console.log(ArrayToMapOver);

@@ -72,7 +72,6 @@ const TypeAhead = ({ setIsOpen }) => {
       resultsFound = false;
     }
   }
-  console.log("results", resultsFound);
 
   if (!allItems) {
     return <div></div>;

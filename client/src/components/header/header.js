@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { COLORS } from "../styles/Colors";
 // This is the full logo with text
 import logo from "../../public/WE_LOGO.png";
+import logoName from '../../public/WE_LOGO_NAME.png'
 // This is the IMG portion of logo only
 import imgLogo from "../../public/IMG_Logo.png";
 // React Icons being used
@@ -29,12 +30,8 @@ const Header = () => {
   const displayForm = () => setShowForm(true);
   const hideForm = () => setShowForm(false);
 
-  const scrollPos = window.scrollY;
 
-  function checkScrollPos(scrollPos) {
-    console.log(scrollPos)
-  }
-  window.addEventListener('scroll', checkScrollPos(scrollPos))
+  
   return (
     <Wrapper>
       <Logo src={logo} />
@@ -50,6 +47,8 @@ const Header = () => {
           <CartItemNumDisplay>{cartItems.length}</CartItemNumDisplay>
         </A>
       </Nav>
+      <LogoName src={logoName} />
+
       {isOpen ? <TypeAhead isOpen={isOpen} setIsOpen={setIsOpen} /> : null}
       <Input type="submit" value="Options" onClick={displayForm} />
       {showForm ? <InputForm /> : null}
@@ -73,6 +72,16 @@ const Wrapper = styled.div`
   transition: height 0.5ms;
 `;
 
+const LogoName = styled.img`
+  @media (min-width: 900px) {
+    display: none;
+  }
+  height: 25px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+`;
+
 const Logo = styled.img`
   height: 150px;
   width: 150px;
@@ -83,6 +92,10 @@ const Logo = styled.img`
 
 const Nav = styled.nav`
   width: 750px;
+  @media (max-width: 800px) {
+    width: 275px;
+    padding-top: 15px;
+  }
   display: flex;
   justify-content: space-evenly;
   
@@ -95,7 +108,6 @@ const A = styled(Link)`
 const CartItemNumDisplay = styled.span`
   height: 20px;
   width: 20px;
-  position: absolute;
   background-color: ${COLORS.BLUE.PRIMARY};
   color: white;
   border-radius: 50%;
