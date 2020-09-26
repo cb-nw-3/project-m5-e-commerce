@@ -8,8 +8,8 @@ const alex = require("../assets/alex.jpg");
 const alexandre = require("../assets/alexandre.jpg");
 const nathalie = require("../assets/nathalie.jpg");
 const hiba = require("../assets/hiba.jpg");
-const approval = require("../assets/approval.jpg");
-const teamwork = require("../assets/teamwork.jpg");
+const approvalsign = require("../assets/approvalsign.jpg");
+const team = require("../assets/team.jpg");
 
 const AboutUs = () => {
   const { AboutUs } = useParams();
@@ -17,9 +17,8 @@ const AboutUs = () => {
     <>
       <Wrapper>
         <StoreLogo imgSrc={logo2} />
-
-        <h1>Why Baglez</h1>
         <MainText>
+          <h1>Why baglez</h1>
           Bagelz wearables circle us physically but also virtually as they
           encircle many realms of our lives ...wether for business or pleasure,
           for individual growth or to connect with others we will find that
@@ -31,7 +30,7 @@ const AboutUs = () => {
         <PageBody>
           <HoldingWrapper>
             <LineWrapper>
-              <BigLetter>B</BigLetter>
+              <BigLetter>b</BigLetter>
               <TextWrapper>
                 <Uppertext>
                   The <PurpleText>b</PurpleText> comes with the{" "}
@@ -52,7 +51,7 @@ const AboutUs = () => {
 
           <HoldingWrapper>
             <LineWrapper>
-              <BigLetter>A</BigLetter>
+              <BigLetter>a</BigLetter>
               <TextWrapper>
                 <Uppertext>
                   The <PurpleText>a</PurpleText> comes with the{" "}
@@ -68,12 +67,12 @@ const AboutUs = () => {
                 </LowerText>
               </TextWrapper>
             </LineWrapper>
-            <Color src={approval}></Color>
+            <Color src={approvalsign}></Color>
           </HoldingWrapper>
 
           <HoldingWrapper>
             <LineWrapper>
-              <BigLetter>G</BigLetter>
+              <BigLetter>g</BigLetter>
               <TextWrapper>
                 <Uppertext>
                   The <PurpleText>g</PurpleText> comes from the{" "}
@@ -99,7 +98,7 @@ const AboutUs = () => {
 
           <HoldingWrapper>
             <LineWrapper>
-              <BigLetter>E</BigLetter>
+              <BigLetter>e</BigLetter>
               <TextWrapper>
                 <Uppertext>
                   The <PurpleText>e</PurpleText> comes from the{" "}
@@ -119,16 +118,16 @@ const AboutUs = () => {
                 </LowerText>
               </TextWrapper>
             </LineWrapper>
-            <Color src={teamwork}></Color>
+            <Color src={team}></Color>
           </HoldingWrapper>
 
           <HoldingWrapper>
             <LineWrapper>
-              <BigLetter>L</BigLetter>
+              <BigLetter>l</BigLetter>
               <TextWrapper>
                 <Uppertext>
                   The <PurpleText>l</PurpleText> comes from the{" "}
-                  <PurpleText>LAUDABLE CONTRIBUTION</PurpleText>
+                  <PurpleText>LAUDABLE CONTRIBUTION </PurpleText>
                   of Alex <PurpleText>L</PurpleText>angevin
                 </Uppertext>
                 <LowerText>
@@ -145,11 +144,11 @@ const AboutUs = () => {
 
           <HoldingWrapper>
             <LineWrapper>
-              <BigLetter>Z</BigLetter>
+              <BigLetterZ>z</BigLetterZ>
               <TextWrapper>
                 <Uppertext>
                   The <PurpleText>z</PurpleText> comes from the{" "}
-                  <PurpleText>ZEALOUS CONTRIBUTION</PurpleText>
+                  <PurpleText>ZEALOUS CONTRIBUTION </PurpleText>
                   of Hiba <PurpleText>Z</PurpleText>aarour
                 </Uppertext>
                 <LowerText>
@@ -189,6 +188,7 @@ const HoldingWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: -5%;
 `;
 
 const LineWrapper = styled.div`
@@ -201,9 +201,17 @@ const LineWrapper = styled.div`
 `;
 
 const BigLetter = styled.div`
-  font-size: 40px;
+  font-size: 150px;
+  color: black;
+  padding: 20px;
+  font-family: "Continuum", sans-serif;
+`;
+
+const BigLetterZ = styled.div`
+  font-size: 150px;
   color: purple;
   padding: 20px;
+  font-family: "Continuum", sans-serif;
 `;
 
 const TextWrapper = styled.div`
@@ -214,9 +222,13 @@ const TextWrapper = styled.div`
 const MainText = styled.p`
   text-align: justify;
   text-justify: inter-word;
-  border: 20px;
+  width: 500px;
+  border: 10px;
+  padding: 50px;
+  margin: 80px;
+  margin-bottom: 25px;
   font-size: 23px;
-  font-style: times, arial;
+  font-family: "Montserrat", sans-serif;
 `;
 
 const Uppertext = styled.p`
@@ -224,7 +236,7 @@ const Uppertext = styled.p`
   text-justify: inter-word;
   border: 20px;
   font-size: 21px;
-  font-style: arial;
+  font-family: "Montserrat", sans-serif;
 `;
 
 const LowerText = styled.p`
@@ -232,7 +244,7 @@ const LowerText = styled.p`
   text-justify: inter-word;
   border: 20px;
   font-size: 18px;
-  font-style: arial;
+  font-family: "Montserrat", sans-serif;
 `;
 
 const PurpleText = styled.span`
@@ -240,8 +252,10 @@ const PurpleText = styled.span`
 `;
 
 const Color = styled.img`
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
+  border-radius: 20px;
+  box-shadow: 6px 2px 18px 1px rgba(150, 150, 150, 1);
 `;
 
 export default AboutUs;
