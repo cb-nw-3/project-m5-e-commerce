@@ -9,7 +9,6 @@ import { addItem } from "../action";
 // item property
 const Product = ({ imageSrc, name, price, _id, numInStock }) => {
   const dispatch = useDispatch();
-  let history = useHistory();
 
   return name ? (
     <Wrapper>
@@ -21,46 +20,48 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
           <div>
             <a href={`/shop/${_id}`}>{name}</a>
             <h4>{price}</h4>
-            <Button
-              onClick={() => {
-                dispatch(addItem({ _id, name, price }));
-              }}
-              // disabled={numInStock > 0 ? false : true}
-            >
-              Add to cart
-            </Button>
           </div>
+          <p>{numInStock}</p>
         </div>
       </div>
-      <Button
+      <Button2
         onClick={() => {
           dispatch(addItem({ _id, name, price, numInStock }));
         }}
         disabled={numInStock > 0 ? false : true}
       >
         Add to cart
-      </Button>
+      </Button2>
     </Wrapper>
   ) : (
-    <LoadingIcon />
+    <LoadingIcon size={100} />
   );
 };
-
-const WrapperNathalie = styled.div``;
-const ButtonNathalie = styled.button``;
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: cornsilk;
+  align-content: center;
+  align-items: center;
+  background-color: white;
   text-align: center;
-  border: 1px solid black;
-  border-radius: 3px;
+  border-radius: 20px;
+  box-shadow: 5px 8px lightgrey;
+  font-family: "Montserrat", sans-serif;
+  padding-bottom: 20px;
 `;
 
-const Button = styled.button`
-  border-radius: 10%;
+const Button2 = styled.button`
+  border-radius: 20%;
+  background-color: black;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  width: 90px;
+  height: 40px;
+  align-items: center;
+  display: block;
 `;
 const Img = styled.img`
   border-radius: 10%;

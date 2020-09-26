@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { updateQuantity, removeItem } from "../action";
 
 const CartItemInput = ({ quantity, _id, numInStock }) => {
-  console.log(numInStock)
   const dispatch = useDispatch();
 
   return (

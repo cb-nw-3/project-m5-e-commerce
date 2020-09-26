@@ -19,4 +19,6 @@ const SearchInputs = () => {
   );
 };
 
+
+
 export default SearchInputs;

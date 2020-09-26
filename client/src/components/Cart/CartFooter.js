@@ -4,11 +4,19 @@ import styled from "styled-components";
 import { getCartItemArray } from "../reducers/cart-reducers";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { emptyCart } from "../action";
+import {
+  emptyCart,
+  requestPurchase,
+  receivePurchase,
+  purchaseError,
+} from "../action";
+import LoadingIcon from "../LoadingIcon/index";
 
 const CartFooter = () => {
   const dispatch = useDispatch();
   const state = useSelector(getCartItemArray);
+  const purchaseStatus = useSelector((state) => state.cartPurchase);
+  const cartState = useSelector((state) => state.cart);
   let priceOfItems =
     state.length !== 0
       ? state.reduce((price, item) => {
@@ -23,9 +31,10 @@ const CartFooter = () => {
       : "00.00";
 
   const handleCartPurchase = (event) => {
+    dispatch(requestPurchase());
     event.preventDefault();
     fetch("/upDateStock", {
-      method: "POST",
+      method: "PATCH",
       body: JSON.stringify({
         //we are sending this body over to backend upDateStock
         purchasedStock: state,
@@ -39,24 +48,66 @@ const CartFooter = () => {
       .then((res) => res.json())
       .then((res) => {
         if (res.status === "success") {
+          dispatch(receivePurchase());
           dispatch(emptyCart());
+        } else {
+          dispatch(purchaseError(res.error));
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        dispatch(purchaseError(err));
+        console.log(purchaseStatus);
+      });
   };
 
+  React.useEffect(() => {
+    console.log(purchaseStatus);
+  }, [cartState]);
   return (
     <CartFooterContainer>
       <form>
-        <StyledButton onClick={handleCartPurchase}>Purchase</StyledButton>
+        <StyledButton
+          onClick={handleCartPurchase}
+          disabled={state.length > 0 ? false : true}
+        >
+          {purchaseStatus.status === "process" ? (
+            <LoadingIcon size={25} />
+          ) : (
+            "Purchase"
+          )}
+        </StyledButton>
       </form>
       <PriceTotal>${truePriceOfItems}</PriceTotal>
+      <Error>
+        {purchaseStatus.status === "error" ? purchaseStatus.error : null}
+      </Error>
     </CartFooterContainer>
   );
 };
 
-const CartFooterContainer = styled.div``;
-const StyledButton = styled.button``;
+const CartFooterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+  background-color: white;
+  text-align: center;
+ `;
+
+const StyledButton = styled.button`
+  border-radius: 20%;
+  background-color: black;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  width: 90px;
+  height: 40px;
+  align-items: center;
+  display: block;
+  `;
+
 const PriceTotal = styled.p``;
+const Error = styled.p``;
 
 export default CartFooter;

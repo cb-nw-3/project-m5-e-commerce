@@ -4,7 +4,7 @@ import styled from "styled-components";
 const CartHeader = ({ imgSrc }) => {
   return (
     <CartTitleContainer>
-      <CartTitle>My Shopping Bag</CartTitle>
+      <CartTitle><div>Your Shopping Bag</div></CartTitle>
       <Image src={imgSrc} />
     </CartTitleContainer>
   );
@@ -12,10 +12,18 @@ const CartHeader = ({ imgSrc }) => {
 
 const CartTitle = styled.h2`
   font-family: "Montserrat", sans-serif;
-  font-size: 20px;
+  font-style: bold;
+  font-size: 15px;
+  display: block;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  padding-left:100 px;
 `;
 const CartTitleContainer = styled.div`
+text-align:center;
   width: 33%;
+  display: flex;
+  flex-wrap: nowrap;
 `;
 
 const Image = styled.img`

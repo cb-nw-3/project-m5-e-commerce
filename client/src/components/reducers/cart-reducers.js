@@ -43,12 +43,6 @@ export default function cartReducer(state = initialState, action) {
     case "EMPTY_CART": {
       return {};
     }
-    case "RECEIVE_ITEMS": {
-      return {
-        ...state,
-        
-      }
-    }
     default:
       return state;
   }
