@@ -26,15 +26,10 @@ function Navbar() {
               fontSize: "24px",
             }}
             to="/items"
-          >
-            Cart
-          </Link>
+          ></Link>
         </Nav>
       </NavBarWrapper>
       <Switch>
-        <Route path="/items">
-          <Items />
-        </Route>
         <Route path="/">
           <Home />
         </Route>
