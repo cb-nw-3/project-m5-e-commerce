@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import Header from "../Header/index";
+import StoreLogo from "../Header/StoreLogo";
 
 const logo2 = require("../assets/bagel.gif");
 const alex = require("../assets/alex.jpg");
@@ -12,11 +12,10 @@ const approvalsign = require("../assets/approvalsign.jpg");
 const team = require("../assets/team.jpg");
 
 const AboutUs = () => {
-  const { AboutUs } = useParams();
   return (
     <>
+      <StoreLogo imgSrc={logo2} />
       <Wrapper>
-        <Header />
         <MainText>
           <h1>Why bagelz</h1>
           Bagelz wearables circle us physically but also virtually as they
@@ -30,10 +29,10 @@ const AboutUs = () => {
         <PageBody>
           <HoldingWrapper>
             <LineWrapper>
-              <BigLetter>b</BigLetter>
+              <BigLetter>B</BigLetter>
               <TextWrapper>
                 <Uppertext>
-                  The <PurpleText>b</PurpleText> comes with the{" "}
+                  The <PurpleText>B</PurpleText> comes with the{" "}
                   <PurpleText>BLESSING</PurpleText> <br />
                   of Nathalie <PurpleText>B</PurpleText>enaroch
                 </Uppertext>
@@ -51,10 +50,10 @@ const AboutUs = () => {
 
           <HoldingWrapper>
             <LineWrapper>
-              <BigLetter>a</BigLetter>
+              <BigLetter>A</BigLetter>
               <TextWrapper>
                 <Uppertext>
-                  The <PurpleText>a</PurpleText> comes with the{" "}
+                  The <PurpleText>A</PurpleText> comes with the{" "}
                   <PurpleText>APPROVAL</PurpleText> <br />
                   of <PurpleText>A</PurpleText>lex and{" "}
                   <PurpleText>A</PurpleText>
@@ -72,10 +71,10 @@ const AboutUs = () => {
 
           <HoldingWrapper>
             <LineWrapper>
-              <BigLetter>g</BigLetter>
+              <BigLetter>G</BigLetter>
               <TextWrapper>
                 <Uppertext>
-                  The <PurpleText>g</PurpleText> comes from the{" "}
+                  The <PurpleText>G</PurpleText> comes from the{" "}
                   <PurpleText>
                     GREAT <br /> CONTRIBUTION
                   </PurpleText>{" "}
@@ -98,10 +97,10 @@ const AboutUs = () => {
 
           <HoldingWrapper>
             <LineWrapper>
-              <BigLetter>e</BigLetter>
+              <BigLetter>E</BigLetter>
               <TextWrapper>
                 <Uppertext>
-                  The <PurpleText>e</PurpleText> comes from the{" "}
+                  The <PurpleText>E</PurpleText> comes from the{" "}
                   <PurpleText>ENERGY</PurpleText>and
                   <br />
                   <PurpleText>ENTHUSIASM</PurpleText> of the team
@@ -123,10 +122,10 @@ const AboutUs = () => {
 
           <HoldingWrapper>
             <LineWrapper>
-              <BigLetter>l</BigLetter>
+              <BigLetter>L</BigLetter>
               <TextWrapper>
                 <Uppertext>
-                  The <PurpleText>l</PurpleText> comes from the{" "}
+                  The <PurpleText>L</PurpleText> comes from the{" "}
                   <PurpleText>LAUDABLE CONTRIBUTION </PurpleText>
                   of Alex <PurpleText>L</PurpleText>angevin
                 </Uppertext>
@@ -147,7 +146,7 @@ const AboutUs = () => {
               <BigLetterZ>z</BigLetterZ>
               <TextWrapper>
                 <Uppertext>
-                  The <PurpleText>z</PurpleText> comes from the{" "}
+                  The <PurpleText>Z</PurpleText> comes from the{" "}
                   <PurpleText>ZEALOUS CONTRIBUTION </PurpleText>
                   of Hiba <PurpleText>Z</PurpleText>aarour
                 </Uppertext>
@@ -171,11 +170,9 @@ const AboutUs = () => {
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
   justify-items: space-between;
   background-color: white;
 `;
-
 const PageBody = styled.div`
   display: flex;
   flex-direction: column;
@@ -183,14 +180,12 @@ const PageBody = styled.div`
   margin-bottom: 10px;
   border: 10px;
 `;
-
 const HoldingWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-bottom: -5%;
 `;
-
 const LineWrapper = styled.div`
   display: flex;
   background-color: white;
@@ -199,38 +194,31 @@ const LineWrapper = styled.div`
   padding: 50px;
   margin: 20px;
 `;
-
 const BigLetter = styled.div`
   font-size: 150px;
   color: black;
   padding: 20px;
   font-family: "Continuum", sans-serif;
 `;
-
 const BigLetterZ = styled.div`
   font-size: 150px;
   color: #a181f5;
   padding: 20px;
   font-family: "Continuum", sans-serif;
 `;
-
 const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
 const MainText = styled.p`
   text-align: justify;
   text-justify: inter-word;
   width: 500px;
   border: 10px;
-  padding: 50px;
-  margin: 80px;
-  margin-bottom: 25px;
+  margin: 0 0 0 50px;
   font-size: 23px;
   font-family: "Montserrat", sans-serif;
 `;
-
 const Uppertext = styled.p`
   /* text-align: justify; */
   text-justify: inter-word;
@@ -238,7 +226,6 @@ const Uppertext = styled.p`
   font-size: 21px;
   font-family: "Montserrat", sans-serif;
 `;
-
 const LowerText = styled.p`
   text-align: justify;
   text-justify: inter-word;
@@ -246,11 +233,9 @@ const LowerText = styled.p`
   font-size: 18px;
   font-family: "Montserrat", sans-serif;
 `;
-
 const PurpleText = styled.span`
   color: #a181f5;
 `;
-
 const Color = styled.img`
   height: 200px;
   width: 200px;
