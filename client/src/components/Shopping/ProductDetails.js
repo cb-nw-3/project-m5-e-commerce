@@ -1,64 +1,86 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import Header from "../Header/index";
-import LoadingIcon from '../LoadingIcon/index'
-// goal is to display details of a specific product
-// information : the id of the product(from params)
-// we will fetch the data from the server
+import StoreLogo from "../Header/StoreLogo";
+import LoadingIcon from "../LoadingIcon/index";
 
-// useState to store the info of the product
-// useEffect to get data about the product
-// use params to get the id from the url
+import { useDispatch } from "react-redux";
+import { addItem } from "../action";
 
 const logo2 = require("../assets/bagel.gif");
 
 const ProductDetails = () => {
+  const dispatch = useDispatch();
+
   const [item, setItem] = useState(null);
   const { itemId } = useParams();
+
+  let price;
+  let _id;
+  let name;
+  let numInStock;
+
   React.useEffect(() => {
     fetch(`/item/${itemId}`)
       .then((res) => res.json())
-      .then((res) => setItem(res[0]));
+      .then((res) => {
+        console.log(res);
+        setItem(res[0]);
+      })
+      .catch(err => console.log(err))
   }, [itemId]);
-  console.log(item);
 
-  if (!item) return <LoadingIcon />;
-  return (
-      <Wrapper>
-        <Header />
-        <ProductDetailContainer>
-          <ProductPhoto>
-            <Img src={item.imageSrc} alt="productImage" />
-            <SpanName>{item.name}</SpanName>
-          </ProductPhoto>
-          <ProductInfo>
-            <Span>
-              Available in store :
-              <InfoValue>{item.numInStock}</InfoValue>
-            </Span>
-            <Span>
-              Price : <InfoValue>{item.price}</InfoValue>
-            </Span>
-            <Span>
-              Body Location : 
-              <InfoValue>{item.body_location}</InfoValue>
-            </Span>
-            <Span>
-              Category :
-              <InfoValue>{item.category}</InfoValue>
-            </Span>
-            <Span>
-              ID :
-              <InfoValue>{item._id}</InfoValue>
-            </Span>
-            <Span>
-              Company ID :
-              <InfoValue>{item.companyId}</InfoValue>
-            </Span>
-          </ProductInfo>
-        </ProductDetailContainer>
-      </Wrapper>
+  return item ? (
+    <Wrapper>
+      <p style={{ display: "none" }}>
+        {(price = item.price)}
+        {(_id = item._id)}
+        {(name = item.name)}
+        {(numInStock = item.numInStock)}
+      </p>
+
+      <StoreLogo imgSrc={logo2} />
+      <ProductDetailContainer>
+        <ProductPhoto>
+          <Img src={item.imageSrc} alt="productImage" />
+          <SpanName>{item.name}</SpanName>
+        </ProductPhoto>
+        <ProductInfo>
+          <Span>
+            Available in store :<InfoValue>{item.numInStock}</InfoValue>
+          </Span>
+          <Span>
+            Price : <InfoValue>{item.price}</InfoValue>
+          </Span>
+          <Span>
+            Body Location :<InfoValue>{item.body_location}</InfoValue>
+          </Span>
+          <Span>
+            Category :<InfoValue>{item.category}</InfoValue>
+          </Span>
+          <Span>
+            ID :<InfoValue>{item._id}</InfoValue>
+          </Span>
+          <Span>
+            Company ID :<InfoValue>{item.companyId}</InfoValue>
+          </Span>
+        </ProductInfo>
+        {numInStock > 0 ? (
+          <Button
+            onClick={(ev) => {
+              dispatch(addItem({ _id, name, price, numInStock }));
+            }}
+            disabled={numInStock > 0 ? false : true}
+          >
+            Add to cart
+          </Button>
+        ) : (
+          <OutOfStock>Out Of Stock</OutOfStock>
+        )}
+      </ProductDetailContainer>
+    </Wrapper>
+  ) : (
+    <LoadingIcon />
   );
 };
 
@@ -71,14 +93,29 @@ const Wrapper = styled.div`
 const InfoValue = styled.span`
   font-weight: bold;
   margin-left: 5px;
-`
+`;
 const Img = styled.img`
   border-radius: 10%;
   margin-bottom: 50px;
   width: 300px;
   height: 300px;
 `;
-
+const Button = styled.button`
+  border-radius: 20px;
+  border: 1px solid #ff882e;
+  background-color: #ff882e;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  color: #fafafa;
+  width: 90px;
+  height: 40px;
+  align-items: center;
+  display: block;
+`;
+const OutOfStock = styled.p`
+  color: #a181f5;
+  font-weight: bold;
+`;
 const ProductDetailContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -110,7 +147,6 @@ const ProductInfo = styled.div`
   width: 350px;
   height: 500px;
 `;
-
 const Span = styled.div`
   display: flex;
   flex-direction: row;
@@ -120,7 +156,6 @@ const Span = styled.div`
     font-size: 150%;
   }
 `;
-
 const SpanName = styled.p`
   display: flex;
   flex-direction: row;

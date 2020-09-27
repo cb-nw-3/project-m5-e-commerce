@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 // allows us to use dispatch for the reducers action
 import { useDispatch } from "react-redux";
@@ -25,7 +24,6 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
           <Stock>{numInStock} available</Stock>
           <Button
             onClick={(ev) => {
-              ev.stopPropagation();
               dispatch(addItem({ _id, name, price, numInStock }));
             }}
             disabled={numInStock > 0 ? false : true}
