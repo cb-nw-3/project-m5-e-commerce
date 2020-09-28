@@ -1,20 +1,29 @@
 import React from "react";
 import styled from "styled-components";
-import DropdownMenu from './DropdownMenu';
+import DropdownMenu from "./DropdownMenu";
 
 const SearchInputs = () => {
-
   return (
     <DropdownContainer>
-      <DropdownMenu 
+      <DropdownMenu
         title="Shop By Body Part"
-        menuOptions= {['All','Head','Hands', 'Wrist', 'Arms','Chest','Torso', 'Waist', 'Feet']}
+        menuOptions={[
+          "All",
+          "Head",
+          "Hands",
+          "Wrist",
+          "Arms",
+          "Chest",
+          "Torso",
+          "Waist",
+          "Feet",
+        ]}
       />
 
-      <DropdownMenu 
+      <DropdownMenu
         title="Sort By"
-        menuOptions= {['A ↑', 'Z ↓', '$ ↑', '$$$ ↓']}
-        />
+        menuOptions={["A ↑", "Z ↓", "$ ↑", "$$$ ↓"]}
+      />
     </DropdownContainer>
   );
 };
@@ -22,6 +31,6 @@ const SearchInputs = () => {
 const DropdownContainer = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
 export default SearchInputs;

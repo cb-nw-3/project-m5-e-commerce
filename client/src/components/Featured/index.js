@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import CampaignImg from "./CampaignImg";
-import TextBox from "./Textbox";
+
 const image1 = require("../assets/image1.jpg");
 const image2 = require("../assets/image2.jpg");
 const image3 = require("../assets/image3.jpg");
@@ -55,9 +55,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 50vh;
-  width: 33%;
+  flex: 2;
 `;
-
 const TextStrong = styled.span`
   font-weight: bold;
   color: black;
@@ -73,7 +72,6 @@ const TextStrongMauve = styled.span`
   color: #a181f5;
   font-family: "Montserrat", sans-serif;
 `;
-
 const TextStrongOrange = styled.span`
   font-weight: bold;
   color: #ff882e;
@@ -84,10 +82,10 @@ const TextStrongMint = styled.span`
   color: #bde5c2;
   font-family: "Montserrat", sans-serif;
 `;
-
 const Text = styled.span`
   font-weight: light;
   /* font-family: "Montserrat", sans-serif; */
   font-family: "Montserrat", sans-serif;
 `;
+
 export default Featured;

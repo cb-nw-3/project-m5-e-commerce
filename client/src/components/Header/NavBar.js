@@ -18,7 +18,6 @@ const Wrapper = styled.div`
   align-items: center;
   align-content: center;
 `;
-
 const NavBarItem = styled(Link)`
   margin: 0 50px;
   font-family: "Montserrat", sans-serif;

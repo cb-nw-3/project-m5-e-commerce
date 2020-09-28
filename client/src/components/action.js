@@ -24,7 +24,7 @@ export const emptyCart = () => ({
 export const receiveItems = (items) => ({
   type: "RECEIVE_ITEMS",
   items,
-})
+});
 
 export const selectSort = (option) => ({
   type: "SELECT-SORT",
@@ -38,26 +38,26 @@ export const selectBodyPart = (option) => ({
 
 export const requestShoppingItems = () => ({
   type: "REQUEST_ITEMS",
-})
+});
 
 export const receiveShoppingItemsError = () => ({
   type: "RECEIVE_ITEMS_ERROR",
-})
+});
 
 export const receiveShoppingItems = (items) => ({
   type: "RECEIVE_SHOPPING_ITEMS",
   items,
-})
+});
 
 export const requestPurchase = () => ({
   type: "REQUEST_PURCHASE",
-})
+});
 
 export const receivePurchase = () => ({
   type: "RECEIVE_PURCHASE",
-})
+});
 
 export const purchaseError = (error) => ({
   type: "PURCHASE_ERROR",
   error,
-})
+});

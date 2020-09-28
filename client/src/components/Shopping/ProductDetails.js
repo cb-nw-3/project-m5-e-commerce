@@ -27,7 +27,7 @@ const ProductDetails = () => {
         console.log(res);
         setItem(res[0]);
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.log(err));
   }, [itemId]);
 
   return item ? (

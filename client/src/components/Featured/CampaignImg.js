@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const CampaignImg = ({ imgSrc, position, children }) => {
@@ -16,25 +16,20 @@ const CampaignImg = ({ imgSrc, position, children }) => {
   );
 };
 
-export default CampaignImg;
-
 const Image = styled.img`
   width: 100%;
   display: block;
 `;
-
 const Bottom = styled.div`
   position: absolute;
   bottom: 40px;
   right: 10px;
 `;
-
 const Top = styled.div`
   position: absolute;
   top: 10px;
   right: 10px;
 `;
-
 const Container = styled.div`
   position: relative;
   text-align: right;
@@ -42,3 +37,5 @@ const Container = styled.div`
   font-size: 50px;
   font-family: "Montserrat", sans-serif;
 `;
+
+export default CampaignImg;

@@ -3,30 +3,27 @@ import styled from "styled-components";
 
 const CartItemDescription = ({ name, price }) => {
   return (
-    <>
-      <CartItemImage></CartItemImage>
+    <Container>
       <CartItemName>{name}</CartItemName>
       <CartItemPrice>{price}</CartItemPrice>
-    </>
+    </Container>
   );
 };
 
-const CartItemImage = styled.img``;
 const CartItemName = styled.p`
   font-family: "Montserrat", sans-serif;
   font-size: 12px;
   display: block;
-  flex-wrap: nowrap;
-  white-space: nowrap;
- `;
-
-
+`;
 const CartItemPrice = styled.p`
   font-family: "Montserrat", sans-serif;
   font-size: 12px;
-  display: block;
-  flex-wrap: nowrap;
-  white-space: nowrap;
+  font-weight: bold;
+`;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px;
 `;
 
 export default CartItemDescription;

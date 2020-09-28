@@ -12,7 +12,6 @@ const Fashion = ({ imgSrc }) => {
 const Container = styled.div`
   text-align: center;
 `;
-
 const Image = styled.img`
   width: 75%;
 `;

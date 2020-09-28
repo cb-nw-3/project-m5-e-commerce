@@ -17,12 +17,13 @@ import {
 const Shopping = () => {
   const dispatch = useDispatch();
   const shoppingItemsState = useSelector((state) => state.shoppingItems.items);
-  const shoppingItemsStatus = useSelector((state) => state.shoppingItems.status);
+  const shoppingItemsStatus = useSelector(
+    (state) => state.shoppingItems.status
+  );
   // Filter out the items based on the bodyPart state
   const bodyPartState = useSelector(getBodyPart);
   const sortingState = useSelector(getSorting);
   const purchaseStatus = useSelector((state) => state.cartPurchase);
-
 
   //Sorting methods
   const sortAlphaAZ = (arr) =>
@@ -74,13 +75,13 @@ const Shopping = () => {
     dispatch(requestShoppingItems());
 
     //srtingState modifies the sorting method used
-    if (sortingState === "Alphabetically (A to Z)") {
+    if (sortingState === "A ↑") {
       sortData = sortAlphaAZ;
-    } else if (sortingState === "Alphabetically (Z to A)") {
+    } else if (sortingState === "Z ↓") {
       sortData = sortAlphaZA;
-    } else if (sortingState === "Price ($ to $$$)") {
+    } else if (sortingState === "$ ↑") {
       sortData = sortPriceInc;
-    } else if (sortingState === "Price ($$$ to $)") {
+    } else if (sortingState === "$$$ ↓") {
       sortData = sortPriceDec;
     }
 
@@ -100,7 +101,6 @@ const Shopping = () => {
           );
         }
       })
-      .then((res) => console.log(shoppingItemsState))
       .catch((err) => {
         console.error(err);
         dispatch(receiveShoppingItemsError());
@@ -124,7 +124,7 @@ const Shopping = () => {
 };
 
 const Wrapper = styled.div`
-  width: 34%;
+  flex: 4;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 1rem;

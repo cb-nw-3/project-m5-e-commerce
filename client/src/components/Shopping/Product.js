@@ -24,7 +24,7 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
           <Stock>{numInStock} available</Stock>
           <Button
             onClick={(ev) => {
-              dispatch(addItem({ _id, name, price, numInStock }));
+              dispatch(addItem({ _id, name, price, numInStock, imageSrc }));
             }}
             disabled={numInStock > 0 ? false : true}
           >
@@ -40,7 +40,7 @@ const Product = ({ imageSrc, name, price, _id, numInStock }) => {
   );
 };
 
-const Wrapper = styled(Link)`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -49,17 +49,17 @@ const Wrapper = styled(Link)`
   background-color: white;
   text-align: center;
   border-radius: 20px;
-  box-shadow: 6px 2px 18px 1px rgba(150, 150, 150, 1);
+  box-shadow: 6px 2px 10px 1px rgba(150, 150, 150, 1);
   font-family: "Montserrat", sans-serif;
   padding: 20px;
+  max-height: 400px;
 `;
 const Stock = styled.p``;
 const OutOfStock = styled.p`
   color: #a181f5;
   font-weight: bold;
 `;
-const ItemName = styled.p`
-`
+const ItemName = styled.p``;
 const ItemInfo = styled.div`
   display: flex;
   flex-direction: column;
@@ -71,10 +71,16 @@ const Button = styled.button`
   font-weight: bold;
   font-family: "Montserrat", sans-serif;
   color: #fafafa;
-  width: 90px;
+  width: 120px;
   height: 40px;
   align-items: center;
   display: block;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #ff7911;
+    cursor: pointer;
+  }
 `;
 const Img = styled.img`
   border-radius: 10%;

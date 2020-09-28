@@ -13,7 +13,6 @@ const Fashionspace = () => {
   );
 };
 
-const Wrapper = styled(Link)`
-`;
+const Wrapper = styled(Link)``;
 
 export default Fashionspace;

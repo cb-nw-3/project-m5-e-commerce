@@ -3,23 +3,31 @@ import styled from "styled-components";
 import CartHeader from "./CartHeader";
 import CartBody from "./CartBody";
 import CartFooter from "./CartFooter";
+import { getCartItemArray } from "../reducers/cart-reducers";
+import { useSelector } from "react-redux";
 
 const bag = require("../assets/bag.jpg");
+
 const Cart = () => {
+  const state = useSelector(getCartItemArray);
+
   return (
     <CartContainer>
       <CartHeader imgSrc={bag} />
-      <CartBody />
-      <CartFooter />
+      {state.length > 0 ? (
+        <>
+          <CartBody />
+          <CartFooter />
+        </>
+      ) : null}
     </CartContainer>
   );
 };
 
 const CartContainer = styled.div`
   background-color: white;
-  width: 33%;
-  float: right;
-  height: 100vh;
+  flex: 2;
+  height: 83vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
