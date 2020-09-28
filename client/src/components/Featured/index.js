@@ -84,8 +84,9 @@ const TextStrongMint = styled.span`
 `;
 const Text = styled.span`
   font-weight: light;
-  /* font-family: "Montserrat", sans-serif; */
   font-family: "Montserrat", sans-serif;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  font-weight: bold;
 `;
 
 export default Featured;

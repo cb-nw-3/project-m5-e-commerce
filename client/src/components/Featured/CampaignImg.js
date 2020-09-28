@@ -19,6 +19,8 @@ const CampaignImg = ({ imgSrc, position, children }) => {
 const Image = styled.img`
   width: 100%;
   display: block;
+  border-radius: 10px;
+  margin: 5px 5px 0 5px;
 `;
 const Bottom = styled.div`
   position: absolute;
