@@ -5,7 +5,11 @@ const renderIndividualItem = async (req, res) => {
     const items = JSON.parse(await openFilePromise("./data/items.json"));
     let itemId = req.params.itemId;
     let item = items.find((item) => item._id == itemId);
-    res.status(200).json({ item });
+    if (item !== undefined) {
+      return res.status(200).json({ item });
+    } else {
+      return res.status(404).json("error");
+    }
   } catch (e) {
     console.error(e.code);
 

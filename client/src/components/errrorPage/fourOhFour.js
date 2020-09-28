@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { COLORS } from "../styles/Colors";
 import errorImg from "../../public/fourOhFour.png";
 
-const fourOhFour = () => {
+const FourOhFour = () => {
   return (
     <Wrapper>
       <Img src={errorImg} />
@@ -14,7 +14,7 @@ const fourOhFour = () => {
   );
 };
 
-export default fourOhFour;
+export default FourOhFour;
 
 const Wrapper = styled.div`
   display: flex;
