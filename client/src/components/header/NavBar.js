@@ -36,7 +36,9 @@ const NavBar = () => {
         </Button>
         <A to="/cart" /* onClick to go to cart / cart modal */>
           <FaShoppingCart size={35} />
-          <CartItemNumDisplay>{cartItems.length}</CartItemNumDisplay>
+          {cartItems.length > 0 && (
+            <CartItemNumDisplay>{cartItems.length}</CartItemNumDisplay>
+          )}
         </A>
       </Nav>
       {isOpen ? <TypeAhead isOpen={isOpen} setIsOpen={setIsOpen} /> : null}
@@ -70,6 +72,7 @@ const Nav = styled.nav`
 
 const A = styled(Link)`
   color: ${COLORS.PURPLE.PRIMARY};
+  position: relative;
 `;
 
 const CartItemNumDisplay = styled.span`
@@ -83,6 +86,8 @@ const CartItemNumDisplay = styled.span`
   font-size: 10px;
   font-weight: bold;
   left: 80%;
+  top: 0;
+  right: 0;
 `;
 
 const ImgLogo = styled.img`
