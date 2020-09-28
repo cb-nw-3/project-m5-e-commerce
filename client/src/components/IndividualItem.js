@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { addItem, catchError } from "../actions";
+import { addItem } from "../actions";
 import { COLORS } from "./styles/Colors";
 import Loader from "react-loader-spinner";
+import FourOhFour from "./errrorPage/fourOhFour";
 
 const IndividualItem = () => {
   const dispatch = useDispatch();
@@ -23,12 +24,17 @@ const IndividualItem = () => {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw 404;
+        }
+        return res.json();
+      })
       .then((data) => {
         setItemData(data.item);
         setLoadStatus("loaded");
       })
-      .catch((err) => dispatch(catchError(err)));
+      .catch((err) => setLoadStatus("Error"));
   }, [itemId, dispatch]);
 
   React.useEffect(() => {
@@ -44,7 +50,7 @@ const IndividualItem = () => {
         setCompaniesData(data);
         setLoadCompanyStatus("loaded");
       })
-      .catch((err) => dispatch(catchError(err)));
+      .catch((err) => setLoadCompanyStatus("Error"));
   }, [itemId, dispatch]);
 
   if (loadStatus === "loaded" && loadCompanyStatus === "loaded") {
@@ -85,6 +91,8 @@ const IndividualItem = () => {
         </Wrapper>
       );
     }
+  } else if (loadStatus === "Error") {
+    return <FourOhFour />;
   } else {
     return (
       <Wrapper>
