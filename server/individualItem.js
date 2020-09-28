@@ -1,8 +1,13 @@
 const { openFilePromise } = require("./filelibs.js");
+const {
+  promiseCheckItemsAgainstPurchasedStock,
+} = require("./reconcileStock.js");
 
 const renderIndividualItem = async (req, res) => {
   try {
-    const items = JSON.parse(await openFilePromise("./data/items.json"));
+    const items_parsed = JSON.parse(await openFilePromise("./data/items.json"));
+    let items = await promiseCheckItemsAgainstPurchasedStock(items_parsed);
+
     let itemId = req.params.itemId;
     let item = items.find((item) => item._id == itemId);
     if (item !== undefined) {

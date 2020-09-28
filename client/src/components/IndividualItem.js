@@ -78,7 +78,11 @@ const IndividualItem = () => {
               </div>
             </Description>
           </Product>
-          <StockCount>Only {item.numInStock} left in stock!!</StockCount>
+          <StockCount>
+            {item.numInStock > 0
+              ? `Only ${item.numInStock} Left in Stock!!`
+              : "Out of Stock!"}
+          </StockCount>
           <Button
             onClick={(ev) => {
               ev.stopPropagation();
