@@ -1,16 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-
 import { useDispatch } from "react-redux";
-
-import { selectSort} from '../action';
-import { selectBodyPart} from '../action';
+import { selectSort } from "../action";
+import { selectBodyPart } from "../action";
 
 const DropdownMenu = (props) => {
   const dispatch = useDispatch();
 
   //constants for content of the menu
-  const title = props.title ;
+  const title = props.title;
   const menuOptions = props.menuOptions;
 
   const dropdownRef = React.useRef(null);
@@ -20,56 +18,65 @@ const DropdownMenu = (props) => {
   //Function that toggles menu active with inactive
   const onClick = () => {
     setIsActive(!isActive);
-  }
+  };
 
   React.useEffect(() => {
     const pageClickEvent = (ev) => {
-      if (dropdownRef.current !== null && !dropdownRef.current.contains(ev.target)) {
+      if (
+        dropdownRef.current !== null &&
+        !dropdownRef.current.contains(ev.target)
+      ) {
         setIsActive(!isActive);
       }
     };
 
     if (isActive) {
-      window.addEventListener('click', pageClickEvent);
+      window.addEventListener("click", pageClickEvent);
     }
 
     return () => {
-      window.removeEventListener('click', pageClickEvent);
-    }
+      window.removeEventListener("click", pageClickEvent);
+    };
   }, [isActive]);
 
-  return(
+  return (
     <MenuContainer className="menu-container">
-      <MenuButton onClick={onClick} className="menu-trigger">{title}</MenuButton>
+      <MenuButton onClick={onClick} className="menu-trigger">
+        {title}
+      </MenuButton>
 
-      <Menu ref={dropdownRef} className={`menu ${isActive ? 'active' : 'inactive'}`}>
+      <Menu
+        ref={dropdownRef}
+        className={`menu ${isActive ? "active" : "inactive"}`}
+      >
         <MenuList>
-          {
-            menuOptions.map((option) => {
-              return(
-              <MenuOption>
-                <MenuOptionButton onClick={
-                (title === "Shop By Body Part")
-                ? (() => dispatch(selectBodyPart(option)))
-                : (() => dispatch(selectSort(option)))
-                }>
+          {menuOptions.map((option, index) => {
+            return (
+              <MenuOption key={index}>
+                <MenuOptionButton
+                  onClick={
+                    title === "Shop By Body Part"
+                      ? () => dispatch(selectBodyPart(option))
+                      : () => dispatch(selectSort(option))
+                  }
+                >
                   {option}
                 </MenuOptionButton>
               </MenuOption>
-            )})
-          }
+            );
+          })}
         </MenuList>
       </Menu>
     </MenuContainer>
-  )
-}
+  );
+};
 
 const MenuContainer = styled.div`
   position: relative;
   padding: 0 50px;
-`
+`;
 const MenuButton = styled.button`
-  background-color: rgb(150,150,150);
+  background-color: rgb(150, 150, 150);
   padding: 25px;
   border-radius: 25px;
   border: none;
@@ -79,12 +86,13 @@ const MenuButton = styled.button`
   color: #fafafa;
   transition: background-color 1s;
 
-  &:hover, &:focus {
-    background-color: rgba(150,150,150,0.7);
+  &:hover,
+  &:focus {
+    background-color: rgba(150, 150, 150, 0.7);
     transform: scale(1.01);
     outline: none;
   }
-`
+`;
 const Menu = styled.nav`
   background: black;
   color: white;
@@ -103,33 +111,33 @@ const Menu = styled.nav`
   transform: translateY(-20px);
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
   z-index: 100;
-`
+`;
 const MenuList = styled.ul`
   font-family: "Montserrat", sans-serif;
   list-style: none;
   padding: 0;
   margin: 0;
-`
+`;
 const MenuOptionButton = styled.button`
   background-color: #fafafa;
-	color: black;
-	border: none;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+  color: black;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
   width: 100%;
   text-decoration: none;
   padding: 8px 20px;
   display: block;
 
   &:hover {
-    background-color: rgba(150,150,150,1);
+    background-color: rgba(150, 150, 150, 1);
     transform: scale(1.1);
     color: #fafafa;
   }
-`
+`;
 const MenuOption = styled.li`
   border-bottom: 1px solid #dddddd;
-`
+`;
 
 export default DropdownMenu;

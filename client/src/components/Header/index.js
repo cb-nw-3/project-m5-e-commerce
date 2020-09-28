@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import StoreLogo from "./StoreLogo";
 import NavBar from "./NavBar";
-import SearchInputs from './SearchInputs';
+import SearchInputs from "./SearchInputs";
 
 const logo2 = require("../assets/bagel.gif");
 
@@ -27,7 +27,6 @@ const Wrapper = styled.div`
 `;
 const NavPages = styled.div`
   display: flex;
-  
-`
+`;
 
 export default Header;

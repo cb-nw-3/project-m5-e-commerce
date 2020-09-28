@@ -5,9 +5,12 @@ import { keyframes } from "styled-components";
 
 const LoadingIcon = (props) => {
   return (
-    <>
-      <RotatingImage src={require(`../assets/bagel1.png`)} style={{width: `${props.size}px`, height: `${props.size}px`}} />
-    </>
+    <Container>
+      <RotatingImage
+        src={require(`../assets/bagel1.png`)}
+        style={{ width: `${props.size}px`, height: `${props.size}px` }}
+      />
+    </Container>
   );
 };
 
@@ -21,7 +24,11 @@ const RotatingAnimation = keyframes`
 `;
 const RotatingImage = styled.img`
   animation: ${RotatingAnimation} 1.5s infinite linear;
-  margin: 0 auto;
+`;
+const Container = styled.div`
+  flex: 4;
+  display: flex;
+  justify-content: center;
 `;
 
 export default LoadingIcon;
