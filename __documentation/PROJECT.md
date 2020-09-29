@@ -2,6 +2,10 @@
 
 You have plenty of freedom in how the app will look and behave. As long as you meet the MVP requirements below, your poject will be deemed successful!
 
+## TRELLO LINK
+
+https://trello.com/b/hFrNCUbp/group-project
+
 ## MVP
 
 ### Frontend
