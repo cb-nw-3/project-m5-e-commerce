@@ -1,9 +1,13 @@
 **Team exC**
 
 Ashley Hynes
+
 Przemek Piwek
+
 Vitor Correia
+
 Joseph Hiwatig
+
 
 
 **Backend**
