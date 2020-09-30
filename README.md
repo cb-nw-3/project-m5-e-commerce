@@ -10,7 +10,20 @@ Joseph Hiwatig
 
 
 
-**Backend**
+**Main Features**
+
+<img src="https://media4.giphy.com/media/1nKF6YTrKwKyjhAIcu/giphy.gif" width="300px" >
+
+- Landing page with category selection plus showcases products from the default category
+- Filter through products
+- View more to expand on the products available
+- Slider
+- Mobile responsive layout
+- Modal for cart 
+
+
+
+**About the Backend**
 
 GET http://localhost:4000/api/items/:category?skip={optional}
 
