@@ -1,4 +1,5 @@
-Team exC
+**Team exC**
+
 Ashley Hynes
 Przemek Piwek
 Vitor Correia
@@ -6,6 +7,7 @@ Joseph Hiwatig
 
 
 **Backend**
+
 GET http://localhost:4000/api/items/:category?skip={optional}
 This endpoint will return an array of items based on the specified category
 Query parameter skip is optional. When specified, it skips the number of items based on skip value. Must be a number.
