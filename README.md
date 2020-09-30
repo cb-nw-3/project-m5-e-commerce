@@ -19,7 +19,8 @@ Joseph Hiwatig
 - View more to expand on the products available
 - Slider
 - Mobile responsive layout
-- Modal for cart 
+- Modal for cart
+- Product page with details, add to cart and Breadcrumb
 
 
 
