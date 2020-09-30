@@ -13,6 +13,7 @@ Joseph Hiwatig
 **Backend**
 
 GET http://localhost:4000/api/items/:category?skip={optional}
+
 This endpoint will return an array of items based on the specified category
 Query parameter skip is optional. When specified, it skips the number of items based on skip value. Must be a number.
 If no item exists for the specified category (invalid category), it will return an empty array
@@ -35,6 +36,7 @@ If no item exists for the specified category (invalid category), it will return 
 ];
 
 GET http://localhost:4000/api/item/:id
+
 This item will return an item object specified by the id parameter
 If no item matches the id, it will return a 404 not found
 {
@@ -54,6 +56,7 @@ If no item matches the id, it will return a 404 not found
 }
 
 GET http://localhost:4000/api/search?keyword={#value}&skip={optional}
+
 This endpoint will search the name of the items using the keyword query parameter
 Query parameter skip is optional. When specified, it skips the number of items based on skip value. Must be a number.
 The keyword query parameter is mandatory, if it is not provided, the server will respond with 400 Bad Request
@@ -77,6 +80,7 @@ returns an array of item object
 ];
 
 GET http://localhost:4000/api/filter
+
 This endpoint filters the items based on multiple fields provided as query paramters
 Valid query parameters:
 'name': Will filter the items by the name property
