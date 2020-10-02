@@ -1,54 +1,59 @@
-# Wearables E-Commerce Project
+# ecX - E-Commerce
 
-[See the list of TEAMS](__documentation/TEAMS.md)
+## Description
 
-You will make use of _everything_ that you have learned thus far in the bootcamp to build an e-commerce app that will showcase all of the provided _wearables_ items.
+[Description]
 
-The stack is React.Js, Redux, Node.Js, and styled-components.
 
-Your node server should be RESTful and follow REST principles, at least to the extent we learned during the bootcamp.
+## Features
+ - Items separated by category.
+ - Add items in the cart that are available in stock.
+ - View a cart containing the added items.
+ - Edit cart any time before checking out.
+ - Filter items by name, company, location or price.
+ - Display up to 16 products per page.
 
-## Getting Started
 
-<img src="./server/assets/software-dev-path.jpg" style="width: 100%;" />
+## About the project
+ - Our own modal was created to display the shopping cart.
+ - The categories carousel was built with swiper to facilitate the responsiveness.
+ - Redux was used in this project to keep the code more organized and behave consistently.
 
-You have your assignment and your team. What should you do first? This will vary for every team, and even every team member.
+## Technologies
 
-**The important thing is to NOT just jump in and start coding!**
+- Backend
+    1. Node
+    2. Express
 
-There probably shouldn't be any coding until very near the end of the first day.
+- Frontend
+    1. React
+    2. Redux
+    3. Styled-Components
+ 
 
-## Meet your Product Manager!
+## Installation Process
 
-Each team has been assigned a product manager. This person is in charge of answering questions, guiding you and basically preventing everything from falling apart!
+1. Go inside the folder: __server__
+    * `$ cd server`
 
-This person should be present for some of your team meetings, but not all. PMs are super busy people and have multiple projects, people to manage. 😉
+2. Run: 
+    * `$ npm install`
 
-## Planning
+3. For start the backend you need to run:
+    * `$ npm start`
 
-1. You will break into 3 groups (with your assigned PM.)
-2. Your PM will answer any initial questions, and give you more information, as required.
-3. Breakout into a separate meeting with just your team. _Your PM will bounce from team to team to make sure you're on track._
-4. Time to use the [Kickoff Meeting Agenda](__documentation/KICKOFF_MEETING_AGENDA.md)
+4. Go inside the folder: __client__
+    * `$ cd client`
 
-### First team meeting
+5. Run: 
+    * `$ npm install`
 
-It could also be a good/fun idea to give yourselves an original team name. :)
+6. For start the backend you need to run:
+    * `$ npm start`
 
-Your first team meeting should start with the [Kickoff Meeting Agenda](__documentation/KICKOFF_MEETING_AGENDa.md).
+## Contributors
 
-[Successful Software Project Delivery in 10 Steps](https://www.appnovation.com/blog/successful-software-project-delivery-10-steps).
-
-💡 How a project starts is indicative of how it will end.
-
-## Teamwork
-
-The most important aspect of this project is the ability to work in a team. No matter your contribution to the project, you should understand the **FULL** codebase. This will require that you
-
-- **review** each other's code
-- **ask** questions when you don't understand
-- **comment** your code extensively. _Always go for clarity over brevity._
-
-## GitHub
-
-see the [GITHUB Document](__documentation/GITHUB.md)
+* [Ashley Hynes](https://www.linkedin.com/in/ashley-hynes/)
+* [Joseph Hiwatig](https://www.linkedin.com/in/joseph-hiwatig/)
+* [Przemek Piwek](https://www.linkedin.com/in/ppiwek/)
+* [Vitor Correia](https://www.linkedin.com/in/vitor-correia/)
