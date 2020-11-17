@@ -1,54 +1,47 @@
-# Wearables E-Commerce Project
+# Welcome to WEARABOLOGY!
 
-[See the list of TEAMS](__documentation/TEAMS.md)
+This demo is meant to showcase our knowledge of
+React with a node.js express server to create a web app storefront selling wearable tech.
 
-You will make use of _everything_ that you have learned thus far in the bootcamp to build an e-commerce app that will showcase all of the provided _wearables_ items.
+---
 
-The stack is React.Js, Redux, Node.Js, and styled-components.
+## FEATURES
 
-Your node server should be RESTful and follow REST principles, at least to the extent we learned during the bootcamp.
+- RESTful backend API to fetch and update store items and cart items.
 
-## Getting Started
+- React-redux enabled for front-end state-management that also does back-end verifications of cart items and prices upon checkout.
 
-<img src="./server/assets/software-dev-path.jpg" style="width: 100%;" />
+- Side drawer to render cart items, allows for quick checkout and easy cart management.
 
-You have your assignment and your team. What should you do first? This will vary for every team, and even every team member.
+- Users are able to quickly browse items being fetched from the back-end and filter through various categories.
 
-**The important thing is to NOT just jump in and start coding!**
+- Each item can be quickly added to the cart in any view, for any quantity (which gets updated in the navbar).
 
-There probably shouldn't be any coding until very near the end of the first day.
+- About Us and Careers page to bring realism to the brand and to feature ourselves!
 
-## Meet your Product Manager!
+---
 
-Each team has been assigned a product manager. This person is in charge of answering questions, guiding you and basically preventing everything from falling apart!
+## Example
 
-This person should be present for some of your team meetings, but not all. PMs are super busy people and have multiple projects, people to manage. 😉
+### Animated Landing Page
 
-## Planning
+Also includes randomly featured products
 
-1. You will break into 3 groups (with your assigned PM.)
-2. Your PM will answer any initial questions, and give you more information, as required.
-3. Breakout into a separate meeting with just your team. _Your PM will bounce from team to team to make sure you're on track._
-4. Time to use the [Kickoff Meeting Agenda](__documentation/KICKOFF_MEETING_AGENDA.md)
+\
+![Alt text](__documentation/pics/LandingPage.gif)
 
-### First team meeting
+---
 
-It could also be a good/fun idea to give yourselves an original team name. :)
+### Quickly Add Items to Cart for Checkout
 
-Your first team meeting should start with the [Kickoff Meeting Agenda](__documentation/KICKOFF_MEETING_AGENDa.md).
+\
+![Alt text](__documentation/pics/buyItems.gif)
 
-[Successful Software Project Delivery in 10 Steps](https://www.appnovation.com/blog/successful-software-project-delivery-10-steps).
+---
 
-💡 How a project starts is indicative of how it will end.
+### Filter Items by Category
 
-## Teamwork
+\
+![Alt text](__documentation/pics/browseCategories.gif)
 
-The most important aspect of this project is the ability to work in a team. No matter your contribution to the project, you should understand the **FULL** codebase. This will require that you
-
-- **review** each other's code
-- **ask** questions when you don't understand
-- **comment** your code extensively. _Always go for clarity over brevity._
-
-## GitHub
-
-see the [GITHUB Document](__documentation/GITHUB.md)
+---
